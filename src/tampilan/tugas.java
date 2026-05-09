@@ -43,8 +43,8 @@ public class tugas extends javax.swing.JFrame {
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText();
          try {
-            String sql = "SELECT * FROM petugas where Id_Petugas like '%" + cariitem +
-                    "%' or Nama_Petugas like '%" + cariitem + "%' order by Id_Petugas asc";
+            String sql = "SELECT * FROM tugas where idptgs like '%" + cariitem +
+                    "%' or nmptgs like '%" + cariitem + "%' order by idptgs asc";
             Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()) {
@@ -315,7 +315,7 @@ public class tugas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtkontakActionPerformed
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
-        String sql = "insert into petugas values (?,?,?,?)";
+        String sql = "insert into tugas values (?,?,?,?)";
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, txtidpetugas.getText());
@@ -334,7 +334,7 @@ public class tugas extends javax.swing.JFrame {
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
        try {
-    String sql = "update petugas set Nama_Petugas=?, NIP=?, No_Kontak=? where Id_Petugas=?";
+    String sql = "update tugas set nmptgs=?, nip=?, notlp=? where idptgs=?";
     PreparedStatement stat = conn.prepareStatement(sql);
     stat.setString(1, txtnamapetugas.getText());
     stat.setString(2, txtnip.getText());         
@@ -361,7 +361,7 @@ datatable();
         int ok = JOptionPane.showConfirmDialog(null, "hapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (ok == 0) {
             try {
-                String sql = "delete from petugas where Id_Petugas ='" + txtidpetugas.getText() + "'";
+                String sql = "delete from tugas where idptgs ='" + txtidpetugas.getText() + "'";
                 PreparedStatement stat = conn.prepareStatement(sql);
                 stat.executeUpdate();
                 JOptionPane.showMessageDialog(null, "data berhasil dihapus");
