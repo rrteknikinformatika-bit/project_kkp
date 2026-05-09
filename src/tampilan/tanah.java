@@ -39,7 +39,7 @@ public class tanah extends javax.swing.JFrame {
     }
  protected void datatable(){
         Object[] Baris = {"Id_Tanah", "Lokasi", "Status_Tanah"
-                , "No_Berkas"};
+                , "No_Berkas","Luas"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText();
          try {
