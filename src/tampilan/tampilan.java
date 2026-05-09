@@ -39,26 +39,26 @@ public class tampilan extends javax.swing.JFrame {
     }
      
      protected void datatable(){
-    Object[] Baris = {"Id_Pemohon", "Nama", "NIK", "Alamat", "No_HP"};
+    Object[] Baris = {"idpmhn", "nmpmhn", "nik", "alm", "notlp"};
     tabmode = new DefaultTableModel(null, Baris);
     tblpemohon.setModel(tabmode); // penting (reset tabel)
 
     String cariitem = txtcari.getText();
 
     try {
-        String sql = "SELECT * FROM pemohon WHERE Id_Pemohon LIKE '%" + cariitem +
-                     "%' OR Nama LIKE '%" + cariitem + "%' ORDER BY Id_Pemohon ASC";
+        String sql = "SELECT * FROM pemohon WHERE idpmhn LIKE '%" + cariitem +
+                     "%' OR nmpmhn LIKE '%" + cariitem + "%' ORDER BY idpmhn ASC";
 
         Statement stat = conn.createStatement();
         ResultSet hasil = stat.executeQuery(sql);
 
         while (hasil.next()) {
             tabmode.addRow(new Object[]{
-                hasil.getString("Id_Pemohon"),
-                hasil.getString("Nama"),
-                hasil.getString("NIK"),
-                hasil.getString("Alamat"),
-                hasil.getString("No_HP")
+                hasil.getString("idpmhn"),
+                hasil.getString("nmpmhn"),
+                hasil.getString("nik"),
+                hasil.getString("alm"),
+                hasil.getString("notlp")
             });
         }
 
@@ -299,7 +299,7 @@ public class tampilan extends javax.swing.JFrame {
     }//GEN-LAST:event_bcariActionPerformed
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
-       String sql = "INSERT INTO pemohon (Id_Pemohon, Nama, NIK, Alamat, No_HP) VALUES (?,?,?,?,?)";
+       String sql = "INSERT INTO pemohon (idpmhn, nmpmhn, nik, alm, notlp) VALUES (?,?,?,?,?)";
     
     try{
         PreparedStatement stat = conn.prepareStatement(sql);
@@ -325,7 +325,7 @@ public class tampilan extends javax.swing.JFrame {
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
          try{
             
-        String sql = "UPDATE pemohon SET Nama=?, NIK=?, Alamat=?, No_HP=? WHERE Id_Pemohon=?";
+        String sql = "UPDATE pemohon SET nmpmhn=?, nik=?, alm=?, notlp=? WHERE nmpmhn=?";
         PreparedStatement stat = conn.prepareStatement(sql);
         
         stat.setString(1, txtnama.getText());
@@ -350,7 +350,7 @@ public class tampilan extends javax.swing.JFrame {
     private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
       int ok = JOptionPane.showConfirmDialog(null, "hapus", "konfirmasi dialog", JOptionPane.YES_NO_OPTION);
     if (ok == 0) {
-        String sql = "delete from pemohon where Id_pemohon='" + txtpemohon.getText() + "'";
+        String sql = "delete from pemohon where idpmhn='" + txtpemohon.getText() + "'";
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.executeUpdate();
@@ -377,7 +377,18 @@ public class tampilan extends javax.swing.JFrame {
     }//GEN-LAST:event_txtcariKeyPressed
 
     private void tblpemohonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpemohonMouseClicked
-        // TODO add your handling code here:
+    int bar = tblpemohon.getSelectedRow();
+String a = tabmode.getValueAt(bar, 0).toString();
+String b = tabmode.getValueAt(bar, 1).toString();
+String c = tabmode.getValueAt(bar, 2).toString();
+String d = tabmode.getValueAt(bar, 3).toString();
+String e = tabmode.getValueAt(bar, 4).toString();
+
+txtpemohon.setText(a);
+txtnama.setText(b);
+txtnik.setText(c);
+txttlpn.setText(d);
+txtalamat.setText (e);// TODO add your handling code here:
     }//GEN-LAST:event_tblpemohonMouseClicked
 
     /**
