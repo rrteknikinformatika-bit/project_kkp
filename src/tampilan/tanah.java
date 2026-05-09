@@ -33,18 +33,18 @@ public class tanah extends javax.swing.JFrame {
         txtid.setText("");
         txtluas.setText("");
         txtlokasi.setText("");
-        txtstatus.setText("");
+        boxstatus.setSelectedIndex(0);
         txtberkas.setText("");
         txtcari.setText("");
     }
  protected void datatable(){
-        Object[] Baris = {"Id_Tanah", "Lokasi", "Status_Tanah"
-                , "No_Berkas","Luas"};
+        Object[] Baris = {"Id_Tanah", "Lokasi","VOLUME", "Status_Tanah"
+                , "No_Berkas"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText();
          try {
-            String sql = "SELECT * FROM tanah where Id_Tanah like '%" + cariitem +
-                    "%' or Id_Tanah like '%" + cariitem + "%' order by Id_Tanah asc";
+            String sql = "SELECT * FROM tanah where idtnh like '%" + cariitem +
+                    "%' or idtnh like '%" + cariitem + "%' order by idtnh asc";
             Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()) {
@@ -78,7 +78,6 @@ public class tanah extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtlokasi = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        txtstatus = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtluas = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -92,6 +91,7 @@ public class tanah extends javax.swing.JFrame {
         txtcari = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbltanah = new javax.swing.JTable();
+        boxstatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,9 +113,7 @@ public class tanah extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtlokasi);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setText("LUAS");
-
-        txtstatus.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel4.setText("VOLUME");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setText("STATUS TANAH");
@@ -205,6 +203,13 @@ public class tanah extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbltanah);
 
+        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Pertanian", "Non Pertanian" }));
+        boxstatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxstatusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -230,23 +235,22 @@ public class tanah extends javax.swing.JFrame {
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtluas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtberkas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtluas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(boxstatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtberkas, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +282,7 @@ public class tanah extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boxstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
@@ -321,12 +325,17 @@ public class tanah extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
-         try {
+         if (boxstatus.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
+            return;}
+                 String sql = "insert into tanah values (?,?,?,?,?)";
+
+        try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, txtid.getText());
-            stat.setString(2, txtluas.getText());
-            stat.setString(3, txtlokasi.getText());
-            stat.setString(4, txtstatus.getText());
+            stat.setString(2, txtlokasi.getText());
+            stat.setString(3, txtluas.getText());
+            stat.setString(4, boxstatus.getSelectedItem().toString());
             stat.setString(5, txtberkas.getText());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "data berhasil disimpan");
@@ -339,13 +348,16 @@ public class tanah extends javax.swing.JFrame {
     }//GEN-LAST:event_bsimpanActionPerformed
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
+        if (boxstatus.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
+            return;}
         try {
-            String sql = "update tanah set Lokasi=?, Luas=?, Status_Tanah=?, No_Berkas=? where Id_Tanah=?";
+            String sql = "update tanah set lks=?, vlm=?, stts=?, nobrks=? where idtnh=?";
             PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, txtluas.getText());
-            stat.setString(2, txtlokasi.getText());
-            stat.setString(3, txtberkas.getText());
-            stat.setString(4, txtstatus.getText());
+            stat.setString(1, txtlokasi.getText());
+            stat.setString(2, txtluas.getText());
+            stat.setString(4, txtberkas.getText());
+            stat.setString(3, boxstatus.getSelectedItem().toString());
             stat.setString(5, txtid.getText());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "data berhasil diubah");
@@ -361,7 +373,7 @@ public class tanah extends javax.swing.JFrame {
        int ok = JOptionPane.showConfirmDialog(null, "hapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (ok == 0) {
             try {
-                String sql = "delete from pelanggan where Id_Tanah ='" + txtid.getText() + "'";
+                String sql = "delete from tanah where idtnh ='" + txtid.getText() + "'";
                 PreparedStatement stat = conn.prepareStatement(sql);
                 stat.executeUpdate();
                 JOptionPane.showMessageDialog(null, "data berhasil dihapus");
@@ -398,7 +410,7 @@ String e = tabmode.getValueAt(bar, 4).toString();
 txtid.setText(a);
 txtluas.setText(b);
 txtlokasi.setText(c);
-txtstatus.setText(d);
+boxstatus.setSelectedItem(d);
 txtberkas.setText(e);// TODO add your handling code here:
     }//GEN-LAST:event_tbltanahMouseClicked
 
@@ -411,6 +423,10 @@ txtberkas.setText(e);// TODO add your handling code here:
            datatable();
        } // TODO add your handling code here:
     }//GEN-LAST:event_txtcariKeyPressed
+
+    private void boxstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxstatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxstatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,6 +469,7 @@ txtberkas.setText(e);// TODO add your handling code here:
     private javax.swing.JButton bcari;
     private javax.swing.JButton bhapus;
     private javax.swing.JButton bkeluar;
+    private javax.swing.JComboBox<String> boxstatus;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;
     private javax.swing.JLabel jLabel1;
@@ -470,6 +487,5 @@ txtberkas.setText(e);// TODO add your handling code here:
     private javax.swing.JTextField txtid;
     private javax.swing.JTextArea txtlokasi;
     private javax.swing.JTextField txtluas;
-    private javax.swing.JTextField txtstatus;
     // End of variables declaration//GEN-END:variables
 }
