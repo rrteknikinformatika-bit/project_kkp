@@ -14,7 +14,7 @@ import koneksi.koneksi;
  *
  * @author LightDen69
  */
-public class jadwal extends javax.swing.JFrame {
+public class jadwal extends javax.swing.JInternalFrame {
 private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     /**

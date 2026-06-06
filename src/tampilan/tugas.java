@@ -13,7 +13,7 @@ import koneksi.koneksi;
  *
  * @author ADVAN
  */
-public class tugas extends javax.swing.JFrame {
+public class tugas extends javax.swing.JInternalFrame {
  private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     /**

@@ -13,7 +13,7 @@ import koneksi.koneksi;
  *
  * @author anwar
  */
-public class tanah extends javax.swing.JFrame {
+public class tanah extends javax.swing.JInternalFrame {
     private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     private String sql;
