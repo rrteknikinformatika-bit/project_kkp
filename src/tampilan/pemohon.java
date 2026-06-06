@@ -39,7 +39,7 @@ public class pemohon extends javax.swing.JInternalFrame {
     }
      
      protected void datatable(){
-    Object[] Baris = {"idpmhn", "nmpmhn", "nik", "alm", "notlp"};
+    Object[] Baris = {"ID Pemohon", "Nama Pemohon", "NIK", "Alamat", "No Telpon"};
     tabmode = new DefaultTableModel(null, Baris);
     tblpemohon.setModel(tabmode); // penting (reset tabel)
 
