@@ -38,6 +38,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         btanah = new javax.swing.JButton();
         bpemohon = new javax.swing.JButton();
         btugas = new javax.swing.JButton();
+        prmhn = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,12 +81,19 @@ public class dashboard_utama extends javax.swing.JFrame {
             }
         });
 
+        prmhn.setText("permohonan");
+        prmhn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prmhnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bjadwal, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,6 +101,10 @@ public class dashboard_utama extends javax.swing.JFrame {
                         .addComponent(btanah)
                         .addComponent(btugas)))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(prmhn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +115,9 @@ public class dashboard_utama extends javax.swing.JFrame {
                 .addComponent(btanah)
                 .addGap(43, 43, 43)
                 .addComponent(bpemohon)
-                .addGap(93, 93, 93)
+                .addGap(33, 33, 33)
+                .addComponent(prmhn)
+                .addGap(31, 31, 31)
                 .addComponent(btugas)
                 .addContainerGap(160, Short.MAX_VALUE))
         );
@@ -200,6 +214,19 @@ desktop.add(ts);
                     // TODO add your handling code here:
     }//GEN-LAST:event_bjadwalMouseClicked
 
+    private void prmhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prmhnActionPerformed
+       desktop.removeAll();
+        desktop.repaint();
+            permohonan ph = new permohonan();
+
+     // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+desktop.add(ph);
+
+        // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
+        ph.setVisible(true); 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prmhnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,5 +270,6 @@ desktop.add(ts);
     private javax.swing.JButton btugas;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton prmhn;
     // End of variables declaration//GEN-END:variables
 }
