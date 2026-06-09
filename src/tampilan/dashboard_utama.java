@@ -11,6 +11,7 @@ import static java.awt.SystemColor.desktop;
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import koneksi.koneksi;
@@ -21,6 +22,18 @@ public class dashboard_utama extends javax.swing.JFrame {
      */
     public dashboard_utama() {
         initComponents();
+         setResizable(true);
+        desktop.setPreferredSize(
+        java.awt.Toolkit.getDefaultToolkit().getScreenSize()
+    );
+
+         
+
+    bpemohon.setIcon(new ImageIcon(
+        new ImageIcon(getClass().getResource("/source/pemohon.png"))
+        .getImage().getScaledInstance(80,80, Image.SCALE_SMOOTH)));
+
+         
         bpemohon.setIcon(new ImageIcon(
     new ImageIcon(getClass().getResource("/source/pemohon.png"))
         .getImage().getScaledInstance(80,80, Image.SCALE_SMOOTH)));
@@ -62,7 +75,9 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktop = new javax.swing.JDesktopPane();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         bjadwal = new javax.swing.JButton();
         btugas = new javax.swing.JButton();
@@ -70,19 +85,43 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         prmhn = new javax.swing.JButton();
         btanah = new javax.swing.JButton();
         bpemohon = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        desktop = new javax.swing.JDesktopPane();
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
-        desktop.setLayout(desktopLayout);
-        desktopLayout.setHorizontalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        desktopLayout.setVerticalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
-        );
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 255));
 
@@ -153,12 +192,35 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
             }
         });
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 124, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 107, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 713, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(562, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 574, Short.MAX_VALUE)
                 .addComponent(bpemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(prmhn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,122 +232,128 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 .addComponent(btugas, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(bpenugas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
+                .addGap(1, 1, 1))
+            .addComponent(desktop)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(bjadwal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btugas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bpenugas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(prmhn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btanah, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(bpemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bjadwal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btugas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bpenugas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(prmhn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btanah, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bpemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(desktop)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bjadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjadwalActionPerformed
-        desktop.removeAll();
-        desktop.repaint();
-        jadwal mj = new jadwal();
-
-     // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
-    desktop.add(mj);
-
-        // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
-        mj.setVisible(true);   
-     // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
-        
-    }//GEN-LAST:event_bjadwalActionPerformed
-
-    private void bjadwalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bjadwalKeyPressed
-                  // TODO add your handling code here:
-    }//GEN-LAST:event_bjadwalKeyPressed
-
-    private void btanahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btanahActionPerformed
- desktop.removeAll();
-        desktop.repaint();
-        tanah mt = new tanah();
-
-     // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
-desktop.add(mt);
-
-        // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
-        mt.setVisible(true);         // TODO add your handling code here:
-    }//GEN-LAST:event_btanahActionPerformed
-
     private void bpemohonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bpemohonActionPerformed
-desktop.removeAll();
+        desktop.removeAll();
         desktop.repaint();
         pemohon pn = new pemohon();
 
-     // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
-desktop.add(pn);
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(pn);
 
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
         pn.setVisible(true);           // TODO add your handling code here:
     }//GEN-LAST:event_bpemohonActionPerformed
 
-    private void btugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btugasActionPerformed
-     desktop.removeAll();
+    private void btanahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btanahActionPerformed
+        desktop.removeAll();
         desktop.repaint();
-        tugas ts = new tugas();
+        tanah mt = new tanah();
 
-     // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
-desktop.add(ts);
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(mt);
 
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
-        ts.setVisible(true); 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btugasActionPerformed
-
-    private void bjadwalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bjadwalMouseClicked
-                    // TODO add your handling code here:
-    }//GEN-LAST:event_bjadwalMouseClicked
+        mt.setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_btanahActionPerformed
 
     private void prmhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prmhnActionPerformed
-       desktop.removeAll();
+        desktop.removeAll();
         desktop.repaint();
-            permohonan ph = new permohonan();
+        permohonan ph = new permohonan();
 
-     // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
-desktop.add(ph);
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(ph);
 
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
-        ph.setVisible(true); 
+        ph.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_prmhnActionPerformed
 
     private void bpenugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bpenugasActionPerformed
         // TODO add your hdesktop.removeAll();
         desktop.repaint();
-         desktop.removeAll();
-             penugasan pgs = new penugasan();
+        desktop.removeAll();
+        penugasan pgs = new penugasan();
 
-     // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
-desktop.add(pgs);
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(pgs);
 
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
-        pgs.setVisible(true); 
+        pgs.setVisible(true);
     }//GEN-LAST:event_bpenugasActionPerformed
+
+    private void btugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btugasActionPerformed
+        desktop.removeAll();
+        desktop.repaint();
+        tugas ts = new tugas();
+
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(ts);
+
+        // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
+        ts.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btugasActionPerformed
+
+    private void bjadwalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bjadwalKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bjadwalKeyPressed
+
+    private void bjadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjadwalActionPerformed
+        desktop.removeAll();
+        desktop.repaint();
+        jadwal mj = new jadwal();
+
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(mj);
+
+        // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
+        mj.setVisible(true);
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+
+    }//GEN-LAST:event_bjadwalActionPerformed
+
+    private void bjadwalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bjadwalMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bjadwalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -330,7 +398,11 @@ desktop.add(pgs);
     private javax.swing.JButton btanah;
     private javax.swing.JButton btugas;
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JButton prmhn;
     // End of variables declaration//GEN-END:variables
 }
