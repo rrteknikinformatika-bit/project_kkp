@@ -22,6 +22,9 @@ public class dashboard_utama extends javax.swing.JFrame {
      */
     public dashboard_utama() {
         initComponents();
+        
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        
          setResizable(true);
         desktop.setPreferredSize(
         java.awt.Toolkit.getDefaultToolkit().getScreenSize()
@@ -279,7 +282,14 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         desktop.add(pn);
 
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
-        pn.setVisible(true);           // TODO add your handling code here:
+        pn.setVisible(true); 
+        try {
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        pn.setMaximum(true);
+    } catch (java.beans.PropertyVetoException e) {
+        // Jika gagal dimaksimalkan, tampilkan pesan error di console
+        System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+    }// Agar muncul di tengah la TODO add your handling code here:
     }//GEN-LAST:event_bpemohonActionPerformed
 
     private void btanahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btanahActionPerformed
@@ -291,7 +301,14 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         desktop.add(mt);
 
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
-        mt.setVisible(true);         // TODO add your handling code here:
+        mt.setVisible(true);   // TODO add your handling code here:
+        try {
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        mt.setMaximum(true);
+    } catch (java.beans.PropertyVetoException e) {
+        // Jika gagal dimaksimalkan, tampilkan pesan error di console
+        System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+    }// Agar muncul di tengah la TODO add your handling code here:
     }//GEN-LAST:event_btanahActionPerformed
 
     private void prmhnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prmhnActionPerformed
@@ -305,6 +322,13 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
         ph.setVisible(true);
         // TODO add your handling code here:
+        try {
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        ph.setMaximum(true);
+    } catch (java.beans.PropertyVetoException e) {
+        // Jika gagal dimaksimalkan, tampilkan pesan error di console
+        System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+    }// Agar muncul di tengah la TODO add your handling code here:
     }//GEN-LAST:event_prmhnActionPerformed
 
     private void bpenugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bpenugasActionPerformed
@@ -318,6 +342,13 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
         pgs.setVisible(true);
+        try {
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        pgs.setMaximum(true);
+    } catch (java.beans.PropertyVetoException e) {
+        // Jika gagal dimaksimalkan, tampilkan pesan error di console
+        System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+    }// Agar muncul di tengah la TODO add your handling code here:
     }//GEN-LAST:event_bpenugasActionPerformed
 
     private void btugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btugasActionPerformed
@@ -330,6 +361,13 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
         ts.setVisible(true);
+        try {
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        ts.setMaximum(true);
+    } catch (java.beans.PropertyVetoException e) {
+        // Jika gagal dimaksimalkan, tampilkan pesan error di console
+        System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+    }// Agar muncul di tengah la TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_btugasActionPerformed
 
@@ -348,7 +386,13 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
         mj.setVisible(true);
         // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
-
+try {
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        mj.setMaximum(true);
+    } catch (java.beans.PropertyVetoException e) {
+        // Jika gagal dimaksimalkan, tampilkan pesan error di console
+        System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+    }// Agar muncul di tengah la TODO add your handling code here:
     }//GEN-LAST:event_bjadwalActionPerformed
 
     private void bjadwalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bjadwalMouseClicked
