@@ -35,11 +35,12 @@ public class tanah extends javax.swing.JInternalFrame {
         txtlokasi.setText("");
         boxstatus.setSelectedIndex(0);
         txtberkas.setText("");
+        boxhak.setSelectedItem(0);
         txtcari.setText("");
     }
  protected void datatable(){
-        Object[] Baris = {"Id_Tanah", "Lokasi","VOLUME", "Status_Tanah"
-                , "No_Berkas"};
+        Object[] Baris = {"ID_Tanah", "Lokasi","VOLUME", "Status_Tanah"
+                , "No_Berkas","HAK_TANAH"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText();
          try {
@@ -53,7 +54,8 @@ public class tanah extends javax.swing.JInternalFrame {
                     hasil.getString(2),
                     hasil.getString(3),
                     hasil.getString(4),
-                    hasil.getString(5)
+                    hasil.getString(5),
+                    hasil.getString(6)
                 });
             }
             tbltanah.setModel(tabmode);
@@ -91,6 +93,8 @@ public class tanah extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbltanah = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        boxhak = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,7 +107,7 @@ public class tanah extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setText("NO. BERKAS");
 
-        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Pertanian", "Non Pertanian" }));
+        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Tanah Negara", "Tanah Akad" }));
         boxstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxstatusActionPerformed(evt);
@@ -209,6 +213,16 @@ public class tanah extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tbltanah);
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setText("HAK TANAH");
+
+        boxhak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tanah", "Hak Milik", "Hak Guna bangunan", "Hak Guna usaha", "Hak Pakai", "Hak Pengelolaan", "Hak wakaf", "Hak Milik satuan rumah susun" }));
+        boxhak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxhakActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,38 +233,45 @@ public class tanah extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bkeluar)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(bsimpan)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(bubah)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(bhapus)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(bbatal)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(25, 25, 25)
+                                        .addComponent(boxhak, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                                            .addComponent(txtluas)
+                                            .addComponent(boxstatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtberkas)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(txtluas)
-                                    .addComponent(boxstatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtberkas)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(bsimpan)
-                                .addGap(18, 18, 18)
-                                .addComponent(bubah)
-                                .addGap(27, 27, 27)
-                                .addComponent(bhapus)
-                                .addGap(40, 40, 40)
-                                .addComponent(bkeluar)
-                                .addGap(48, 48, 48)
-                                .addComponent(bbatal)
-                                .addGap(0, 67, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtid)))
-                        .addGap(608, 608, 608)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtid)))
+                                .addGap(614, 614, 614)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,7 +295,10 @@ public class tanah extends javax.swing.JInternalFrame {
                             .addComponent(bcari)
                             .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -283,23 +307,27 @@ public class tanah extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtluas, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(boxstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(txtberkas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                            .addComponent(txtberkas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boxhak, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                            .addComponent(jLabel7))
+                        .addGap(176, 176, 176)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bbatal)
                     .addComponent(bhapus)
                     .addComponent(bubah)
-                    .addComponent(bsimpan)
-                    .addComponent(bkeluar)
-                    .addComponent(bbatal))
-                .addGap(540, 540, 540))
+                    .addComponent(bsimpan))
+                .addGap(18, 18, 18)
+                .addComponent(bkeluar)
+                .addGap(322, 322, 322))
         );
 
         pack();
@@ -309,15 +337,16 @@ public class tanah extends javax.swing.JInternalFrame {
          if (boxstatus.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
             return;}
-                 String sql = "insert into tanah values (?,?,?,?,?)";
+                 String sql = "insert into tanah values (?,?,?,?,?,?)";
 
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, txtid.getText());
-            stat.setString(2, txtlokasi.getText());
-            stat.setString(3, txtluas.getText());
+            stat.setString(3, txtlokasi.getText());
+            stat.setString(2, txtluas.getText());
             stat.setString(4, boxstatus.getSelectedItem().toString());
             stat.setString(5, txtberkas.getText());
+            stat.setString(6, boxhak.getSelectedItem().toString());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "data berhasil disimpan");
             kosong();
@@ -330,24 +359,29 @@ public class tanah extends javax.swing.JInternalFrame {
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
         if (boxstatus.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
-            return;}
-        try {
-            String sql = "update tanah set lks=?, vlm=?, stts=?, nobrks=? where idtnh=?";
-            PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, txtlokasi.getText());
-            stat.setString(2, txtluas.getText());
-            stat.setString(4, txtberkas.getText());
-            stat.setString(3, boxstatus.getSelectedItem().toString());
-            stat.setString(5, txtid.getText());
-            stat.executeUpdate();
-            JOptionPane.showMessageDialog(null, "data berhasil diubah");
-            kosong();
-            aktif();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "data gagal diubah " + e);
-        }
-        datatable(); // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
+        return;
+    }
+    try {
+        String sql = "update tanah set lks=?, vlm=?, stts=?, nobrks=?, haktanah=? where idtnh=?";
+        PreparedStatement stat = conn.prepareStatement(sql);
+        
+        stat.setString(1, txtlokasi.getText());
+        stat.setString(3, txtluas.getText());
+        stat.setString(2, boxstatus.getSelectedItem().toString());
+        stat.setString(4, txtberkas.getText());
+        stat.setString(5, boxhak.getSelectedItem().toString()); // haktanah
+        stat.setString(6, txtid.getText());                     // idtnh (kriteria WHERE)
+        
+        stat.executeUpdate();
+        JOptionPane.showMessageDialog(null, "data berhasil diubah");
+        kosong();
+        aktif();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "data gagal diubah " + e);
+    }
+    datatable(); 
+ // TODO add your handling code here:
     }//GEN-LAST:event_bubahActionPerformed
 
     private void bhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhapusActionPerformed
@@ -387,12 +421,14 @@ String b = tabmode.getValueAt(bar, 1).toString();
 String c = tabmode.getValueAt(bar, 2).toString();
 String d = tabmode.getValueAt(bar, 3).toString();
 String e = tabmode.getValueAt(bar, 4).toString();
+String f = tabmode.getValueAt(bar, 5).toString();
 
 txtid.setText(a);
-txtluas.setText(b);
-txtlokasi.setText(c);
+txtlokasi.setText(b);
+txtluas.setText(c);
 boxstatus.setSelectedItem(d);
-txtberkas.setText(e);// TODO add your handling code here:
+txtberkas.setText(e);
+boxhak.setSelectedItem(f);// TODO add your handling code here:
     }//GEN-LAST:event_tbltanahMouseClicked
 
     private void bcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bcariKeyPressed
@@ -408,6 +444,10 @@ txtberkas.setText(e);// TODO add your handling code here:
     private void boxstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxstatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boxstatusActionPerformed
+
+    private void boxhakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxhakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxhakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,6 +490,7 @@ txtberkas.setText(e);// TODO add your handling code here:
     private javax.swing.JButton bcari;
     private javax.swing.JButton bhapus;
     private javax.swing.JButton bkeluar;
+    private javax.swing.JComboBox<String> boxhak;
     private javax.swing.JComboBox<String> boxstatus;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;
@@ -459,6 +500,7 @@ txtberkas.setText(e);// TODO add your handling code here:
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbltanah;
