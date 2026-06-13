@@ -60,7 +60,7 @@ ResultSet rs;
             }
         });
 
-        login.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        login.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         login.setText("LOGIN");
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
