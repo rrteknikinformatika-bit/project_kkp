@@ -9,7 +9,7 @@ package tampilan;
  *
  * @author User
  */
-public class halaman_utama extends javax.swing.JFrame {
+public class halaman_utama extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form halaman_utama

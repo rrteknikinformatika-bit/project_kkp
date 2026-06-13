@@ -29,8 +29,25 @@ private Connection conn = new koneksi().connect() ;
         desktop.setPreferredSize(
         java.awt.Toolkit.getDefaultToolkit().getScreenSize()
     );
+        halaman_utama hu = new halaman_utama();
 
-         
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(hu);
+
+        // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
+        hu.setVisible(true);   // TODO add your handling code here:
+        try {
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        hu.setMaximum(true);
+        
+        hu.setBorder(null); // Hilangkan garis pinggir
+    ((javax.swing.plaf.basic.BasicInternalFrameUI)hu.getUI()).setNorthPane(null);
+    
+    } catch (java.beans.PropertyVetoException e) {
+        // Jika gagal dimaksimalkan, tampilkan pesan error di console
+        System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+    }
+         hu.setVisible(true);
 
     bpemohon.setIcon(new ImageIcon(
         new ImageIcon(getClass().getResource("/source/pemohon.png"))
@@ -81,7 +98,6 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jFrame1 = new javax.swing.JFrame();
-        desktop = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         bjadwal = new javax.swing.JButton();
         btugas = new javax.swing.JButton();
@@ -99,6 +115,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        desktop = new javax.swing.JDesktopPane();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -135,17 +152,6 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
-        desktop.setLayout(desktopLayout);
-        desktopLayout.setHorizontalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        desktopLayout.setVerticalGroup(
-            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
-        );
-
         jPanel1.setBackground(new java.awt.Color(252, 249, 235));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -168,7 +174,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 bjadwalKeyPressed(evt);
             }
         });
-        jPanel1.add(bjadwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 20, 58, 58));
+        jPanel1.add(bjadwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 20, 58, 58));
 
         btugas.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btugas.setText("tugas");
@@ -179,7 +185,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 btugasActionPerformed(evt);
             }
         });
-        jPanel1.add(btugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 20, 61, 58));
+        jPanel1.add(btugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1550, 20, 61, 58));
 
         bpenugas.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         bpenugas.setText("penugasan");
@@ -190,7 +196,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 bpenugasActionPerformed(evt);
             }
         });
-        jPanel1.add(bpenugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, 60, 58));
+        jPanel1.add(bpenugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1630, 20, 60, 58));
 
         prmhn.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         prmhn.setText("permohonan");
@@ -201,7 +207,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 prmhnActionPerformed(evt);
             }
         });
-        jPanel1.add(prmhn, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 60, 57));
+        jPanel1.add(prmhn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1320, 20, 60, 57));
 
         btanah.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btanah.setText("tanah");
@@ -210,7 +216,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 btanahActionPerformed(evt);
             }
         });
-        jPanel1.add(btanah, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 61, 60));
+        jPanel1.add(btanah, new org.netbeans.lib.awtextra.AbsoluteConstraints(1400, 20, 61, 60));
 
         bpemohon.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         bpemohon.setText("pemohon");
@@ -220,7 +226,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 bpemohonActionPerformed(evt);
             }
         });
-        jPanel1.add(bpemohon, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 61, 60));
+        jPanel1.add(bpemohon, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 20, 61, 60));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/logo uk 150 X 150.png"))); // NOI18N
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -248,14 +254,14 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1920, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1150, 10));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1920, 10));
 
         absen.setText("absen");
         absen.addActionListener(new java.awt.event.ActionListener() {
@@ -263,7 +269,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 absenActionPerformed(evt);
             }
         });
-        jPanel1.add(absen, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
+        jPanel1.add(absen, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 50, -1, -1));
 
         jButton1.setText("admin");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +277,7 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 50, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(252, 249, 235));
 
@@ -281,39 +287,50 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(321, 321, 321))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 7, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 916, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1154, Short.MAX_VALUE)
-            .addComponent(desktop)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(desktop))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3))
+                .addComponent(desktop)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
