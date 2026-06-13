@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import koneksi.koneksi;
 public class dashboard_utama extends javax.swing.JFrame {
- private Connection conn = new koneksi().connect() ;
+private Connection conn = new koneksi().connect() ;
     /**
      * Creates new form dashboard_utama
      */

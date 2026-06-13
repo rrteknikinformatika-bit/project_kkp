@@ -317,6 +317,8 @@ private DefaultTableModel tabmode;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+  
+    
     private void idpenugasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idpenugasanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idpenugasanActionPerformed
@@ -432,7 +434,11 @@ int bar = tbljdwl.getSelectedRow();
     }//GEN-LAST:event_bcari1KeyPressed
 
     private void poppemohonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poppemohonActionPerformed
-        // TODO add your handling code here:
+pop_up_pemohon popup = new pop_up_pemohon(idpemohon);
+                popup.loadData();
+                popup.setLocationRelativeTo(this);
+                popup.setVisible(true);
+       
     }//GEN-LAST:event_poppemohonActionPerformed
 
     private void poppemohonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_poppemohonKeyPressed
@@ -440,7 +446,11 @@ int bar = tbljdwl.getSelectedRow();
     }//GEN-LAST:event_poppemohonKeyPressed
 
     private void poppetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poppetugasActionPerformed
-        // TODO add your handling code here:
+pop_up_petugas popup = new pop_up_petugas(idpetugas);
+                popup.loadData();
+                popup.setLocationRelativeTo(this);
+                popup.setVisible(true);
+               // TODO add your handling code here:
     }//GEN-LAST:event_poppetugasActionPerformed
 
     private void poppetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_poppetugasKeyPressed
