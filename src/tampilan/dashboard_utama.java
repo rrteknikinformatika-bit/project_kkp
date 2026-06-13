@@ -95,6 +95,8 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        absen = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -254,6 +256,22 @@ bpenugas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1150, 10));
+
+        absen.setText("absen");
+        absen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                absenActionPerformed(evt);
+            }
+        });
+        jPanel1.add(absen, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, -1));
+
+        jButton1.setText("admin");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(252, 249, 235));
 
@@ -427,6 +445,42 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_bjadwalMouseClicked
 
+    private void absenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_absenActionPerformed
+    desktop.removeAll();
+        desktop.repaint();
+        absen ma = new absen();
+
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(ma);
+
+        // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
+        ma.setVisible(true);
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        try{
+            ma.setMaximum(true);
+        }catch(java.beans.PropertyVetoException e){
+            System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+        }
+    }//GEN-LAST:event_absenActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    desktop.removeAll();
+        desktop.repaint();
+        admin admin = new admin();
+
+        // 2. Memasukkan JInternalFrame ke dalam JDesktopPane
+        desktop.add(admin);
+
+        // 3. Mengatur agar JInternalFrame tampil ke depan/fokusmenu
+        admin.setVisible(true);
+        // 5. Buat form otomatis memenuhi seluruh area desktop (Full Screen di dalam panel)
+        try{
+            admin.setMaximum(true);
+        }catch(java.beans.PropertyVetoException e){
+            System.err.println("Gagal memaksimalkan Internal Frame: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -464,12 +518,14 @@ try {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton absen;
     private javax.swing.JButton bjadwal;
     private javax.swing.JButton bpemohon;
     private javax.swing.JButton bpenugas;
     private javax.swing.JButton btanah;
     private javax.swing.JButton btugas;
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

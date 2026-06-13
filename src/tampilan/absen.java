@@ -4,20 +4,68 @@
  * and open the template in the editor.
  */
 package tampilan;
-
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import koneksi.koneksi;
 /**
  *
  * @author SAIF FATIH D
  */
-public class absen extends javax.swing.JFrame {
-
+public class absen extends javax.swing.JInternalFrame {
+private Connection conn = new koneksi().connect();
+    private DefaultTableModel tabmode;
+    private String sql;
     /**
      * Creates new form absen
      */
     public absen() {
         initComponents();
+        datatable();
+        rdgroup.add(rhadir);
+        rdgroup.add(rnhadir);
+        
     }
+    
+protected void datatable(){
+    // Menyesuaikan isi header tabel dengan data yang dipanggil (NIP, Nama, No Telp, Tgl, Kehadiran, Keterangan)
+    Object[] Baris = {"ID Admin", "Nama Admin", "No. Telepon", "Tanggal", "Kehadiran", "Keterangan"};
+    tabmode = new DefaultTableModel(null, Baris);
+    tblabsn.setModel(tabmode); 
 
+    try {
+        // Pembenaran Query: Menggunakan LEFT JOIN agar data admin yang belum absen tetap muncul di tabel
+        String sql = "SELECT a.kd_admin, a.nm_admin, a.no_telepon, b.tgl, b.kehadiran, b.keterangan " +
+                     "FROM admin a " +
+                     "LEFT JOIN absen_admin b ON a.kd_admin = b.kd_admin";
+
+        Statement stat = conn.createStatement();
+        ResultSet hasil = stat.executeQuery(sql);
+
+        while (hasil.next()) {
+            // Mengambil data berdasarkan alias query yang benar
+            tabmode.addRow(new Object[]{
+                hasil.getString("kd_admin"),
+                hasil.getString("nm_admin"),
+                hasil.getString("no_telepon"),                     // Menampilkan No Telepon di tabel
+                hasil.getString("tgl") == null ? "-" : hasil.getString("tgl"), // Jika belum absen, tulis "-"
+                hasil.getString("kehadiran") == null ? "-" : hasil.getString("kehadiran"),
+                hasil.getString("keterangan") == null ? "-" : hasil.getString("keterangan")
+            });
+        }
+    } catch (Exception e){
+        JOptionPane.showMessageDialog(null,"data gagal dipanggil: " + e.getMessage());
+    }
+}        
+        
+        
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,6 +75,7 @@ public class absen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rdgroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblabsn = new javax.swing.JTable();
@@ -34,11 +83,11 @@ public class absen extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        labnip = new javax.swing.JLabel();
+        labnama = new javax.swing.JLabel();
+        labtelp = new javax.swing.JLabel();
+        rhadir = new javax.swing.JRadioButton();
+        rnhadir = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         txttidakhadir = new javax.swing.JTextField();
         bsimpan = new javax.swing.JButton();
@@ -64,6 +113,11 @@ public class absen extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblabsn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblabsnMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblabsn);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -78,23 +132,28 @@ public class absen extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setText("Kehadiran");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel6.setText("jLabel6");
+        labnip.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labnip.setText("jLabel6");
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel7.setText("jLabel7");
+        labnama.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labnama.setText("jLabel7");
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel8.setText("jLabel8");
+        labtelp.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labtelp.setText("jLabel8");
 
-        jRadioButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jRadioButton1.setText("Hadir");
-
-        jRadioButton2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jRadioButton2.setText("Tidak Hadir");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        rhadir.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        rhadir.setText("Hadir");
+        rhadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                rhadirActionPerformed(evt);
+            }
+        });
+
+        rnhadir.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        rnhadir.setText("Tidak Hadir");
+        rnhadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rnhadirActionPerformed(evt);
             }
         });
 
@@ -109,15 +168,36 @@ public class absen extends javax.swing.JFrame {
 
         bsimpan.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         bsimpan.setText("Simpan");
+        bsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsimpanActionPerformed(evt);
+            }
+        });
 
         bubah.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         bubah.setText("Ubah");
+        bubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bubahActionPerformed(evt);
+            }
+        });
 
         bbatal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         bbatal.setText("Batal");
 
+        txtcariabsen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtcariabsenKeyPressed(evt);
+            }
+        });
+
         bcariabsen.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         bcariabsen.setText("Cari");
+        bcariabsen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcariabsenActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel10.setText("Keterangan");
@@ -142,11 +222,11 @@ public class absen extends javax.swing.JFrame {
                             .addComponent(jLabel10))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jRadioButton2)
+                            .addComponent(rhadir)
+                            .addComponent(labtelp)
+                            .addComponent(labnama)
+                            .addComponent(labnip)
+                            .addComponent(rnhadir)
                             .addComponent(txttidakhadir, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,23 +255,23 @@ public class absen extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel6)
+                            .addComponent(labnip)
                             .addComponent(txtcariabsen, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bcariabsen, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel7))
+                            .addComponent(labnama))
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel8))
+                            .addComponent(labtelp))
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jRadioButton1))
+                            .addComponent(rhadir))
                         .addGap(14, 14, 14)
-                        .addComponent(jRadioButton2)
+                        .addComponent(rnhadir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txttidakhadir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,13 +288,115 @@ public class absen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void rnhadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rnhadirActionPerformed
+txttidakhadir.setEnabled(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_rnhadirActionPerformed
 
     private void txttidakhadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttidakhadirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttidakhadirActionPerformed
+
+    private void tblabsnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblabsnMouseClicked
+
+     int baris = tblabsn.getSelectedRow();
+
+    // Mengisi label otomatis dari kolom tabel yang diklik
+    labnip.setText(tblabsn.getValueAt(baris, 0).toString());   // Kolom 1: kd_admin
+    labnama.setText(tblabsn.getValueAt(baris, 1).toString());  // Kolom 2: nm_admin
+    labtelp.setText(tblabsn .getValueAt(baris, 2).toString());
+
+;// TODO add your handling code here:
+    
+    }//GEN-LAST:event_tblabsnMouseClicked
+
+    private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
+try {
+        String nip = labnip.getText();
+        String kehadiran = rhadir.isSelected() ? "Hadir" : "Tidak Hadir";
+        String keterangan = txttidakhadir.getText();
+        java.sql.Date tanggalSekarang = new java.sql.Date(System.currentTimeMillis());
+
+        // Query INSERT ke tabel absen_admin
+        String sql = "INSERT INTO absen_admin (kd_admin, tgl, kehadiran, keterangan) VALUES (?, ?, ?, ?)";
+
+        java.sql.PreparedStatement stat = conn.prepareStatement(sql);
+        stat.setString(1, nip);
+        stat.setDate(2, tanggalSekarang);
+        stat.setString(3, kehadiran);
+        stat.setString(4, keterangan);
+
+        stat.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Data Absen Berhasil Disimpan!");
+
+        // Panggil method untuk refresh tabel riwayat/view
+        datatable(); 
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Gagal menyimpan: " + e.getMessage());
+    }
+
+    }//GEN-LAST:event_bsimpanActionPerformed
+
+    private void rhadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rhadirActionPerformed
+    txttidakhadir.setEnabled(false);
+    }//GEN-LAST:event_rhadirActionPerformed
+
+    private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
+   try {
+        // 1. Ambil data dari label dan komponen input
+        String nip = labnip.getText();
+        String kehadiran = rhadir.isSelected() ? "Hadir" : "Tidak Hadir";
+        String keterangan = txttidakhadir.getText();
+        
+        // Mengambil tanggal hari ini sebagai parameter pengubah (WHERE)
+        java.sql.Date tanggalSekarang = new java.sql.Date(System.currentTimeMillis());
+
+        // Validasi jika belum ada data admin yang dipilih dari tabel
+        if (nip.equals("") || nip.equals("jLabel6") || nip.equals("NIP")) {
+            JOptionPane.showMessageDialog(null, "Silakan pilih data admin yang ingin diubah dari tabel terlebih dahulu!");
+            return;
+        }
+
+        // 2. Query SQL UPDATE berdasarkan kd_admin dan tgl hari ini
+        String sql = "UPDATE absen_admin SET kehadiran = ?, keterangan = ? WHERE kd_admin = ? AND tgl = ?";
+
+        java.sql.PreparedStatement stat = conn.prepareStatement(sql);
+        stat.setString(1, kehadiran);
+        stat.setString(2, keterangan);
+        stat.setString(3, nip);
+        stat.setDate(4, tanggalSekarang);
+
+        // 3. Eksekusi query ke database
+        int sukses = stat.executeUpdate();
+
+        if (sukses > 0) {
+            JOptionPane.showMessageDialog(null, "Data Absensi Berhasil Diubah!");
+            
+            // 4. Refresh tabel agar data terbaru langsung muncul
+            datatable(); 
+            
+            // 5. Reset form input kembali ke default setelah berhasil diubah
+            rdgroup.clearSelection();
+            txttidakhadir.setText("");
+            txttidakhadir.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Gagal mengubah: Data absen admin ini untuk hari ini tidak ditemukan!");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Terjadi kesalahan sistem: " + e.getMessage());
+    }
+    }//GEN-LAST:event_bubahActionPerformed
+
+    private void txtcariabsenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariabsenKeyPressed
+if (evt.getKeyCode()== KeyEvent.VK_ENTER){
+            datatable();
+        }      // TODO a        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcariabsenKeyPressed
+
+    private void bcariabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariabsenActionPerformed
+datatable();        // TODO add your handling code here:
+    }//GEN-LAST:event_bcariabsenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,13 +444,14 @@ public class absen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labnama;
+    private javax.swing.JLabel labnip;
+    private javax.swing.JLabel labtelp;
+    private javax.swing.ButtonGroup rdgroup;
+    private javax.swing.JRadioButton rhadir;
+    private javax.swing.JRadioButton rnhadir;
     private javax.swing.JTable tblabsn;
     private javax.swing.JTextField txtcariabsen;
     private javax.swing.JTextField txttidakhadir;
