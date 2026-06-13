@@ -27,7 +27,7 @@ private Connection conn = new koneksi().connect() ;
         initComponents();
         this.fieldTarget = target;
         loadData();
-     kosong();
+        kosong();
         aktif();
         datatable();
     }
@@ -141,6 +141,11 @@ private Connection conn = new koneksi().connect() ;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblpemohon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblpemohonKeyPressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblpemohon);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,6 +190,10 @@ private Connection conn = new koneksi().connect() ;
     private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bcariActionPerformed
+
+    private void tblpemohonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblpemohonKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblpemohonKeyPressed
 
     /**
      * @param args the command line arguments
