@@ -64,8 +64,6 @@ public class pop_up_petugas extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblpetugas = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setText("DATA PEMOHON");
 
         tblpetugas.setModel(new javax.swing.table.DefaultTableModel(
@@ -79,6 +77,11 @@ public class pop_up_petugas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblpetugas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblpetugasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblpetugas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,6 +109,14 @@ public class pop_up_petugas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblpetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpetugasMouseClicked
+    int baris = tblpetugas.getSelectedRow();
+    String ptg = tblpetugas.getValueAt(baris, 0).toString();
+    
+    fieldTarget.setText(ptg);
+    this.dispose();
+    }//GEN-LAST:event_tblpetugasMouseClicked
 
     /**
      * @param args the command line arguments

@@ -115,8 +115,6 @@ private Connection conn = new koneksi().connect() ;
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setText("DATA PEMOHON");
 
         txtcari.addActionListener(new java.awt.event.ActionListener() {
