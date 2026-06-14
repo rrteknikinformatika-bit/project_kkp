@@ -16,6 +16,7 @@ public class halaman_utama extends javax.swing.JInternalFrame {
      */
     public halaman_utama() {
         initComponents();
+        
     }
 
     /**
@@ -38,7 +39,7 @@ public class halaman_utama extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(252, 249, 235));
 
