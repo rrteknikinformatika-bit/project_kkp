@@ -313,11 +313,11 @@ public class dashboard_utama extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void babsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_babsenActionPerformed
-     bukaForm(new absen());
+     bukaForm(new absenpetugas());
     }//GEN-LAST:event_babsenActionPerformed
 
     private void badminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badminActionPerformed
-    bukaForm(new admin());
+    bukaForm(new petugas());
     }//GEN-LAST:event_badminActionPerformed
 
     private void bhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhomeActionPerformed
