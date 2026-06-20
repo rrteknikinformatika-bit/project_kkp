@@ -17,19 +17,27 @@ import koneksi.koneksi;
  *
  * @author SAIF FATIH D
  */
-public class absen extends javax.swing.JInternalFrame {
+public class absenpetugas extends javax.swing.JInternalFrame {
 private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     private String sql;
     /**
      * Creates new form absen
      */
-    public absen() {
+    public absenpetugas() {
         initComponents();
+        kosong();
         datatable();
         rdgroup.add(rhadir);
         rdgroup.add(rnhadir);
         
+    }
+    
+    protected void kosong(){
+        labnip.setText("");
+        labnama.setText("");
+        labtelp.setText("");
+        rdgroup.clearSelection();
     }
     
 protected void datatable(){
@@ -77,8 +85,6 @@ protected void datatable(){
 
         rdgroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblabsn = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -91,34 +97,18 @@ protected void datatable(){
         jLabel9 = new javax.swing.JLabel();
         txttidakhadir = new javax.swing.JTextField();
         bsimpan = new javax.swing.JButton();
-        bubah = new javax.swing.JButton();
         bbatal = new javax.swing.JButton();
         txtcariabsen = new javax.swing.JTextField();
         bcariabsen = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        bcariadmin = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblabsn = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setText("ABSEN");
-
-        tblabsn.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblabsn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblabsnMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblabsn);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("NIP");
@@ -174,16 +164,13 @@ protected void datatable(){
             }
         });
 
-        bubah.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        bubah.setText("Ubah");
-        bubah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bubahActionPerformed(evt);
-            }
-        });
-
         bbatal.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         bbatal.setText("Batal");
+        bbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbatalActionPerformed(evt);
+            }
+        });
 
         txtcariabsen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -201,6 +188,26 @@ protected void datatable(){
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel10.setText("Keterangan");
+
+        bcariadmin.setText("Cari");
+        bcariadmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcariadminActionPerformed(evt);
+            }
+        });
+
+        tblabsn.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblabsn);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -225,23 +232,22 @@ protected void datatable(){
                             .addComponent(rhadir)
                             .addComponent(labtelp)
                             .addComponent(labnama)
-                            .addComponent(labnip)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labnip)
+                                .addGap(31, 31, 31)
+                                .addComponent(bcariadmin))
                             .addComponent(rnhadir)
                             .addComponent(txttidakhadir, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(bbatal, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(123, 123, 123)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bbatal, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtcariabsen, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(bcariabsen)))
-                        .addGap(164, 164, 164))))
+                                .addComponent(bcariabsen))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(291, 291, 291))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,13 +257,14 @@ protected void datatable(){
                 .addGap(35, 35, 35)
                 .addComponent(jLabel9)
                 .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(labnip)
+                    .addComponent(txtcariabsen, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bcariabsen, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bcariadmin))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(labnip)
-                            .addComponent(txtcariabsen, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bcariabsen, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -276,13 +283,14 @@ protected void datatable(){
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txttidakhadir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
-                        .addGap(54, 54, 54)
+                        .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bbatal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(214, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
 
         pack();
@@ -295,19 +303,6 @@ txttidakhadir.setEnabled(true);        // TODO add your handling code here:
     private void txttidakhadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttidakhadirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txttidakhadirActionPerformed
-
-    private void tblabsnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblabsnMouseClicked
-
-     int baris = tblabsn.getSelectedRow();
-
-    // Mengisi label otomatis dari kolom tabel yang diklik
-    labnip.setText(tblabsn.getValueAt(baris, 0).toString());   // Kolom 1: kd_admin
-    labnama.setText(tblabsn.getValueAt(baris, 1).toString());  // Kolom 2: nm_admin
-    labtelp.setText(tblabsn .getValueAt(baris, 2).toString());
-
-;// TODO add your handling code here:
-    
-    }//GEN-LAST:event_tblabsnMouseClicked
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
 try {
@@ -341,53 +336,6 @@ try {
     txttidakhadir.setEnabled(false);
     }//GEN-LAST:event_rhadirActionPerformed
 
-    private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
-   try {
-        // 1. Ambil data dari label dan komponen input
-        String nip = labnip.getText();
-        String kehadiran = rhadir.isSelected() ? "Hadir" : "Tidak Hadir";
-        String keterangan = txttidakhadir.getText();
-        
-        // Mengambil tanggal hari ini sebagai parameter pengubah (WHERE)
-        java.sql.Date tanggalSekarang = new java.sql.Date(System.currentTimeMillis());
-
-        // Validasi jika belum ada data admin yang dipilih dari tabel
-        if (nip.equals("") || nip.equals("jLabel6") || nip.equals("NIP")) {
-            JOptionPane.showMessageDialog(null, "Silakan pilih data admin yang ingin diubah dari tabel terlebih dahulu!");
-            return;
-        }
-
-        // 2. Query SQL UPDATE berdasarkan kd_admin dan tgl hari ini
-        String sql = "UPDATE absen_admin SET kehadiran = ?, keterangan = ? WHERE kd_admin = ? AND tgl = ?";
-
-        java.sql.PreparedStatement stat = conn.prepareStatement(sql);
-        stat.setString(1, kehadiran);
-        stat.setString(2, keterangan);
-        stat.setString(3, nip);
-        stat.setDate(4, tanggalSekarang);
-
-        // 3. Eksekusi query ke database
-        int sukses = stat.executeUpdate();
-
-        if (sukses > 0) {
-            JOptionPane.showMessageDialog(null, "Data Absensi Berhasil Diubah!");
-            
-            // 4. Refresh tabel agar data terbaru langsung muncul
-            datatable(); 
-            
-            // 5. Reset form input kembali ke default setelah berhasil diubah
-            rdgroup.clearSelection();
-            txttidakhadir.setText("");
-            txttidakhadir.setEnabled(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Gagal mengubah: Data absen admin ini untuk hari ini tidak ditemukan!");
-        }
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Terjadi kesalahan sistem: " + e.getMessage());
-    }
-    }//GEN-LAST:event_bubahActionPerformed
-
     private void txtcariabsenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcariabsenKeyPressed
 if (evt.getKeyCode()== KeyEvent.VK_ENTER){
             datatable();
@@ -397,6 +345,19 @@ if (evt.getKeyCode()== KeyEvent.VK_ENTER){
     private void bcariabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariabsenActionPerformed
 datatable();        // TODO add your handling code here:
     }//GEN-LAST:event_bcariabsenActionPerformed
+
+    private void bcariadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariadminActionPerformed
+        popup_admin pop = new popup_admin(null, true);
+    // Mengaitkan form absen saat ini ke dalam variabel pop-up
+    pop.fAbsen = this;
+    pop.setVisible(true);
+    pop.setResizable(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_bcariadminActionPerformed
+
+    private void bbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbatalActionPerformed
+        kosong();
+    datatable();        // TODO add your handling code here:
+    }//GEN-LAST:event_bbatalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,20 +376,21 @@ datatable();        // TODO add your handling code here:
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(absen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(absenpetugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(absen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(absenpetugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(absen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(absenpetugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(absen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(absenpetugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new absen().setVisible(true);
+                new absenpetugas().setVisible(true);
             }
         });
     }
@@ -436,8 +398,8 @@ datatable();        // TODO add your handling code here:
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bbatal;
     private javax.swing.JButton bcariabsen;
+    private javax.swing.JButton bcariadmin;
     private javax.swing.JButton bsimpan;
-    private javax.swing.JButton bubah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -445,10 +407,10 @@ datatable();        // TODO add your handling code here:
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labnama;
-    private javax.swing.JLabel labnip;
-    private javax.swing.JLabel labtelp;
+    private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JLabel labnama;
+    public javax.swing.JLabel labnip;
+    public javax.swing.JLabel labtelp;
     private javax.swing.ButtonGroup rdgroup;
     private javax.swing.JRadioButton rhadir;
     private javax.swing.JRadioButton rnhadir;

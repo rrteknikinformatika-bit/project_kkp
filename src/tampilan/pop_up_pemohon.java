@@ -141,6 +141,11 @@ private Connection conn = new koneksi().connect() ;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblpemohon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblpemohonMouseClicked(evt);
+            }
+        });
         tblpemohon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tblpemohonKeyPressed(evt);
@@ -165,7 +170,7 @@ private Connection conn = new koneksi().connect() ;
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,6 +199,14 @@ private Connection conn = new koneksi().connect() ;
     private void tblpemohonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblpemohonKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_tblpemohonKeyPressed
+
+    private void tblpemohonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpemohonMouseClicked
+         int baris = tblpemohon.getSelectedRow();
+    String pmh = tblpemohon.getValueAt(baris, 0).toString();
+    
+    fieldTarget.setText(pmh);
+    this.dispose();
+    }//GEN-LAST:event_tblpemohonMouseClicked
 
     /**
      * @param args the command line arguments

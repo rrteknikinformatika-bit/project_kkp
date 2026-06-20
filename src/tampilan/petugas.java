@@ -11,12 +11,12 @@ import java.awt.event.KeyEvent;
 import koneksi.koneksi;
 
 
-public class admin extends javax.swing.JInternalFrame {
+public class petugas extends javax.swing.JInternalFrame {
 private Connection conn = new koneksi().connect();
 private DefaultTableModel tabmode;
    
 
-    public admin() {
+    public petugas() {
         initComponents();
         kosong();
         aktif();
