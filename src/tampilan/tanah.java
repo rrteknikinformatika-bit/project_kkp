@@ -34,13 +34,11 @@ public class tanah extends javax.swing.JInternalFrame {
         txtluas.setText("");
         txtlokasi.setText("");
         boxstatus.setSelectedIndex(0);
-        txtberkas.setText("");
         boxhak.setSelectedItem(0);
         txtcari.setText("");
     }
  protected void datatable(){
-        Object[] Baris = {"ID_Tanah", "Lokasi","VOLUME", "Status_Tanah"
-                , "No_Berkas","HAK_TANAH"};
+        Object[] Baris = {"ID_Tanah", "Lokasi","VOLUME", "Status_Tanah","HAK_TANAH"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText();
          try {
@@ -54,8 +52,7 @@ public class tanah extends javax.swing.JInternalFrame {
                     hasil.getString(2),
                     hasil.getString(3),
                     hasil.getString(4),
-                    hasil.getString(5),
-                    hasil.getString(6)
+                    hasil.getString(5)
                 });
             }
             tbltanah.setModel(tabmode);
@@ -74,9 +71,7 @@ public class tanah extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txtluas = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         boxstatus = new javax.swing.JComboBox<>();
-        txtberkas = new javax.swing.JTextField();
         bsimpan = new javax.swing.JButton();
         bubah = new javax.swing.JButton();
         bhapus = new javax.swing.JButton();
@@ -104,17 +99,12 @@ public class tanah extends javax.swing.JInternalFrame {
 
         txtluas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel6.setText("NO. BERKAS");
-
         boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Tanah Negara", "Tanah Akad" }));
         boxstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxstatusActionPerformed(evt);
             }
         });
-
-        txtberkas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
         bsimpan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         bsimpan.setText("SIMPAN");
@@ -258,14 +248,12 @@ public class tanah extends javax.swing.JInternalFrame {
                                                 .addGap(10, 10, 10)
                                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
                                             .addComponent(txtluas)
-                                            .addComponent(boxstatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtberkas)))
+                                            .addComponent(boxstatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,19 +295,19 @@ public class tanah extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtluas, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(boxstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtberkas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(boxhak, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                            .addComponent(jLabel7))
-                        .addGap(176, 176, 176)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(boxhak, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                                .addGap(176, 176, 176))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bbatal)
                     .addComponent(bhapus)
@@ -337,7 +325,7 @@ public class tanah extends javax.swing.JInternalFrame {
          if (boxstatus.getSelectedIndex() == 0){
             JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
             return;}
-                 String sql = "insert into tanah values (?,?,?,?,?,?)";
+                 String sql = "insert into tanah values (?,?,?,?,?)";
 
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
@@ -345,8 +333,7 @@ public class tanah extends javax.swing.JInternalFrame {
             stat.setString(3, txtlokasi.getText());
             stat.setString(2, txtluas.getText());
             stat.setString(4, boxstatus.getSelectedItem().toString());
-            stat.setString(5, txtberkas.getText());
-            stat.setString(6, boxhak.getSelectedItem().toString());
+            stat.setString(5, boxhak.getSelectedItem().toString());
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "data berhasil disimpan");
             kosong();
@@ -363,15 +350,14 @@ public class tanah extends javax.swing.JInternalFrame {
         return;
     }
     try {
-        String sql = "update tanah set lks=?, vlm=?, stts=?, nobrks=?, haktanah=? where idtnh=?";
+        String sql = "update tanah set lks=?, vlm=?, stts=?, haktanah=? where idtnh=?";
         PreparedStatement stat = conn.prepareStatement(sql);
         
         stat.setString(1, txtlokasi.getText());
         stat.setString(3, txtluas.getText());
         stat.setString(2, boxstatus.getSelectedItem().toString());
-        stat.setString(4, txtberkas.getText());
-        stat.setString(5, boxhak.getSelectedItem().toString()); // haktanah
-        stat.setString(6, txtid.getText());                     // idtnh (kriteria WHERE)
+        stat.setString(4, boxhak.getSelectedItem().toString()); // haktanah
+        stat.setString(5, txtid.getText());                     // idtnh (kriteria WHERE)
         
         stat.executeUpdate();
         JOptionPane.showMessageDialog(null, "data berhasil diubah");
@@ -421,14 +407,12 @@ String b = tabmode.getValueAt(bar, 1).toString();
 String c = tabmode.getValueAt(bar, 2).toString();
 String d = tabmode.getValueAt(bar, 3).toString();
 String e = tabmode.getValueAt(bar, 4).toString();
-String f = tabmode.getValueAt(bar, 5).toString();
 
 txtid.setText(a);
 txtlokasi.setText(b);
 txtluas.setText(c);
 boxstatus.setSelectedItem(d);
-txtberkas.setText(e);
-boxhak.setSelectedItem(f);// TODO add your handling code here:
+boxhak.setSelectedItem(e);// TODO add your handling code here:
     }//GEN-LAST:event_tbltanahMouseClicked
 
     private void bcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bcariKeyPressed
@@ -499,12 +483,10 @@ boxhak.setSelectedItem(f);// TODO add your handling code here:
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbltanah;
-    private javax.swing.JTextField txtberkas;
     private javax.swing.JTextField txtcari;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextArea txtlokasi;
