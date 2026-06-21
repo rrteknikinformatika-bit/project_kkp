@@ -17,6 +17,32 @@ import koneksi.koneksi;
 public class penugasan extends javax.swing.JInternalFrame {
 private Connection conn = new koneksi().connect();
 private DefaultTableModel tabmode;
+
+    public String idPermohonanTerpilih, namaPemohonTerpilih, noTelpTerpilih, alamatTerpilih, lokasiTerpilih, volumeTerpilih, hakTanahTerpilih;
+    public String idJadwalTerpilih, tglJadwalTerpilih;
+    public String idPetugasTerpilih, namaPetugasTerpilih, NIPTerpilih, noKontakTerpilih;
+   
+    public void setPermohonanKeForm(){
+        labid.setText(idPermohonanTerpilih);
+        labnama.setText(namaPemohonTerpilih);
+        labtelp.setText(noTelpTerpilih);
+        labalamat.setText(alamatTerpilih);
+        lablokasi.setText(lokasiTerpilih);
+        labvtanah.setText(volumeTerpilih);
+        labhtanah.setText(hakTanahTerpilih);
+    }
+    
+    public void setJadwalKeForm(){
+        labidjdwl.setText(idJadwalTerpilih);
+        labtgl.setText(tglJadwalTerpilih);
+    }
+    
+    public void setPetugasKeForm(){
+        labidptg.setText(idPetugasTerpilih);
+        labpetu.setText(namaPetugasTerpilih);
+        labnip.setText(NIPTerpilih);
+        labkontak.setText(noKontakTerpilih);
+    }
     /**
      * Creates new form penugasan
      */
@@ -32,38 +58,63 @@ private DefaultTableModel tabmode;
     }
  protected void kosong(){
         idpenugasan.setText("");
-        idpemohon.setText("");
-        idpetugas.setText("");
-        dctanggal.setDate(null);
+        labid.setText("");
+        labidptg.setText("");
+        labnama.setText("");
+        labtelp.setText("");
+        labalamat.setText("");
+        lablokasi.setText("");
+        labvtanah.setText("");
+        labhtanah.setText("");
+        labidjdwl.setText("");
+        labtgl.setText("");
+        labidptg.setText("");
+        labpetu.setText("");
+        labnip.setText("");
+        labkontak.setText("");
         txtcari.setText("");
     }
- protected void datatable(){
-        Object[] Baris = {"ID Penugasan", "Tanggal","ID Pemohon", "ID Petugas" };
-        tabmode = new DefaultTableModel(null, Baris);
-        String cariitem = txtcari.getText();
-         try {
-            String sql = "SELECT penugasan.idpngsn, penugasan.tggl, pemohon.idpmhn, tugas.idptgs " +
-                     "FROM penugasan  " +
-                     "INNER JOIN pemohon ON penugasan.idprmhnn = pemohon.idpmhn " +
-                     "INNER JOIN tugas ON penugasan.idptgs = tugas.idptgs " +
-                     "WHERE penugasan.idpngsn LIKE '%" + cariitem + "%' " +
-                     "ORDER BY penugasan.idpngsn ASC";
-            Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-            while (hasil.next()) {
-                tabmode.addRow(new Object[]{
-                    hasil.getString(1),
-                    hasil.getString(2),
-                    hasil.getString(3),
-                    hasil.getString(4),
-                    hasil.getString(5)
-                });
-            }
-            tbljdwl.setModel(tabmode);
-         }catch (Exception e){
-             JOptionPane.showMessageDialog(null,"data gagal di panggil" +e);
-         }
-    } /**
+ protected void datatable() {
+    Object[] Baris = {
+        "ID Penugasan", "ID Permohonan", "Nama Pemohon", "No Telpon", "Alamat", 
+        "Lokasi", "Volume Tanah", "Hak Tanah", "ID Jadwal", "Tanggal", 
+        "ID Petugas", "Nama Petugas", "NIP", "No. Kontak"
+    };
+    
+    DefaultTableModel tabmode = new DefaultTableModel(null, Baris);
+    String cariitem = txtcari.getText(); 
+    
+    try {
+        String sql = "SELECT * FROM penugasan WHERE idpngsn LIKE '%" + cariitem + "%' OR nmpmhn LIKE '%" + cariitem + "%'";
+        Statement stat = conn.createStatement();
+        ResultSet hasil = stat.executeQuery(sql);
+        
+        while (hasil.next()) {
+            tabmode.addRow(new Object[]{
+                hasil.getString("idpngsn"),     // Kolom 1
+                hasil.getString("idprmhnn"),        // Kolom 2
+                hasil.getString("nmpmhn"),    // Kolom 3
+                hasil.getString("notelp"),      // Kolom 4
+                hasil.getString("alm"),      // Kolom 5
+                hasil.getString("lks"),      // Kolom 6
+                hasil.getString("vlm"),      // Kolom 7
+                hasil.getString("haktanah"),         // Kolom 8
+                hasil.getString("idjdwl"),         // Kolom 9
+                hasil.getString("tggl"),         // Kolom 10
+                hasil.getString("idptgs"),    // Kolom 11
+                hasil.getString("nmptgs"),      // Kolom 12
+                hasil.getString("nip"),         // Kolom 13
+                hasil.getString("notlp")        // Kolom 14
+            });
+        }
+        tblpenugasan.setModel(tabmode); // Pastikan nama JTable Anda benar
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Data gagal dipanggil: " + e);
+    }
+}
+    
+     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
@@ -78,8 +129,6 @@ private DefaultTableModel tabmode;
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         idpenugasan = new javax.swing.JTextField();
-        idpemohon = new javax.swing.JTextField();
-        idpetugas = new javax.swing.JTextField();
         bkeluar = new javax.swing.JButton();
         breset = new javax.swing.JButton();
         bsimpan = new javax.swing.JButton();
@@ -89,13 +138,34 @@ private DefaultTableModel tabmode;
         bcari = new javax.swing.JButton();
         txtcari = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbljdwl = new javax.swing.JTable();
+        tblpenugasan = new javax.swing.JTable();
         poppemohon = new javax.swing.JButton();
         poppetugas = new javax.swing.JButton();
-        idpemohon1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        idpemohon2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        labtelp = new javax.swing.JLabel();
+        labalamat = new javax.swing.JLabel();
+        lablokasi = new javax.swing.JLabel();
+        labvtanah = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        labhtanah = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        labpetu = new javax.swing.JLabel();
+        labnip = new javax.swing.JLabel();
+        labkontak = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        labtgl = new javax.swing.JLabel();
+        popjadwal = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        labnama = new javax.swing.JLabel();
+        labidjdwl = new javax.swing.JLabel();
+        labidptg = new javax.swing.JLabel();
+        labid = new javax.swing.JLabel();
 
         bcari1.setText("Cari");
         bcari1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +186,7 @@ private DefaultTableModel tabmode;
 
         jLabel2.setText("ID Penugasan");
 
-        jLabel4.setText("ID Pemohonan");
+        jLabel4.setText("ID Permohonan");
 
         jLabel5.setText("ID Petugas");
 
@@ -183,7 +253,7 @@ private DefaultTableModel tabmode;
             }
         });
 
-        tbljdwl.setModel(new javax.swing.table.DefaultTableModel(
+        tblpenugasan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -194,12 +264,12 @@ private DefaultTableModel tabmode;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbljdwl.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblpenugasan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbljdwlMouseClicked(evt);
+                tblpenugasanMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tbljdwl);
+        jScrollPane2.setViewportView(tblpenugasan);
 
         poppemohon.setText("Cari");
         poppemohon.addActionListener(new java.awt.event.ActionListener() {
@@ -225,121 +295,243 @@ private DefaultTableModel tabmode;
             }
         });
 
-        jLabel7.setText("ID Pemohonan");
+        jLabel7.setText("No. Telepon");
 
-        jLabel8.setText("ID Pemohonan");
+        jLabel8.setText("Alamat");
+
+        jLabel10.setText("Lokasi");
+
+        jLabel3.setText("Volume Tanah");
+
+        labtelp.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labtelp.setText("jLabel11");
+
+        labalamat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labalamat.setText("jLabel12");
+
+        lablokasi.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lablokasi.setText("jLabel14");
+
+        labvtanah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labvtanah.setText("jLabel15");
+
+        jLabel18.setText("Hak Tanah");
+
+        labhtanah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labhtanah.setText("jLabel19");
+
+        jLabel20.setText("Nama Petugas");
+
+        jLabel21.setText("NIP");
+
+        jLabel22.setText("No Kontak");
+
+        labpetu.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labpetu.setText("jLabel23");
+
+        labnip.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labnip.setText("jLabel24");
+
+        labkontak.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labkontak.setText("jLabel25");
+
+        jLabel26.setText("ID Jadwal");
+
+        jLabel27.setText("Tgl Jadwal");
+
+        labtgl.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labtgl.setText("jLabel28");
+
+        popjadwal.setText("Cari");
+        popjadwal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                popjadwalActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Nama Pemohon");
+
+        labnama.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labnama.setText("jLabel12");
+
+        labidjdwl.setText("jLabel9");
+
+        labidptg.setText("jLabel12");
+
+        labid.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        labid.setText("jLabel9");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(idpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(79, 79, 79)
-                        .addComponent(idpemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(poppemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addGap(79, 79, 79)
-                            .addComponent(idpemohon2, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(79, 79, 79)
-                            .addComponent(idpemohon1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 495, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel6))
-                .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(801, 801, 801))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
+                        .addGap(131, 131, 131)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(breset, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(147, 147, 147))
+                                .addGap(185, 185, 185)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(poppemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(idpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(322, 322, 322)
-                                .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(77, 77, 77)
-                        .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(bkeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel18))
+                                .addGap(72, 72, 72)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labtelp)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(labid)
+                                            .addComponent(labnama)
+                                            .addComponent(labalamat)
+                                            .addComponent(lablokasi)
+                                            .addComponent(labvtanah))
+                                        .addGap(490, 490, 490)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel26)
+                                                    .addComponent(jLabel27)
+                                                    .addComponent(jLabel5)
+                                                    .addComponent(jLabel20)
+                                                    .addComponent(jLabel21)
+                                                    .addComponent(jLabel22))
+                                                .addGap(120, 120, 120)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(labnip)
+                                                    .addComponent(labpetu)
+                                                    .addComponent(labtgl)
+                                                    .addComponent(labkontak)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(labidjdwl)
+                                                            .addComponent(labidptg))
+                                                        .addGap(134, 134, 134)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(poppetugas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(popjadwal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(labhtanah)
+                                        .addGap(490, 490, 490)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jLabel5)
-                        .addGap(79, 79, 79)
-                        .addComponent(idpetugas, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
-                        .addComponent(poppetugas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(193, 193, 193)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bkeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
+                                .addComponent(breset, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(61, 61, 61)
+                                .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(70, 70, 70)
+                                .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(853, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(13, 13, 13)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(labpetu))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(labnip))
+                        .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(57, 57, 57)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(idpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(poppemohon)
+                                    .addComponent(labid)
+                                    .addComponent(jLabel26)
+                                    .addComponent(labidjdwl)
+                                    .addComponent(popjadwal))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(labtelp))
+                                .addGap(30, 30, 30))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(238, 238, 238)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(labnama)
+                                    .addComponent(jLabel27)
+                                    .addComponent(labtgl))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(labidptg)
+                            .addComponent(poppetugas))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(labalamat))
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(lablokasi))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(labvtanah)
+                            .addComponent(jLabel6)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(labkontak))
+                        .addGap(76, 76, 76)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bcari)
-                    .addComponent(idpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bcari))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idpemohon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(poppemohon))
-                        .addGap(51, 51, 51)
+                            .addComponent(bsimpan)
+                            .addComponent(breset)
+                            .addComponent(bubah)
+                            .addComponent(bhapus))
+                        .addGap(107, 107, 107)
+                        .addComponent(bkeluar))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idpemohon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idpemohon2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(idpetugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(poppetugas))
-                            .addComponent(jLabel5))
-                        .addGap(72, 72, 72)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bhapus)
-                    .addComponent(breset)
-                    .addComponent(bubah)
-                    .addComponent(bkeluar)
-                    .addComponent(bsimpan))
-                .addGap(341, 341, 341))
+                            .addComponent(jLabel18)
+                            .addComponent(labhtanah))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(243, 243, 243))
         );
 
         pack();
@@ -361,34 +553,60 @@ private DefaultTableModel tabmode;
     }//GEN-LAST:event_bresetActionPerformed
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
-        String sql = "insert into jadwal values (?,?,?,?)";
-        try {
-            PreparedStatement stat = conn.prepareStatement(sql);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            stat.setString(1, idpenugasan.getText());
-            stat.setString(2, sdf.format(dctanggal.getDate()));
-            stat.setString(3, idpemohon.getText());
-            stat.setString(4, idpetugas.getText());
-            stat.executeUpdate();
-            JOptionPane.showMessageDialog(null, "data berhasil disimpan");
-            kosong();
-            aktif();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "data gagal disimpan " + e);
-        }
-        datatable();
+        String sql = "INSERT INTO penugasan (idpngsn, idprmhnn, nmpmhn, notelp, alm, lks, vlm, haktanah, idjdwl, tggl, idptgs, nmptgs, nip, notlp)"
+               + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    try {
+        PreparedStatement stat = conn.prepareStatement(sql);
+        
+        // PETAKKAN KOMPONEN UI SESUAI KOLOM SQL DI ATAS
+        stat.setString(1, idpenugasan.getText());  // idpngsn
+        stat.setString(2, labid.getText());       // tggl
+        stat.setString(3, labnama.getText());        // idprmhnn
+        stat.setString(4, labtelp.getText());    // idjdwl
+        stat.setString(5, labalamat.getText());     // idptgs
+        stat.setString(6, lablokasi.getText());      // nmpmhn
+        stat.setString(7, labvtanah.getText());      // notelp
+        stat.setString(8, labhtanah.getText());    // alm
+        stat.setString(9, labidjdwl.getText());    // lks
+        stat.setString(10, labtgl.getText());   // vlm
+        stat.setString(11, labidptg.getText());   // haktanah
+        stat.setString(12, labpetu.getText());     // nmptgs
+        stat.setString(13, labnip.getText());      // nip
+        stat.setString(14, labkontak.getText());   // notlp
+        
+        stat.executeUpdate();
+        JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+        
+        kosong();
+        aktif();
+        
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "data gagal disimpan " + e);
+    }
+    datatable();
     }//GEN-LAST:event_bsimpanActionPerformed
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
         try {
-            String sql = "update penugasan set tggl=? where idpngsn=?";
+            String sql = "update penugasan set idpngsn=?, idprmhnn=?, nmpmhn=?, notelp=?, alm=?, lks=?, vlm=?, haktanah=?, idjdwl=?, tggl=?, idptgs=?, nmptgs=?, nip=?, notlp=?";
             PreparedStatement stat = conn.prepareStatement(sql);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             stat.setString(1, idpenugasan.getText());
-            stat.setString(2, sdf.format(dctanggal.getDate()));
-            stat.setString(3, idpemohon.getText());
-            stat.setString(3, idpetugas.getText());
-
+            stat.setString(2, labid.getText());
+            stat.setString(3, labnama.getText());
+            stat.setString(4, labtelp.getText());
+            stat.setString(5, labalamat.getText());
+            stat.setString(6, lablokasi.getText());
+            stat.setString(7, labvtanah.getText());
+            stat.setString(8, labhtanah.getText());
+            stat.setString(9,labidjdwl.getText());
+            stat.setString(10,labtgl.getText());
+            stat.setString(11,labidptg.getText());
+            stat.setString(12,labpetu.getText());
+            stat.setString(13,labnip.getText());
+            stat.setString(14,labkontak.getText());
+            
             int result = stat.executeUpdate();
 
             if(result > 0){
@@ -430,28 +648,25 @@ private DefaultTableModel tabmode;
         // TODO add your handling code here:
     }//GEN-LAST:event_bcariKeyPressed
 
-    private void tbljdwlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbljdwlMouseClicked
-int bar = tbljdwl.getSelectedRow();
+    private void tblpenugasanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpenugasanMouseClicked
+int bar = tblpenugasan.getSelectedRow();
+    javax.swing.table.TableModel model = tblpenugasan.getModel();
     
-    String a = tabmode.getValueAt(bar, 0).toString(); // ID
-    String b = tabmode.getValueAt(bar, 1).toString(); // Date
-    String c = tabmode.getValueAt(bar, 2).toString(); // ID Pemohon
-    String d = tabmode.getValueAt(bar, 2).toString(); // ID Petugas
-
-    idpenugasan.setText(a);
-
-    try {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date tanggal = sdf.parse(b);
-        dctanggal.setDate(tanggal);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Tanggal error: " + e);
-    }
-
-    idpemohon.setText(c);
-    idpetugas.setText(d);
-  
-    }//GEN-LAST:event_tbljdwlMouseClicked
+    idpenugasan.setText(model.getValueAt(bar, 0).toString());  
+    labid.setText(model.getValueAt(bar, 1).toString());       
+    labnama.setText(model.getValueAt(bar, 2).toString());        
+    labtelp.setText(model.getValueAt(bar, 3).toString());    
+    labalamat.setText(model.getValueAt(bar, 4).toString());     
+    lablokasi.setText(model.getValueAt(bar, 5).toString());      
+    labvtanah.setText(model.getValueAt(bar, 6).toString());      
+    labhtanah.setText(model.getValueAt(bar, 7).toString());    
+    labidjdwl.setText(model.getValueAt(bar, 8).toString());    
+    labtgl.setText(model.getValueAt(bar, 9).toString());    
+    labidptg.setText(model.getValueAt(bar, 10).toString());   
+    labpetu.setText(model.getValueAt(bar, 11).toString());     
+    labnip.setText(model.getValueAt(bar, 12).toString());      
+    labkontak.setText(model.getValueAt(bar, 13).toString());
+    }//GEN-LAST:event_tblpenugasanMouseClicked
 
     private void bcari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcari1ActionPerformed
         datatable(); 
@@ -462,9 +677,8 @@ int bar = tbljdwl.getSelectedRow();
     }//GEN-LAST:event_bcari1KeyPressed
 
     private void poppemohonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poppemohonActionPerformed
-pop_up_pemohon popup = new pop_up_pemohon(idpemohon);
-                popup.loadData();
-                popup.setLocationRelativeTo(this);
+popup_permohonan popup = new popup_permohonan(null, true);
+                popup.formPenugasan = this;
                 popup.setVisible(true);
        
     }//GEN-LAST:event_poppemohonActionPerformed
@@ -474,9 +688,8 @@ pop_up_pemohon popup = new pop_up_pemohon(idpemohon);
     }//GEN-LAST:event_poppemohonKeyPressed
 
     private void poppetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poppetugasActionPerformed
-pop_up_petugas popup = new pop_up_petugas(idpetugas);
-                popup.loadData();
-                popup.setLocationRelativeTo(this);
+popup_tugas popup = new popup_tugas(null, true);
+                popup.formPenugasan = this;
                 popup.setVisible(true);
                // TODO add your handling code here:
     }//GEN-LAST:event_poppetugasActionPerformed
@@ -490,6 +703,12 @@ pop_up_petugas popup = new pop_up_petugas(idpetugas);
            datatable();
        }   
     }//GEN-LAST:event_txtcariKeyPressed
+
+    private void popjadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_popjadwalActionPerformed
+        popup_jadwal popup = new popup_jadwal(null, true);
+                popup.formPenugasan = this;
+                popup.setVisible(true);
+    }//GEN-LAST:event_popjadwalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,22 +753,41 @@ pop_up_petugas popup = new pop_up_petugas(idpetugas);
     private javax.swing.JButton breset;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;
-    private javax.swing.JTextField idpemohon;
-    private javax.swing.JTextField idpemohon1;
-    private javax.swing.JTextField idpemohon2;
     private javax.swing.JTextField idpenugasan;
-    private javax.swing.JTextField idpetugas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JLabel labalamat;
+    public javax.swing.JLabel labhtanah;
+    public javax.swing.JLabel labid;
+    public javax.swing.JLabel labidjdwl;
+    public javax.swing.JLabel labidptg;
+    public javax.swing.JLabel labkontak;
+    public javax.swing.JLabel lablokasi;
+    public javax.swing.JLabel labnama;
+    public javax.swing.JLabel labnip;
+    public javax.swing.JLabel labpetu;
+    public javax.swing.JLabel labtelp;
+    public javax.swing.JLabel labtgl;
+    public javax.swing.JLabel labvtanah;
+    private javax.swing.JButton popjadwal;
     private javax.swing.JButton poppemohon;
     private javax.swing.JButton poppetugas;
-    private javax.swing.JTable tbljdwl;
+    private javax.swing.JTable tblpenugasan;
     private javax.swing.JTextField txtcari;
     // End of variables declaration//GEN-END:variables
 }
