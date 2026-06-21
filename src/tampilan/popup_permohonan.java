@@ -125,9 +125,9 @@ public class popup_permohonan extends javax.swing.JDialog {
     String nama = popuppermohonan.getValueAt(baris, 1).toString();
     String telp = popuppermohonan.getValueAt(baris, 2).toString();
     String alamat = popuppermohonan.getValueAt(baris, 3).toString();
-    String lokasi = popuppermohonan.getValueAt(baris, 3).toString();
-    String volume = popuppermohonan.getValueAt(baris, 3).toString();
-    String hak_tanah = popuppermohonan.getValueAt(baris, 3).toString();
+    String lokasi = popuppermohonan.getValueAt(baris, 4).toString();
+    String volume = popuppermohonan.getValueAt(baris, 5).toString();
+    String hak_tanah = popuppermohonan.getValueAt(baris, 6).toString();
     
     // Taktik baru: Deteksi otomatis apakah form utamanya adalah permohonan
     if (formPenugasan instanceof penugasan) {
