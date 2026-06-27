@@ -3,6 +3,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="kd_admin" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      absen_admin.`id_absen` AS absen_admin_id_absen,
@@ -16,7 +17,8 @@
      admin.`jenis_kelamin` AS admin_jenis_kelamin,
      admin.`no_telepon` AS admin_no_telepon
 FROM
-     `admin` admin INNER JOIN `absen_admin` absen_admin ON admin.`kd_admin` = absen_admin.`kd_admin`]]>
+     `admin` admin INNER JOIN `absen_admin` absen_admin ON admin.`kd_admin` = absen_admin.`kd_admin`
+where admin.kd_admin=$P{kd_admin}]]>
 	</queryString>
 	<field name="absen_admin_id_absen" class="java.lang.Integer"/>
 	<field name="absen_admin_kd_admin" class="java.lang.String"/>

@@ -7,9 +7,13 @@ package tampilan;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author LightDen69
@@ -119,6 +123,18 @@ private DefaultTableModel tabmode;
         JOptionPane.showMessageDialog(null, "Data gagal dipanggil: " + e);
     }
 }
+ 
+ public void cetak() {
+        try{
+            String path="./src/report/reportPenugasan.jasper";
+            HashMap parameter = new HashMap();
+            parameter.put("idpngsn", idpenugasan.getText());
+            JasperPrint print = JasperFillManager.fillReport(path, parameter,conn);
+            JasperViewer.viewReport(print, false);
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(rootPane,"Dokumen tidak ada" +ex);
+        }
+    }
     
      /**
      * This method is called from within the constructor to initialize the form.
@@ -175,6 +191,7 @@ private DefaultTableModel tabmode;
         labalamat = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        bcetak = new javax.swing.JButton();
 
         bcari1.setText("Cari");
         bcari1.addActionListener(new java.awt.event.ActionListener() {
@@ -378,6 +395,13 @@ private DefaultTableModel tabmode;
 
         jLabel4.setText("ID Permohonan");
 
+        bcetak.setText("Cetak");
+        bcetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcetakActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -395,8 +419,10 @@ private DefaultTableModel tabmode;
                                 .addGap(185, 185, 185)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(poppemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(idpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(idpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(bcetak)
+                                            .addComponent(poppemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(365, 365, 365)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,10 +515,11 @@ private DefaultTableModel tabmode;
                     .addComponent(jLabel26)
                     .addComponent(labidjdwl)
                     .addComponent(popjadwal))
-                .addGap(33, 33, 33)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(labtgl))
+                    .addComponent(labtgl)
+                    .addComponent(bcetak))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -764,6 +791,10 @@ private DefaultTableModel tabmode;
         // TODO add your handling code here:
     }//GEN-LAST:event_idpenugasanActionPerformed
 
+    private void bcetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcetakActionPerformed
+        cetak();
+    }//GEN-LAST:event_bcetakActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -802,6 +833,7 @@ private DefaultTableModel tabmode;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bcari;
     private javax.swing.JButton bcari1;
+    private javax.swing.JButton bcetak;
     private javax.swing.JButton bhapus;
     private javax.swing.JButton bkeluar;
     private javax.swing.JButton breset;

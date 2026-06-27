@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ad5ad63-d7f6-42d4-a4eb-d8cb48507f05">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idhasil" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     hasil.`idhasil` AS hasil_idhasil,
+     hasil.`idpngsn` AS hasil_idpngsn,
+     hasil.`nmpmhn` AS hasil_nmpmhn,
+     hasil.`jns` AS hasil_jns,
+     hasil.`vlm` AS hasil_vlm,
+     hasil.`lks` AS hasil_lks,
+     hasil.`haktanah` AS hasil_haktanah,
+     hasil.`nmptgs` AS hasil_nmptgs,
+     hasil.`nip` AS hasil_nip,
+     hasil.`tggl` AS hasil_tggl,
+     hasil.`progres` AS hasil_progres,
+     hasil.`hslukur` AS hasil_hslukur,
+     penugasan.`idpngsn` AS penugasan_idpngsn,
+     penugasan.`idprmhnn` AS penugasan_idprmhnn,
+     penugasan.`nmpmhn` AS penugasan_nmpmhn,
+     penugasan.`notelp` AS penugasan_notelp,
+     penugasan.`alm` AS penugasan_alm,
+     penugasan.`jns` AS penugasan_jns,
+     penugasan.`vlm` AS penugasan_vlm,
+     penugasan.`lks` AS penugasan_lks,
+     penugasan.`haktanah` AS penugasan_haktanah,
+     penugasan.`idjdwl` AS penugasan_idjdwl,
+     penugasan.`tggl` AS penugasan_tggl,
+     penugasan.`idptgs` AS penugasan_idptgs,
+     penugasan.`nmptgs` AS penugasan_nmptgs,
+     penugasan.`nip` AS penugasan_nip,
+     penugasan.`notlp` AS penugasan_notlp
+FROM
+     `penugasan` penugasan INNER JOIN `hasil` hasil ON penugasan.`idpngsn` = hasil.`idpngsn`
+where hasil.idhasil=$P{idhasil}]]>
+	</queryString>
+	<field name="hasil_idhasil" class="java.lang.String"/>
+	<field name="hasil_idpngsn" class="java.lang.String"/>
+	<field name="hasil_nmpmhn" class="java.lang.String"/>
+	<field name="hasil_jns" class="java.lang.String"/>
+	<field name="hasil_vlm" class="java.lang.String"/>
+	<field name="hasil_lks" class="java.lang.String"/>
+	<field name="hasil_haktanah" class="java.lang.String"/>
+	<field name="hasil_nmptgs" class="java.lang.String"/>
+	<field name="hasil_nip" class="java.lang.String"/>
+	<field name="hasil_tggl" class="java.lang.String"/>
+	<field name="hasil_progres" class="java.lang.String"/>
+	<field name="hasil_hslukur" class="java.lang.String"/>
+	<field name="penugasan_idpngsn" class="java.lang.String"/>
+	<field name="penugasan_idprmhnn" class="java.lang.String"/>
+	<field name="penugasan_nmpmhn" class="java.lang.String"/>
+	<field name="penugasan_notelp" class="java.lang.String"/>
+	<field name="penugasan_alm" class="java.lang.String"/>
+	<field name="penugasan_jns" class="java.lang.String"/>
+	<field name="penugasan_vlm" class="java.lang.String"/>
+	<field name="penugasan_lks" class="java.lang.String"/>
+	<field name="penugasan_haktanah" class="java.lang.String"/>
+	<field name="penugasan_idjdwl" class="java.lang.String"/>
+	<field name="penugasan_tggl" class="java.lang.String"/>
+	<field name="penugasan_idptgs" class="java.lang.String"/>
+	<field name="penugasan_nmptgs" class="java.lang.String"/>
+	<field name="penugasan_nip" class="java.lang.String"/>
+	<field name="penugasan_notlp" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="115" y="0" width="100" height="20" uuid="b6a5003c-9568-4965-8773-967784fd1679"/>
+				<textFieldExpression><![CDATA[$F{hasil_idhasil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="fc637f2a-5186-4987-a9d7-43b985498d94"/>
+				<textFieldExpression><![CDATA[$F{hasil_idpngsn}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="542" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d5329f40-7f99-4bcc-b98a-8e0c3f55c6b5"/>
+				<text><![CDATA[hasil_nmpmhn]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="0" width="100" height="20" uuid="9a55d900-5dcb-407e-bfb9-fc5c38ef10f0"/>
+				<textFieldExpression><![CDATA[$F{hasil_nmpmhn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="32" width="100" height="20" uuid="2b252369-a641-46c8-9bad-ea7cdb0ccb73"/>
+				<text><![CDATA[hasil_jns]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="32" width="100" height="20" uuid="3453514d-36d5-4df3-b7ef-cbdaa622e0a9"/>
+				<textFieldExpression><![CDATA[$F{hasil_jns}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="67" width="100" height="20" uuid="6107cf07-e5ee-427c-9b07-72a7f5ce03e6"/>
+				<text><![CDATA[hasil_vlm]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="67" width="100" height="20" uuid="bb1773f8-c1b7-44eb-8c67-64ca3d136410"/>
+				<textFieldExpression><![CDATA[$F{hasil_vlm}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="99" width="100" height="20" uuid="0a7cec9a-d7f4-424f-9d7e-639f84ad0b79"/>
+				<text><![CDATA[hasil_lks]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="99" width="100" height="20" uuid="427ee6d9-335a-4b1e-9a94-f231913f1672"/>
+				<textFieldExpression><![CDATA[$F{hasil_lks}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="135" width="100" height="20" uuid="5d27b943-ef3c-49de-8b32-aa6e245928de"/>
+				<text><![CDATA[hasil_haktanah]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="135" width="100" height="20" uuid="bff9cb79-2791-4979-8674-f52e85f82995"/>
+				<textFieldExpression><![CDATA[$F{hasil_haktanah}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="0" width="100" height="20" uuid="aae370cf-9cd3-48f7-af15-efadda6d2680"/>
+				<text><![CDATA[hasil_nmptgs]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="468392d6-c2dc-4a21-bd8d-ba7b1ab9ac37"/>
+				<textFieldExpression><![CDATA[$F{hasil_nmptgs}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="32" width="100" height="20" uuid="22bd0886-30bf-4411-bcf9-fa6646603dba"/>
+				<text><![CDATA[hasil_nip]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="32" width="100" height="20" uuid="d1c624b0-f7bd-419b-a333-a5f4dc69b539"/>
+				<textFieldExpression><![CDATA[$F{hasil_nip}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="168" width="100" height="20" uuid="8aef9fa9-bd20-435a-b97d-600ad4e175a7"/>
+				<text><![CDATA[hasil_tggl]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="168" width="100" height="20" uuid="8a3aa0a6-e5ad-4509-b7bb-908b8de45061"/>
+				<textFieldExpression><![CDATA[$F{hasil_tggl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="67" width="100" height="20" uuid="59fa908c-971e-4a9e-82c2-bef8fa9227a5"/>
+				<text><![CDATA[hasil_progres]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="67" width="100" height="20" uuid="65dcc0be-8163-4991-95cb-33fcdb25fc5e"/>
+				<textFieldExpression><![CDATA[$F{hasil_progres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="99" width="100" height="20" uuid="0baea1d4-6d1f-4de5-b0a8-f57f0fe68f94"/>
+				<text><![CDATA[hasil_hslukur]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="99" width="100" height="20" uuid="42baedd1-bdf1-40d5-8746-cc71a11ad606"/>
+				<textFieldExpression><![CDATA[$F{hasil_hslukur}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

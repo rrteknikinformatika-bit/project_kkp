@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="70d0089f-3a9c-4ed9-ac39-3b79c30f5efa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idpngsn" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     penugasan.`idpngsn` AS penugasan_idpngsn,
+     penugasan.`idprmhnn` AS penugasan_idprmhnn,
+     penugasan.`nmpmhn` AS penugasan_nmpmhn,
+     penugasan.`notelp` AS penugasan_notelp,
+     penugasan.`alm` AS penugasan_alm,
+     penugasan.`jns` AS penugasan_jns,
+     penugasan.`vlm` AS penugasan_vlm,
+     penugasan.`lks` AS penugasan_lks,
+     penugasan.`haktanah` AS penugasan_haktanah,
+     penugasan.`idjdwl` AS penugasan_idjdwl,
+     penugasan.`tggl` AS penugasan_tggl,
+     penugasan.`idptgs` AS penugasan_idptgs,
+     penugasan.`nmptgs` AS penugasan_nmptgs,
+     penugasan.`nip` AS penugasan_nip,
+     penugasan.`notlp` AS penugasan_notlp,
+     permohonan.`idprmhnn` AS permohonan_idprmhnn,
+     permohonan.`tggl` AS permohonan_tggl,
+     permohonan.`jns` AS permohonan_jns,
+     permohonan.`idpmhn` AS permohonan_idpmhn,
+     permohonan.`nmpmhn` AS permohonan_nmpmhn,
+     permohonan.`alm` AS permohonan_alm,
+     permohonan.`notelp` AS permohonan_notelp,
+     permohonan.`idtnh` AS permohonan_idtnh,
+     permohonan.`lks` AS permohonan_lks,
+     permohonan.`vlm` AS permohonan_vlm,
+     permohonan.`haktanah` AS permohonan_haktanah,
+     jadwal.`idjdwl` AS jadwal_idjdwl,
+     jadwal.`tggl` AS jadwal_tggl,
+     tugas.`idptgs` AS tugas_idptgs,
+     tugas.`nmptgs` AS tugas_nmptgs,
+     tugas.`nip` AS tugas_nip,
+     tugas.`notlp` AS tugas_notlp
+FROM
+     `permohonan` permohonan INNER JOIN `penugasan` penugasan ON permohonan.`idprmhnn` = penugasan.`idprmhnn`
+     INNER JOIN `jadwal` jadwal ON penugasan.`idjdwl` = jadwal.`idjdwl`
+     INNER JOIN `tugas` tugas ON penugasan.`idptgs` = tugas.`idptgs`
+where 
+penugasan.idpngsn = $P{idpngsn}]]>
+	</queryString>
+	<field name="penugasan_idpngsn" class="java.lang.String"/>
+	<field name="penugasan_idprmhnn" class="java.lang.String"/>
+	<field name="penugasan_nmpmhn" class="java.lang.String"/>
+	<field name="penugasan_notelp" class="java.lang.String"/>
+	<field name="penugasan_alm" class="java.lang.String"/>
+	<field name="penugasan_jns" class="java.lang.String"/>
+	<field name="penugasan_vlm" class="java.lang.String"/>
+	<field name="penugasan_lks" class="java.lang.String"/>
+	<field name="penugasan_haktanah" class="java.lang.String"/>
+	<field name="penugasan_idjdwl" class="java.lang.String"/>
+	<field name="penugasan_tggl" class="java.lang.String"/>
+	<field name="penugasan_idptgs" class="java.lang.String"/>
+	<field name="penugasan_nmptgs" class="java.lang.String"/>
+	<field name="penugasan_nip" class="java.lang.String"/>
+	<field name="penugasan_notlp" class="java.lang.String"/>
+	<field name="permohonan_idprmhnn" class="java.lang.String"/>
+	<field name="permohonan_tggl" class="java.sql.Date"/>
+	<field name="permohonan_jns" class="java.lang.String"/>
+	<field name="permohonan_idpmhn" class="java.lang.String"/>
+	<field name="permohonan_nmpmhn" class="java.lang.String"/>
+	<field name="permohonan_alm" class="java.lang.String"/>
+	<field name="permohonan_notelp" class="java.lang.String"/>
+	<field name="permohonan_idtnh" class="java.lang.String"/>
+	<field name="permohonan_lks" class="java.lang.String"/>
+	<field name="permohonan_vlm" class="java.lang.String"/>
+	<field name="permohonan_haktanah" class="java.lang.String"/>
+	<field name="jadwal_idjdwl" class="java.lang.String"/>
+	<field name="jadwal_tggl" class="java.sql.Date"/>
+	<field name="tugas_idptgs" class="java.lang.String"/>
+	<field name="tugas_nmptgs" class="java.lang.String"/>
+	<field name="tugas_nip" class="java.lang.String"/>
+	<field name="tugas_notlp" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="50">
+			<textField>
+				<reportElement x="40" y="13" width="100" height="20" uuid="1c783a9e-8393-4b9f-8c1b-4641dfef5084"/>
+				<textFieldExpression><![CDATA[$F{penugasan_idpngsn}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="375">
+			<textField>
+				<reportElement x="40" y="0" width="100" height="20" uuid="c6d5ad97-e716-4859-b2d4-36e68ec7333d"/>
+				<textFieldExpression><![CDATA[$F{penugasan_idprmhnn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="36" width="100" height="20" uuid="7dbbaf8d-5448-4f2a-882b-987a9934c235"/>
+				<text><![CDATA[penugasan_nmpmhn]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="36" width="100" height="20" uuid="7291e027-3115-49fa-8b4e-a55ff011b741"/>
+				<textFieldExpression><![CDATA[$F{penugasan_nmpmhn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="75" width="100" height="20" uuid="7eea5432-be1b-4cb7-9b45-671798f567aa"/>
+				<text><![CDATA[penugasan_jns]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="75" width="100" height="20" uuid="c84bf81f-9cdd-4284-9b51-d65ff1547906"/>
+				<textFieldExpression><![CDATA[$F{penugasan_jns}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="42" y="105" width="100" height="20" uuid="e87d71f4-6778-452c-85c6-5b69510fe46c"/>
+				<text><![CDATA[penugasan_vlm]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="105" width="100" height="20" uuid="3cb8de92-dee0-448a-8aaa-4d75a66ad49a"/>
+				<textFieldExpression><![CDATA[$F{penugasan_vlm}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="140" width="100" height="20" uuid="09f7b1ed-aa4b-41de-b71a-108975fce737"/>
+				<text><![CDATA[penugasan_lks]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="140" width="100" height="20" uuid="8e8e41ab-e59a-4f26-b27e-23d55bed3c85"/>
+				<textFieldExpression><![CDATA[$F{penugasan_lks}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="42" y="172" width="100" height="20" uuid="6b9f311b-a8ed-435d-9041-73ec350acc78"/>
+				<text><![CDATA[penugasan_haktanah]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="172" width="100" height="20" uuid="336e9e7b-1e1d-42a3-92e2-f54d8a62ab97"/>
+				<textFieldExpression><![CDATA[$F{penugasan_haktanah}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="355" y="355" width="100" height="20" uuid="509bc1e8-beea-47da-9afd-ad470fe12a51"/>
+				<text><![CDATA[penugasan_tggl]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="355" width="100" height="20" uuid="6ccb9a75-b132-43dc-9c20-54919c3bc532"/>
+				<textFieldExpression><![CDATA[$F{penugasan_tggl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="335" y="36" width="100" height="20" uuid="7aee9289-87e0-4f77-bdb6-ded0b872fcb0"/>
+				<text><![CDATA[penugasan_nmptgs]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="36" width="100" height="20" uuid="1972ad7e-33fe-4c3e-ab25-4a91af1b17a8"/>
+				<textFieldExpression><![CDATA[$F{penugasan_nmptgs}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="335" y="76" width="100" height="20" uuid="787d5cd7-7de5-4180-887a-b5233253dcc3"/>
+				<text><![CDATA[penugasan_nip]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="75" width="100" height="20" uuid="0bfbf509-7b82-4469-8dbc-af2dd33a8302"/>
+				<textFieldExpression><![CDATA[$F{penugasan_nip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

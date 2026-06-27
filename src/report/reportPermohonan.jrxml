@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="93ca092a-11f6-4b59-befc-71e89e3410e0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idprmhnn" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     permohonan.`idprmhnn` AS permohonan_idprmhnn,
+     permohonan.`tggl` AS permohonan_tggl,
+     permohonan.`jns` AS permohonan_jns,
+     permohonan.`idpmhn` AS permohonan_idpmhn,
+     permohonan.`nmpmhn` AS permohonan_nmpmhn,
+     permohonan.`alm` AS permohonan_alm,
+     permohonan.`notelp` AS permohonan_notelp,
+     permohonan.`idtnh` AS permohonan_idtnh,
+     permohonan.`lks` AS permohonan_lks,
+     permohonan.`vlm` AS permohonan_vlm,
+     permohonan.`haktanah` AS permohonan_haktanah,
+     pemohon.`idpmhn` AS pemohon_idpmhn,
+     pemohon.`nmpmhn` AS pemohon_nmpmhn,
+     pemohon.`nik` AS pemohon_nik,
+     pemohon.`alm` AS pemohon_alm,
+     pemohon.`notlp` AS pemohon_notlp,
+     tanah.`idtnh` AS tanah_idtnh,
+     tanah.`lks` AS tanah_lks,
+     tanah.`vlm` AS tanah_vlm,
+     tanah.`stts` AS tanah_stts,
+     tanah.`haktanah` AS tanah_haktanah
+FROM
+     `pemohon` pemohon INNER JOIN `permohonan` permohonan ON pemohon.`idpmhn` = permohonan.`idpmhn`
+     INNER JOIN `tanah` tanah ON permohonan.`idtnh` = tanah.`idtnh`
+where permohonan.idprmhnn=$P{idprmhnn}]]>
+	</queryString>
+	<field name="permohonan_idprmhnn" class="java.lang.String"/>
+	<field name="permohonan_tggl" class="java.sql.Date"/>
+	<field name="permohonan_jns" class="java.lang.String"/>
+	<field name="permohonan_idpmhn" class="java.lang.String"/>
+	<field name="permohonan_nmpmhn" class="java.lang.String"/>
+	<field name="permohonan_alm" class="java.lang.String"/>
+	<field name="permohonan_notelp" class="java.lang.String"/>
+	<field name="permohonan_idtnh" class="java.lang.String"/>
+	<field name="permohonan_lks" class="java.lang.String"/>
+	<field name="permohonan_vlm" class="java.lang.String"/>
+	<field name="permohonan_haktanah" class="java.lang.String"/>
+	<field name="pemohon_idpmhn" class="java.lang.String"/>
+	<field name="pemohon_nmpmhn" class="java.lang.String"/>
+	<field name="pemohon_nik" class="java.lang.String"/>
+	<field name="pemohon_alm" class="java.lang.String"/>
+	<field name="pemohon_notlp" class="java.lang.String"/>
+	<field name="tanah_idtnh" class="java.lang.String"/>
+	<field name="tanah_lks" class="java.lang.String"/>
+	<field name="tanah_vlm" class="java.lang.String"/>
+	<field name="tanah_stts" class="java.lang.String"/>
+	<field name="tanah_haktanah" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="225" y="0" width="117" height="20" uuid="27ea67d8-a119-4333-a7ca-5c659354338c"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SURAT PERMOHONAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement x="143" y="0" width="100" height="20" uuid="b4f209e2-4b65-4d8c-92a3-96a62a6ebbd7"/>
+				<textFieldExpression><![CDATA[$F{permohonan_idprmhnn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="1582fa9e-e071-48e4-a75d-9e6fb6e49a94"/>
+				<textFieldExpression><![CDATA[$F{permohonan_tggl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" uuid="c9dd4424-11a5-4128-a177-4eacfb0211ed"/>
+				<text><![CDATA[Nomor Permohonan :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="100" height="20" uuid="43f46418-4d8a-456b-bef6-bdf8e33e3e7a"/>
+				<text><![CDATA[Tanggal : ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="143" y="0" width="100" height="20" uuid="872b3926-adc9-43bd-b7ed-dd50bbaedf1c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jenis Permohonan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="0" width="100" height="20" uuid="0c62bb90-26a0-4852-a022-fec50db0b26a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Pemohon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="0" width="100" height="20" uuid="5f8fedd4-983c-4ab2-af9d-8317407ffd8a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Luas Tanah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="0" width="100" height="20" uuid="2fd3907a-f3eb-4e2e-855e-d9d924df9a30"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status Hak]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="91" splitType="Stretch">
+			<textField>
+				<reportElement x="143" y="0" width="100" height="72" uuid="27b51bc6-2de7-48aa-8ea3-ece23d5ffdc1"/>
+				<textFieldExpression><![CDATA[$F{permohonan_jns}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="0" width="100" height="20" uuid="9b67ebc5-e31d-4071-b8af-4c6c53d54150"/>
+				<textFieldExpression><![CDATA[$F{pemohon_nmpmhn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="0" width="100" height="20" uuid="1486cdda-113a-4cbb-8068-f6ecb1f4bc45"/>
+				<textFieldExpression><![CDATA[$F{permohonan_vlm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="0" width="100" height="20" uuid="4e85e214-d130-4268-87a0-3b3ce1f8fee2"/>
+				<textFieldExpression><![CDATA[$F{permohonan_haktanah}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

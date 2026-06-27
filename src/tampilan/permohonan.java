@@ -7,9 +7,13 @@ package tampilan;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author ADVAN
@@ -51,11 +55,23 @@ public class permohonan extends javax.swing.JInternalFrame {
         aktif();
         datatable();
     }
-    
+    public void cetak() {
+        try{
+            String path="./src/report/reportPermohonan.jasper";
+            HashMap parameter = new HashMap();
+            parameter.put("idprmhnn", txtidpermohonan.getText());
+            String mohon = txtidpermohonan.getText();
+            System.out.println("id permohonan"+ mohon);
+            JasperPrint print = JasperFillManager.fillReport(path, parameter,conn);
+            JasperViewer.viewReport(print, false);
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(rootPane,"Dokumen tidak ada" +ex);
+        }
+    }
         protected void aktif(){
         txtidpermohonan.requestFocus();
     }
-
+        
     protected void kosong(){
         txtidpermohonan.setText("");
         tgl.setDate(null);
@@ -144,6 +160,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         breset = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         bcari = new javax.swing.JButton();
+        bcetak = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(252, 249, 235));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -294,6 +311,13 @@ public class permohonan extends javax.swing.JInternalFrame {
             }
         });
 
+        bcetak.setText("Cetak");
+        bcetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bcetakActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -351,7 +375,8 @@ public class permohonan extends javax.swing.JInternalFrame {
                                                 .addGap(31, 31, 31)
                                                 .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(94, 94, 94)
-                                                .addComponent(bcariidtn)))
+                                                .addComponent(bcariidtn))
+                                            .addComponent(bcetak))
                                         .addGap(67, 67, 67)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -370,15 +395,12 @@ public class permohonan extends javax.swing.JInternalFrame {
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(lablks)
                                                     .addComponent(labidtnh)))))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(13, 13, 13))))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
-                                .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(496, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -402,7 +424,9 @@ public class permohonan extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(bubah)
                                 .addComponent(breset)))
-                        .addGap(47, 47, 47)
+                        .addGap(18, 18, 18)
+                        .addComponent(bcetak)
+                        .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(boxjenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -622,6 +646,10 @@ public class permohonan extends javax.swing.JInternalFrame {
     pop.setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_bcariidtnActionPerformed
 
+    private void bcetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcetakActionPerformed
+        cetak();
+    }//GEN-LAST:event_bcetakActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -661,6 +689,7 @@ public class permohonan extends javax.swing.JInternalFrame {
     private javax.swing.JButton bcari;
     private javax.swing.JButton bcariid;
     private javax.swing.JButton bcariidtn;
+    private javax.swing.JButton bcetak;
     private javax.swing.JButton bhapus;
     private javax.swing.JButton bkeluar;
     private javax.swing.JComboBox<String> boxjenis;

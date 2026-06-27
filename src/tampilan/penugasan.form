@@ -73,8 +73,11 @@
                                   <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="poppemohon" min="-2" pref="90" max="-2" attributes="0"/>
                                           <Component id="idpenugasan" min="-2" pref="455" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="bcetak" min="-2" max="-2" attributes="0"/>
+                                              <Component id="poppemohon" min="-2" pref="90" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="365" max="-2" attributes="0"/>
@@ -200,10 +203,11 @@
                       <Component id="labidjdwl" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="popjadwal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labtgl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bcetak" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -664,6 +668,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="ID Permohonan"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="bcetak">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cetak"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bcetakActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
