@@ -27,7 +27,7 @@ public class popup_permohonan extends javax.swing.JDialog {
     }
     
     protected void datatable(){
-         Object[] Baris = {"ID Permohonan", "Nama Pemohon","No. Telepon", "Alamat", "Lokasi Tanah", "Volume Tanah", "Hak Tanah"};
+         Object[] Baris = {"ID Permohonan", "Nama Pemohon","No. Telepon", "Alamat", "Jenis Layanan", "Volume Tanah", "Lokasi Tanah", "Hak Tanah"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText(); // Sesuaikan nama komponen textfield cari Anda
         try {
@@ -40,8 +40,9 @@ public class popup_permohonan extends javax.swing.JDialog {
                     hasil.getString("nmpmhn"),
                     hasil.getString("notelp"),
                     hasil.getString("alm"),
-                    hasil.getString("lks"),
+                    hasil.getString("jns"),
                     hasil.getString("vlm"),
+                    hasil.getString("lks"),
                     hasil.getString("haktanah")
                 });
             }
@@ -124,9 +125,10 @@ public class popup_permohonan extends javax.swing.JDialog {
     String nama = popuppermohonan.getValueAt(baris, 1).toString();
     String telp = popuppermohonan.getValueAt(baris, 2).toString();
     String alamat = popuppermohonan.getValueAt(baris, 3).toString();
-    String lokasi = popuppermohonan.getValueAt(baris, 4).toString();
+     String jenislayanan = popuppermohonan.getValueAt(baris, 4).toString();
     String volume = popuppermohonan.getValueAt(baris, 5).toString();
-    String hak_tanah = popuppermohonan.getValueAt(baris, 6).toString();
+    String lokasi = popuppermohonan.getValueAt(baris, 6).toString();
+    String hak_tanah = popuppermohonan.getValueAt(baris, 7).toString();
     
     // Taktik baru: Deteksi otomatis apakah form utamanya adalah permohonan
     if (formPenugasan instanceof penugasan) {
@@ -135,8 +137,9 @@ public class popup_permohonan extends javax.swing.JDialog {
         fp.labnama.setText(nama);
         fp.labtelp.setText(telp);
         fp.labalamat.setText(alamat);
-        fp.lablokasi.setText(lokasi);
+        fp.labjl.setText(jenislayanan);
         fp.labvtanah.setText(volume);
+        fp.lablokasi.setText(lokasi);
         fp.labhtanah.setText(hak_tanah);
     }
     

@@ -31,8 +31,8 @@ public class tanah extends javax.swing.JInternalFrame {
     }
  protected void kosong(){
         txtid.setText("");
-        txtluas.setText("");
         txtlokasi.setText("");
+        txtluas.setText("");
         boxstatus.setSelectedIndex(0);
         boxhak.setSelectedItem(0);
         txtcari.setText("");
@@ -100,7 +100,7 @@ public class tanah extends javax.swing.JInternalFrame {
 
         txtluas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Tanah Negara", "Tanah Akad" }));
+        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tanah Negara", "Tanah Adat" }));
         boxstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxstatusActionPerformed(evt);
@@ -331,8 +331,8 @@ public class tanah extends javax.swing.JInternalFrame {
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
             stat.setString(1, txtid.getText());
-            stat.setString(3, txtlokasi.getText());
-            stat.setString(2, txtluas.getText());
+            stat.setString(2, txtlokasi.getText());
+            stat.setString(3, txtluas.getText());
             stat.setString(4, boxstatus.getSelectedItem().toString());
             stat.setString(5, boxhak.getSelectedItem().toString());
             stat.executeUpdate();
@@ -355,8 +355,8 @@ public class tanah extends javax.swing.JInternalFrame {
         PreparedStatement stat = conn.prepareStatement(sql);
         
         stat.setString(1, txtlokasi.getText());
-        stat.setString(3, txtluas.getText());
-        stat.setString(2, boxstatus.getSelectedItem().toString());
+        stat.setString(2, txtluas.getText());
+        stat.setString(3, boxstatus.getSelectedItem().toString());
         stat.setString(4, boxhak.getSelectedItem().toString()); // haktanah
         stat.setString(5, txtid.getText());                     // idtnh (kriteria WHERE)
         

@@ -18,7 +18,7 @@ public class penugasan extends javax.swing.JInternalFrame {
 private Connection conn = new koneksi().connect();
 private DefaultTableModel tabmode;
 
-    public String idPermohonanTerpilih, namaPemohonTerpilih, noTelpTerpilih, alamatTerpilih, lokasiTerpilih, volumeTerpilih, hakTanahTerpilih;
+    public String idPermohonanTerpilih, namaPemohonTerpilih, noTelpTerpilih, alamatTerpilih, jenisLayananTerpilih, volumeTerpilih, lokasiTerpilih, hakTanahTerpilih;
     public String idJadwalTerpilih, tglJadwalTerpilih;
     public String idPetugasTerpilih, namaPetugasTerpilih, NIPTerpilih, noKontakTerpilih;
    
@@ -27,8 +27,9 @@ private DefaultTableModel tabmode;
         labnama.setText(namaPemohonTerpilih);
         labtelp.setText(noTelpTerpilih);
         labalamat.setText(alamatTerpilih);
-        lablokasi.setText(lokasiTerpilih);
-        labvtanah.setText(volumeTerpilih);
+        labjl.setText(jenisLayananTerpilih);
+        labvtanah.setText(lokasiTerpilih);
+        lablokasi.setText(volumeTerpilih);
         labhtanah.setText(hakTanahTerpilih);
     }
     
@@ -63,8 +64,9 @@ private DefaultTableModel tabmode;
         labnama.setText("");
         labtelp.setText("");
         labalamat.setText("");
-        lablokasi.setText("");
+        labjl.setText("");
         labvtanah.setText("");
+        lablokasi.setText("");
         labhtanah.setText("");
         labidjdwl.setText("");
         labtgl.setText("");
@@ -76,8 +78,8 @@ private DefaultTableModel tabmode;
     }
  protected void datatable() {
     Object[] Baris = {
-        "ID Penugasan", "ID Permohonan", "Nama Pemohon", "No Telpon", "Alamat", 
-        "Lokasi", "Volume Tanah", "Hak Tanah", "ID Jadwal", "Tanggal", 
+        "ID Penugasan", "ID Permohonan", "Nama Pemohon", "No Telpon", "Alamat","Jenis Layanan",  
+        "Volume Tanah", "Lokasi Tanah", "Hak Tanah", "ID Jadwal", "Tanggal", 
         "ID Petugas", "Nama Petugas", "NIP", "No. Kontak"
     };
     
@@ -95,7 +97,8 @@ private DefaultTableModel tabmode;
                 hasil.getString("idprmhnn"),        // Kolom 2
                 hasil.getString("nmpmhn"),    // Kolom 3
                 hasil.getString("notelp"),      // Kolom 4
-                hasil.getString("alm"),      // Kolom 5
+                hasil.getString("alm"),
+                hasil.getString("jns"),      // Kolom 5
                 hasil.getString("lks"),      // Kolom 6
                 hasil.getString("vlm"),      // Kolom 7
                 hasil.getString("haktanah"),         // Kolom 8
@@ -166,6 +169,8 @@ private DefaultTableModel tabmode;
         labidjdwl = new javax.swing.JLabel();
         labidptg = new javax.swing.JLabel();
         labid = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        labjl = new javax.swing.JLabel();
 
         bcari1.setText("Cari");
         bcari1.addActionListener(new java.awt.event.ActionListener() {
@@ -362,11 +367,16 @@ private DefaultTableModel tabmode;
         labid.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         labid.setText("jLabel9");
 
+        jLabel9.setText("Jenis Layanan");
+
+        labjl.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labjl.setText("jLabel12");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
@@ -374,30 +384,52 @@ private DefaultTableModel tabmode;
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(185, 185, 185)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(poppemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(idpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(poppemohon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(idpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(365, 365, 365)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(breset, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel18))
-                                .addGap(72, 72, 72)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labtelp)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labid)
-                                            .addComponent(labnama)
-                                            .addComponent(labalamat)
-                                            .addComponent(lablokasi)
-                                            .addComponent(labvtanah))
-                                        .addGap(490, 490, 490)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel18)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel10))
+                                        .addGap(632, 632, 632)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(72, 72, 72)
+                                                        .addComponent(labtelp))
+                                                    .addComponent(jLabel8)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(185, 185, 185)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(labid)
+                                                            .addComponent(labnama)
+                                                            .addComponent(labjl)
+                                                            .addComponent(labalamat)
+                                                            .addComponent(labvtanah)
+                                                            .addComponent(lablokasi)
+                                                            .addComponent(labhtanah))))
+                                                .addGap(48, 48, 48)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(332, 332, 332)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6)
                                             .addGroup(layout.createSequentialGroup()
@@ -425,26 +457,13 @@ private DefaultTableModel tabmode;
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labhtanah)
-                                        .addGap(490, 490, 490)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(415, 415, 415)
                                 .addComponent(jLabel1))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bkeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(breset, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)
-                                .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70)
-                                .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(692, 692, 692)
+                        .addComponent(bkeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -455,12 +474,16 @@ private DefaultTableModel tabmode;
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
-                            .addComponent(labpetu))
-                        .addGap(33, 33, 33)
+                            .addComponent(labpetu)
+                            .addComponent(jLabel7)
+                            .addComponent(labtelp)
+                            .addComponent(bsimpan)
+                            .addComponent(breset))
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
                             .addComponent(labnip))
-                        .addGap(10, 10, 10))
+                        .addGap(1, 1, 1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -476,64 +499,67 @@ private DefaultTableModel tabmode;
                                     .addComponent(labid)
                                     .addComponent(jLabel26)
                                     .addComponent(labidjdwl)
-                                    .addComponent(popjadwal))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(labtelp))
-                                .addGap(30, 30, 30))
+                                    .addComponent(popjadwal)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(238, 238, 238)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel11)
                                     .addComponent(labnama)
                                     .addComponent(jLabel27)
-                                    .addComponent(labtgl))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(labtgl))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(labidptg)
                             .addComponent(poppetugas))
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(labalamat))
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(lablokasi))))
+                        .addGap(102, 102, 102)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(labalamat))
+                                .addGap(40, 40, 40))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(bubah)
+                                    .addComponent(bhapus))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(labjl))
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(labvtanah)
                             .addComponent(jLabel6)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
                             .addComponent(labkontak))
                         .addGap(76, 76, 76)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bcari))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bsimpan)
-                            .addComponent(breset)
-                            .addComponent(bubah)
-                            .addComponent(bhapus))
-                        .addGap(107, 107, 107)
-                        .addComponent(bkeluar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bcari))
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(lablokasi))
+                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
                             .addComponent(labhtanah))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bkeluar)))
                 .addGap(243, 243, 243))
         );
 
@@ -556,8 +582,8 @@ private DefaultTableModel tabmode;
     }//GEN-LAST:event_bresetActionPerformed
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
-        String sql = "INSERT INTO penugasan (idpngsn, idprmhnn, nmpmhn, notelp, alm, lks, vlm, haktanah, idjdwl, tggl, idptgs, nmptgs, nip, notlp)"
-               + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO penugasan (idpngsn, idprmhnn, nmpmhn, notelp, alm, jns, vlm, lks, haktanah, idjdwl, tggl, idptgs, nmptgs, nip, notlp)"
+               + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
     
     try {
         PreparedStatement stat = conn.prepareStatement(sql);
@@ -568,15 +594,16 @@ private DefaultTableModel tabmode;
         stat.setString(3, labnama.getText());        // idprmhnn
         stat.setString(4, labtelp.getText());    // idjdwl
         stat.setString(5, labalamat.getText());     // idptgs
-        stat.setString(6, lablokasi.getText());      // nmpmhn
-        stat.setString(7, labvtanah.getText());      // notelp
-        stat.setString(8, labhtanah.getText());    // alm
-        stat.setString(9, labidjdwl.getText());    // lks
-        stat.setString(10, labtgl.getText());   // vlm
-        stat.setString(11, labidptg.getText());   // haktanah
-        stat.setString(12, labpetu.getText());     // nmptgs
-        stat.setString(13, labnip.getText());      // nip
-        stat.setString(14, labkontak.getText());   // notlp
+        stat.setString(6, labjl.getText());
+        stat.setString(7, labvtanah.getText());      // nmpmhn
+        stat.setString(8, lablokasi.getText());      // notelp
+        stat.setString(9, labhtanah.getText());    // alm
+        stat.setString(10, labidjdwl.getText());    // lks
+        stat.setString(11, labtgl.getText());   // vlm
+        stat.setString(12, labidptg.getText());   // haktanah
+        stat.setString(13, labpetu.getText());     // nmptgs
+        stat.setString(14, labnip.getText());      // nip
+        stat.setString(15, labkontak.getText());   // notlp
         
         stat.executeUpdate();
         JOptionPane.showMessageDialog(null, "data berhasil disimpan");
@@ -592,7 +619,7 @@ private DefaultTableModel tabmode;
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
         try {
-            String sql = "update penugasan set idpngsn=?, idprmhnn=?, nmpmhn=?, notelp=?, alm=?, lks=?, vlm=?, haktanah=?, idjdwl=?, tggl=?, idptgs=?, nmptgs=?, nip=?, notlp=?";
+            String sql = "update penugasan set idpngsn=?, idprmhnn=?, nmpmhn=?, notelp=?, alm=?, jns=?, vlm=?, lks=?, haktanah=?, idjdwl=?, tggl=?, idptgs=?, nmptgs=?, nip=?, notlp=?";
             PreparedStatement stat = conn.prepareStatement(sql);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             stat.setString(1, idpenugasan.getText());
@@ -600,15 +627,16 @@ private DefaultTableModel tabmode;
             stat.setString(3, labnama.getText());
             stat.setString(4, labtelp.getText());
             stat.setString(5, labalamat.getText());
-            stat.setString(6, lablokasi.getText());
+            stat.setString(6, labjl.getText());
             stat.setString(7, labvtanah.getText());
-            stat.setString(8, labhtanah.getText());
-            stat.setString(9,labidjdwl.getText());
-            stat.setString(10,labtgl.getText());
-            stat.setString(11,labidptg.getText());
-            stat.setString(12,labpetu.getText());
-            stat.setString(13,labnip.getText());
-            stat.setString(14,labkontak.getText());
+            stat.setString(8, lablokasi.getText());
+            stat.setString(9, labhtanah.getText());
+            stat.setString(10,labidjdwl.getText());
+            stat.setString(11,labtgl.getText());
+            stat.setString(12,labidptg.getText());
+            stat.setString(13,labpetu.getText());
+            stat.setString(14,labnip.getText());
+            stat.setString(15,labkontak.getText());
             
             int result = stat.executeUpdate();
 
@@ -659,16 +687,17 @@ int bar = tblpenugasan.getSelectedRow();
     labid.setText(model.getValueAt(bar, 1).toString());       
     labnama.setText(model.getValueAt(bar, 2).toString());        
     labtelp.setText(model.getValueAt(bar, 3).toString());    
-    labalamat.setText(model.getValueAt(bar, 4).toString());     
-    lablokasi.setText(model.getValueAt(bar, 5).toString());      
+    labalamat.setText(model.getValueAt(bar, 4).toString());  
+    labjl.setText(model.getValueAt(bar, 5).toString());
     labvtanah.setText(model.getValueAt(bar, 6).toString());      
-    labhtanah.setText(model.getValueAt(bar, 7).toString());    
-    labidjdwl.setText(model.getValueAt(bar, 8).toString());    
-    labtgl.setText(model.getValueAt(bar, 9).toString());    
-    labidptg.setText(model.getValueAt(bar, 10).toString());   
-    labpetu.setText(model.getValueAt(bar, 11).toString());     
-    labnip.setText(model.getValueAt(bar, 12).toString());      
-    labkontak.setText(model.getValueAt(bar, 13).toString());
+    lablokasi.setText(model.getValueAt(bar, 7).toString());      
+    labhtanah.setText(model.getValueAt(bar, 8).toString());    
+    labidjdwl.setText(model.getValueAt(bar, 9).toString());    
+    labtgl.setText(model.getValueAt(bar, 10).toString());    
+    labidptg.setText(model.getValueAt(bar, 11).toString());   
+    labpetu.setText(model.getValueAt(bar, 12).toString());     
+    labnip.setText(model.getValueAt(bar, 13).toString());      
+    labkontak.setText(model.getValueAt(bar, 14).toString());
     }//GEN-LAST:event_tblpenugasanMouseClicked
 
     private void bcari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcari1ActionPerformed
@@ -773,12 +802,14 @@ popup_tugas popup = new popup_tugas(null, true);
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JLabel labalamat;
     public javax.swing.JLabel labhtanah;
     public javax.swing.JLabel labid;
     public javax.swing.JLabel labidjdwl;
     public javax.swing.JLabel labidptg;
+    public javax.swing.JLabel labjl;
     public javax.swing.JLabel labkontak;
     public javax.swing.JLabel lablokasi;
     public javax.swing.JLabel labnama;
