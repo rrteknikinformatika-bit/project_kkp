@@ -72,6 +72,8 @@ public class dashboard_utama extends javax.swing.JFrame {
                    
     }
 
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,6 +94,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         btugas = new javax.swing.JButton();
         bkeluar = new javax.swing.JButton();
         badmin = new javax.swing.JButton();
+        bhasil = new javax.swing.JButton();
         sidebarPanelAtas = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         desktop = new javax.swing.JDesktopPane();
@@ -338,24 +341,49 @@ public class dashboard_utama extends javax.swing.JFrame {
             }
         });
 
+        bhasil.setBackground(new java.awt.Color(0, 51, 102));
+        bhasil.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bhasil.setForeground(new java.awt.Color(255, 255, 255));
+        bhasil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/hasil.png"))); // NOI18N
+        bhasil.setText("Hasil");
+        bhasil.setBorderPainted(false);
+        bhasil.setContentAreaFilled(false);
+        bhasil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bhasil.setOpaque(true);
+        bhasil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                bhasilMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bhasilMouseExited(evt);
+            }
+        });
+        bhasil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bhasilActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout sidebarPanelKiriLayout = new javax.swing.GroupLayout(sidebarPanelKiri);
         sidebarPanelKiri.setLayout(sidebarPanelKiriLayout);
         sidebarPanelKiriLayout.setHorizontalGroup(
             sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
-                .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bprmhnan, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bhome, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(badmin, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(babsen, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bpemohon, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btanah, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btugas, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bjadwal, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(bkeluar)
-                        .addComponent(bpenugasan)))
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bhome)
+                    .addComponent(badmin)
+                    .addComponent(babsen)
+                    .addComponent(bpemohon)
+                    .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(bkeluar))
+                    .addComponent(bpenugasan)
+                    .addComponent(btanah)
+                    .addComponent(bprmhnan)
+                    .addComponent(btugas)
+                    .addComponent(bjadwal)
+                    .addComponent(bhasil))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         sidebarPanelKiriLayout.setVerticalGroup(
             sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,19 +396,21 @@ public class dashboard_utama extends javax.swing.JFrame {
                 .addComponent(babsen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bpemohon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(btanah)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bprmhnan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btugas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bjadwal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btugas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bpenugasan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bhasil)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addComponent(bkeluar)
-                .addGap(36, 36, 36))
+                .addGap(258, 258, 258))
         );
 
         getContentPane().add(sidebarPanelKiri, java.awt.BorderLayout.LINE_START);
@@ -409,11 +439,11 @@ public class dashboard_utama extends javax.swing.JFrame {
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1719, Short.MAX_VALUE)
+            .addGap(0, 1764, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addGap(0, 958, Short.MAX_VALUE)
         );
 
         getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
@@ -435,7 +465,7 @@ public class dashboard_utama extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(201, 201, 201)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1222, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1247, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addContainerGap())
         );
@@ -593,6 +623,22 @@ public class dashboard_utama extends javax.swing.JFrame {
         bukaForm(new admin());
     }//GEN-LAST:event_badminMouseClicked
 
+    private void bhasilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bhasilMouseEntered
+        bhasil.setBackground(new Color(0, 80, 157));
+    }//GEN-LAST:event_bhasilMouseEntered
+
+    private void bhasilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bhasilMouseExited
+        bhasil.setBackground(new Color(0,51,102));
+    }//GEN-LAST:event_bhasilMouseExited
+
+    private void bhasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bhasilActionPerformed
+        try {
+            bukaForm(new hasil());
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"form gagal di panggil" +e);
+        }
+    }//GEN-LAST:event_bhasilActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -603,17 +649,13 @@ public class dashboard_utama extends javax.swing.JFrame {
                 new dashboard_utama().setVisible(true);
             }
         });
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new dashboard_utama().setVisible(true);
-            }
-        });
+ 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton babsen;
     private javax.swing.JButton badmin;
+    private javax.swing.JButton bhasil;
     private javax.swing.JButton bhome;
     private javax.swing.JButton bjadwal;
     private javax.swing.JButton bkeluar;
