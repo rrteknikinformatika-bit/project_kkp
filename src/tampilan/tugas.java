@@ -92,6 +92,7 @@ public class tugas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("jLabel2");
 
+        setBackground(new java.awt.Color(252, 249, 235));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N

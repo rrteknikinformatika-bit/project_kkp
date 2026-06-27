@@ -144,6 +144,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         bcariid = new javax.swing.JButton();
         bcariidtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(252, 249, 235));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N

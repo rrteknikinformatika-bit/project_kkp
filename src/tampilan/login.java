@@ -119,6 +119,8 @@ login.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 470));
 
+        jPanel3.setBackground(new java.awt.Color(252, 249, 235));
+
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN PETUGAS");

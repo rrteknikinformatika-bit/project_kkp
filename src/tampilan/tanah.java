@@ -91,6 +91,7 @@ public class tanah extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         boxhak = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(252, 249, 235));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N

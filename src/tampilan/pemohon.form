@@ -150,7 +150,6 @@
                                       <Component id="bsimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="502" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jScrollPane2" min="-2" pref="266" max="-2" attributes="0"/>
@@ -160,7 +159,6 @@
                                       <Component id="bubah" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="bkeluar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="234" pref="500" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -170,9 +168,9 @@
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="500" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

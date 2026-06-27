@@ -103,7 +103,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         sidebarPanelKiri.setBackground(new java.awt.Color(0, 51, 102));
 
         badmin.setBackground(new java.awt.Color(0, 51, 102));
-        badmin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        badmin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         badmin.setForeground(new java.awt.Color(255, 255, 255));
         badmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/admin.png"))); // NOI18N
         badmin.setText("Admin");
@@ -126,7 +126,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         });
 
         bpemohon.setBackground(new java.awt.Color(0, 51, 102));
-        bpemohon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bpemohon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bpemohon.setForeground(new java.awt.Color(255, 255, 255));
         bpemohon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/pemohon.png"))); // NOI18N
         bpemohon.setText("Pemohon");
@@ -149,7 +149,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         });
 
         babsen.setBackground(new java.awt.Color(0, 51, 102));
-        babsen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        babsen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         babsen.setForeground(new java.awt.Color(255, 255, 255));
         babsen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/absen.png"))); // NOI18N
         babsen.setText("Absen");
@@ -172,7 +172,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         });
 
         btanah.setBackground(new java.awt.Color(0, 51, 102));
-        btanah.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btanah.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btanah.setForeground(new java.awt.Color(255, 255, 255));
         btanah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/tanah.png"))); // NOI18N
         btanah.setText("Tanah");
@@ -195,7 +195,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         });
 
         bjadwal.setBackground(new java.awt.Color(0, 51, 102));
-        bjadwal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bjadwal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bjadwal.setForeground(new java.awt.Color(255, 255, 255));
         bjadwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/jadwal.png"))); // NOI18N
         bjadwal.setText("Jadwal");
@@ -218,7 +218,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         });
 
         bprmhnan.setBackground(new java.awt.Color(0, 51, 102));
-        bprmhnan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bprmhnan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bprmhnan.setForeground(new java.awt.Color(255, 255, 255));
         bprmhnan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/permohonan.png"))); // NOI18N
         bprmhnan.setText("Permohonan");
@@ -241,7 +241,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         });
 
         bpenugasan.setBackground(new java.awt.Color(0, 51, 102));
-        bpenugasan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bpenugasan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bpenugasan.setForeground(new java.awt.Color(255, 255, 255));
         bpenugasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/delegation.png"))); // NOI18N
         bpenugasan.setText("Penugasan");
@@ -264,7 +264,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         });
 
         btugas.setBackground(new java.awt.Color(0, 51, 102));
-        btugas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btugas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btugas.setForeground(new java.awt.Color(255, 255, 255));
         btugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/tugas.png"))); // NOI18N
         btugas.setText("Tugas");
@@ -287,7 +287,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         });
 
         bkeluar.setBackground(new java.awt.Color(0, 51, 102));
-        bkeluar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        bkeluar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         bkeluar.setForeground(new java.awt.Color(255, 255, 255));
         bkeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/logout.png"))); // NOI18N
         bkeluar.setText("Logout");
@@ -317,31 +317,25 @@ public class dashboard_utama extends javax.swing.JFrame {
             sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
                 .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(bpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(bprmhnan, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btanah, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(badmin, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(bpemohon, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
-                                    .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(babsen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(bjadwal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btugas, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(bpenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(bprmhnan, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btanah, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(badmin, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(bpemohon, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                            .addComponent(babsen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(bjadwal, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btugas, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(bkeluar)))
                 .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarPanelKiriLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bkeluar)
-                .addGap(36, 36, 36))
         );
         sidebarPanelKiriLayout.setVerticalGroup(
             sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,9 +356,9 @@ public class dashboard_utama extends javax.swing.JFrame {
                 .addComponent(bjadwal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bpenugasan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(125, 125, 125)
                 .addComponent(bkeluar)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarPanelKiri, java.awt.BorderLayout.LINE_START);
@@ -381,12 +375,12 @@ public class dashboard_utama extends javax.swing.JFrame {
         sidebarPanelAtasLayout.setHorizontalGroup(
             sidebarPanelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidebarPanelAtasLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1039, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         sidebarPanelAtasLayout.setVerticalGroup(
             sidebarPanelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getContentPane().add(sidebarPanelAtas, java.awt.BorderLayout.PAGE_START);
@@ -395,7 +389,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1096, Short.MAX_VALUE)
+            .addGap(0, 1095, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,9 +413,9 @@ public class dashboard_utama extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(208, 208, 208)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 601, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 799, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addContainerGap())
         );
@@ -441,11 +435,11 @@ public class dashboard_utama extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void babsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_babsenActionPerformed
-     bukaForm(new absenpetugas());
+     bukaForm(new absen());
     }//GEN-LAST:event_babsenActionPerformed
 
     private void badminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_badminActionPerformed
-    bukaForm(new petugas());
+    bukaForm(new admin());
     }//GEN-LAST:event_badminActionPerformed
 
     private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
