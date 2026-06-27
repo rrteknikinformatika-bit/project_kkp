@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20551ef7-eb5c-46f1-a689-fa0987399672">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     absen_admin.`id_absen` AS absen_admin_id_absen,
+     absen_admin.`kd_admin` AS absen_admin_kd_admin,
+     absen_admin.`tgl` AS absen_admin_tgl,
+     absen_admin.`kehadiran` AS absen_admin_kehadiran,
+     absen_admin.`keterangan` AS absen_admin_keterangan,
+     admin.`kd_admin` AS admin_kd_admin,
+     admin.`nm_admin` AS admin_nm_admin,
+     admin.`password` AS admin_password,
+     admin.`jenis_kelamin` AS admin_jenis_kelamin,
+     admin.`no_telepon` AS admin_no_telepon
+FROM
+     `admin` admin INNER JOIN `absen_admin` absen_admin ON admin.`kd_admin` = absen_admin.`kd_admin`]]>
+	</queryString>
+	<field name="absen_admin_id_absen" class="java.lang.Integer"/>
+	<field name="absen_admin_kd_admin" class="java.lang.String"/>
+	<field name="absen_admin_tgl" class="java.sql.Date"/>
+	<field name="absen_admin_kehadiran" class="java.lang.String"/>
+	<field name="absen_admin_keterangan" class="java.lang.String"/>
+	<field name="admin_kd_admin" class="java.lang.String"/>
+	<field name="admin_nm_admin" class="java.lang.String"/>
+	<field name="admin_password" class="java.lang.String"/>
+	<field name="admin_jenis_kelamin" class="java.lang.String"/>
+	<field name="admin_no_telepon" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="199" y="26" width="165" height="20" uuid="02b7d2e7-caa2-4932-bcb0-9c9f87c34b46"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN KEHADIRAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="34" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="4be59f1c-0728-41e0-b87e-4e22870190cc"/>
+				<text><![CDATA[JENIS KELAMIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f672e2b1-654b-4c5e-b4d1-23e4e06465cb"/>
+				<text><![CDATA[NAMA ADMIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="110" height="20" uuid="90314b74-eafe-4114-8392-72e04810dc79"/>
+				<text><![CDATA[STATUS KEHADIRAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="e7f0b489-f657-48f2-94ec-9a4bc43edc00"/>
+				<text><![CDATA[TANGGAL KEHADIRAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="b1b39a70-92af-4cd3-b98e-7670bd2cfbf0"/>
+				<text><![CDATA[NO TELEPON]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="64ea7ec7-548d-4e7f-bc45-b97ea022f446"/>
+				<textFieldExpression><![CDATA[$F{admin_nm_admin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="b261e2a3-1950-495d-8b16-9ca0997b5214"/>
+				<textFieldExpression><![CDATA[$F{absen_admin_tgl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="a6c0fdfb-ca34-4c1d-a420-664654b0ffe7"/>
+				<textFieldExpression><![CDATA[$F{absen_admin_kehadiran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="7ef3f2ec-f47e-4c36-a39a-06fff48d4f5a"/>
+				<textFieldExpression><![CDATA[$F{admin_no_telepon}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="22cbe7cc-28b8-4f2e-9176-8d32c4b809db"/>
+				<textFieldExpression><![CDATA[$F{admin_jenis_kelamin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
