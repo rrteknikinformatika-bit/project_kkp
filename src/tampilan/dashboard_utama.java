@@ -374,16 +374,14 @@ public class dashboard_utama extends javax.swing.JFrame {
                     .addComponent(badmin)
                     .addComponent(babsen)
                     .addComponent(bpemohon)
-                    .addGroup(sidebarPanelKiriLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(bkeluar))
                     .addComponent(bpenugasan)
                     .addComponent(btanah)
                     .addComponent(bprmhnan)
                     .addComponent(btugas)
                     .addComponent(bjadwal)
-                    .addComponent(bhasil))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(bhasil)
+                    .addComponent(bkeluar))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         sidebarPanelKiriLayout.setVerticalGroup(
             sidebarPanelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,9 +406,9 @@ public class dashboard_utama extends javax.swing.JFrame {
                 .addComponent(bpenugasan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bhasil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addGap(92, 92, 92)
                 .addComponent(bkeluar)
-                .addGap(258, 258, 258))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         getContentPane().add(sidebarPanelKiri, java.awt.BorderLayout.LINE_START);
@@ -439,7 +437,7 @@ public class dashboard_utama extends javax.swing.JFrame {
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1764, Short.MAX_VALUE)
+            .addGap(0, 1738, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

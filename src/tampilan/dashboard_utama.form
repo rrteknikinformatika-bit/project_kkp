@@ -44,18 +44,15 @@
                       <Component id="badmin" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="babsen" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="bpemohon" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="bkeluar" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="bpenugasan" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btanah" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="bprmhnan" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btugas" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="bjadwal" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="bhasil" min="-2" max="-2" attributes="0"/>
+                      <Component id="bkeluar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -82,9 +79,9 @@
                   <Component id="bpenugasan" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="bhasil" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="101" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                   <Component id="bkeluar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
+                  <EmptySpace pref="256" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -450,7 +447,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1764" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1738" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
