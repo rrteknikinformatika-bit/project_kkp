@@ -23,6 +23,27 @@ public class popup_permohonan extends javax.swing.JDialog {
     public popup_permohonan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        bcari.setContentAreaFilled(false);
+            bcari.setFocusPainted(false);
+            bcari.setBorderPainted(false);
+            bcari.setOpaque(false);
+            bcari.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
         datatable();
     }
     
@@ -90,6 +111,7 @@ public class popup_permohonan extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(popuppermohonan);
 
+        bcari.setForeground(new java.awt.Color(255, 255, 255));
         bcari.setText("Cari");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

@@ -21,6 +21,117 @@ public class tugas extends javax.swing.JInternalFrame {
      */
     public tugas() {
         initComponents();
+        
+        bsimpan.setContentAreaFilled(false);
+            bsimpan.setFocusPainted(false);
+            bsimpan.setBorderPainted(false);
+            bsimpan.setOpaque(false);
+            bsimpan.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bubah.setContentAreaFilled(false);
+            bubah.setFocusPainted(false);
+            bubah.setBorderPainted(false);
+            bubah.setOpaque(false);
+            bubah.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            breset.setContentAreaFilled(false);
+            breset.setFocusPainted(false);
+            breset.setBorderPainted(false);
+            breset.setOpaque(false);
+            breset.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bhapus.setContentAreaFilled(false);
+            bhapus.setFocusPainted(false);
+            bhapus.setBorderPainted(false);
+            bhapus.setOpaque(false);
+            bhapus.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bcari.setContentAreaFilled(false);
+            bcari.setFocusPainted(false);
+            bcari.setBorderPainted(false);
+            bcari.setOpaque(false);
+            bcari.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+        
         kosong();
         aktif();
         datatable();
@@ -83,7 +194,6 @@ public class tugas extends javax.swing.JInternalFrame {
         breset = new javax.swing.JButton();
         txtidpetugas = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        bkeluar = new javax.swing.JButton();
         txtnamapetugas = new javax.swing.JTextField();
         txtcari = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -118,6 +228,7 @@ public class tugas extends javax.swing.JInternalFrame {
             }
         });
 
+        bsimpan.setForeground(new java.awt.Color(255, 255, 255));
         bsimpan.setText("Simpan");
         bsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +236,7 @@ public class tugas extends javax.swing.JInternalFrame {
             }
         });
 
+        bubah.setForeground(new java.awt.Color(255, 255, 255));
         bubah.setText("Ubah");
         bubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +244,7 @@ public class tugas extends javax.swing.JInternalFrame {
             }
         });
 
+        bhapus.setForeground(new java.awt.Color(255, 255, 255));
         bhapus.setText("Hapus");
         bhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +255,7 @@ public class tugas extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel3.setText("ID Petugas");
 
+        breset.setForeground(new java.awt.Color(255, 255, 255));
         breset.setText("Reset");
         breset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,13 +272,6 @@ public class tugas extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel4.setText("Nama Petugas");
-
-        bkeluar.setText("Keluar");
-        bkeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bkeluarActionPerformed(evt);
-            }
-        });
 
         txtnamapetugas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtnamapetugas.addActionListener(new java.awt.event.ActionListener() {
@@ -206,6 +313,7 @@ public class tugas extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tbltugas);
 
+        bcari.setForeground(new java.awt.Color(255, 255, 255));
         bcari.setText("Cari");
         bcari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,45 +331,45 @@ public class tugas extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(20, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtkontak)
-                            .addComponent(txtnip)
-                            .addComponent(txtidpetugas)
-                            .addComponent(txtnamapetugas, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1234, 1234, 1234))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(37, 37, 37)
-                            .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtkontak)
+                                    .addComponent(txtnip)
+                                    .addComponent(txtidpetugas)
+                                    .addComponent(txtnamapetugas, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1234, 1234, 1234))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(493, 493, 493)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(breset, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(493, 493, 493)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(breset, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(bkeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,14 +399,13 @@ public class tugas extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(86, 86, 86)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(breset, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bkeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(230, Short.MAX_VALUE))
+                    .addComponent(breset, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -402,10 +509,6 @@ datatable();
         datatable();
     }//GEN-LAST:event_bcariActionPerformed
 
-    private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
-        dispose();
-    }//GEN-LAST:event_bkeluarActionPerformed
-
     private void txtcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcariActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcariActionPerformed
@@ -471,7 +574,6 @@ txtkontak.setText(d);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bcari;
     private javax.swing.JButton bhapus;
-    private javax.swing.JButton bkeluar;
     private javax.swing.JButton breset;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;

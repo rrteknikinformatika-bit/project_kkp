@@ -22,6 +22,117 @@ public class tanah extends javax.swing.JInternalFrame {
      */
     public tanah() {
         initComponents();
+        
+         bsimpan.setContentAreaFilled(false);
+            bsimpan.setFocusPainted(false);
+            bsimpan.setBorderPainted(false);
+            bsimpan.setOpaque(false);
+            bsimpan.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bubah.setContentAreaFilled(false);
+            bubah.setFocusPainted(false);
+            bubah.setBorderPainted(false);
+            bubah.setOpaque(false);
+            bubah.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bbatal.setContentAreaFilled(false);
+            bbatal.setFocusPainted(false);
+            bbatal.setBorderPainted(false);
+            bbatal.setOpaque(false);
+            bbatal.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bhapus.setContentAreaFilled(false);
+            bhapus.setFocusPainted(false);
+            bhapus.setBorderPainted(false);
+            bhapus.setOpaque(false);
+            bhapus.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bcari.setContentAreaFilled(false);
+            bcari.setFocusPainted(false);
+            bcari.setBorderPainted(false);
+            bcari.setOpaque(false);
+            bcari.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+        
         kosong();
         aktif();
         datatable();
@@ -88,7 +199,6 @@ public class tanah extends javax.swing.JInternalFrame {
         boxhak = new javax.swing.JComboBox<>();
         bsimpan = new javax.swing.JButton();
         bubah = new javax.swing.JButton();
-        bkeluar = new javax.swing.JButton();
         bhapus = new javax.swing.JButton();
         bbatal = new javax.swing.JButton();
 
@@ -132,6 +242,7 @@ public class tanah extends javax.swing.JInternalFrame {
         });
 
         bcari.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        bcari.setForeground(new java.awt.Color(255, 255, 255));
         bcari.setText("CARI");
         bcari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +289,7 @@ public class tanah extends javax.swing.JInternalFrame {
         });
 
         bsimpan.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        bsimpan.setForeground(new java.awt.Color(255, 255, 255));
         bsimpan.setText("SIMPAN");
         bsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +298,7 @@ public class tanah extends javax.swing.JInternalFrame {
         });
 
         bubah.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        bubah.setForeground(new java.awt.Color(255, 255, 255));
         bubah.setText("UBAH");
         bubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,15 +306,8 @@ public class tanah extends javax.swing.JInternalFrame {
             }
         });
 
-        bkeluar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        bkeluar.setText("KELUAR");
-        bkeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bkeluarActionPerformed(evt);
-            }
-        });
-
         bhapus.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        bhapus.setForeground(new java.awt.Color(255, 255, 255));
         bhapus.setText("HAPUS");
         bhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,6 +316,7 @@ public class tanah extends javax.swing.JInternalFrame {
         });
 
         bbatal.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        bbatal.setForeground(new java.awt.Color(255, 255, 255));
         bbatal.setText("BATAL");
         bbatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,9 +333,9 @@ public class tanah extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(885, 885, 885))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,15 +355,9 @@ public class tanah extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(boxhak, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(440, 440, 440)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2))
-                        .addGap(235, 235, 235))
+                        .addGap(440, 440, 440))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addComponent(bsimpan)
                         .addGap(29, 29, 29)
                         .addComponent(bubah)
@@ -264,9 +365,14 @@ public class tanah extends javax.swing.JInternalFrame {
                         .addComponent(bhapus)
                         .addGap(41, 41, 41)
                         .addComponent(bbatal)
-                        .addGap(45, 45, 45)
-                        .addComponent(bkeluar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
+                .addGap(235, 235, 235))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,14 +401,13 @@ public class tanah extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(boxhak, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(94, 94, 94)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bsimpan)
                             .addComponent(bubah)
                             .addComponent(bhapus)
-                            .addComponent(bbatal)
-                            .addComponent(bkeluar))
-                        .addGap(810, 810, 810))
+                            .addComponent(bbatal))
+                        .addGap(878, 878, 878))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,10 +502,6 @@ public class tanah extends javax.swing.JInternalFrame {
         datatable(); // TODO add your handling code here:
     }//GEN-LAST:event_bbatalActionPerformed
 
-    private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
-        dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_bkeluarActionPerformed
-
     private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
         datatable();// TODO add your handling code here:
     }//GEN-LAST:event_bcariActionPerformed
@@ -478,7 +579,6 @@ boxhak.setSelectedItem(e);// TODO add your handling code here:
     private javax.swing.JButton bbatal;
     private javax.swing.JButton bcari;
     private javax.swing.JButton bhapus;
-    private javax.swing.JButton bkeluar;
     private javax.swing.JComboBox<String> boxhak;
     private javax.swing.JComboBox<String> boxstatus;
     private javax.swing.JButton bsimpan;

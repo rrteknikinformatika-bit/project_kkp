@@ -23,6 +23,27 @@ public class popup_tugas extends javax.swing.JDialog {
     public popup_tugas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+            bcaripetu.setContentAreaFilled(false);
+            bcaripetu.setFocusPainted(false);
+            bcaripetu.setBorderPainted(false);
+            bcaripetu.setOpaque(false);
+            bcaripetu.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
         datatable();
     }
     
@@ -70,6 +91,7 @@ public class popup_tugas extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(252, 249, 235));
 
+        bcaripetu.setForeground(new java.awt.Color(255, 255, 255));
         bcaripetu.setText("Cari");
         bcaripetu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

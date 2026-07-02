@@ -44,6 +44,161 @@ public class permohonan extends javax.swing.JInternalFrame {
 }
     public permohonan() {
         initComponents();
+        
+            bsimpan.setContentAreaFilled(false);
+            bsimpan.setFocusPainted(false);
+            bsimpan.setBorderPainted(false);
+            bsimpan.setOpaque(false);
+            bsimpan.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bubah.setContentAreaFilled(false);
+            bubah.setFocusPainted(false);
+            bubah.setBorderPainted(false);
+            bubah.setOpaque(false);
+            bubah.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            breset.setContentAreaFilled(false);
+            breset.setFocusPainted(false);
+            breset.setBorderPainted(false);
+            breset.setOpaque(false);
+            breset.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bhapus.setContentAreaFilled(false);
+            bhapus.setFocusPainted(false);
+            bhapus.setBorderPainted(false);
+            bhapus.setOpaque(false);
+            bhapus.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bcari.setContentAreaFilled(false);
+            bcari.setFocusPainted(false);
+            bcari.setBorderPainted(false);
+            bcari.setOpaque(false);
+            bcari.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+        
+            bcetak.setContentAreaFilled(false);
+            bcetak.setFocusPainted(false);
+            bcetak.setBorderPainted(false);
+            bcetak.setOpaque(false);
+            bcetak.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bcariid.setContentAreaFilled(false);
+            bcariid.setFocusPainted(false);
+            bcariid.setBorderPainted(false);
+            bcariid.setOpaque(false);
+            bcariid.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
         boxjenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {
         "Jenis Layanan",
         "Pengukuran dan Pemetaan kadastral",
@@ -129,7 +284,6 @@ public class permohonan extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         labhak = new javax.swing.JLabel();
         bcariid = new javax.swing.JButton();
-        bkeluar = new javax.swing.JButton();
         bcariidtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblpermohonan = new javax.swing.JTable();
@@ -175,6 +329,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         labhak.setText("jLabel21");
         jPanel1.add(labhak, new org.netbeans.lib.awtextra.AbsoluteConstraints(1057, 294, -1, -1));
 
+        bcariid.setForeground(new java.awt.Color(255, 255, 255));
         bcariid.setText("Cari");
         bcariid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,14 +337,6 @@ public class permohonan extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(bcariid, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 367, -1, -1));
-
-        bkeluar.setText("Keluar");
-        bkeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bkeluarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 760, 100, -1));
 
         bcariidtn.setText("Cari");
         bcariidtn.addActionListener(new java.awt.event.ActionListener() {
@@ -294,6 +441,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         labidtnh.setText("jLabel18");
         jPanel1.add(labidtnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(1057, 99, -1, -1));
 
+        bsimpan.setForeground(new java.awt.Color(255, 255, 255));
         bsimpan.setText("Simpan");
         bsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,6 +453,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         lablks.setText("jLabel19");
         jPanel1.add(lablks, new org.netbeans.lib.awtextra.AbsoluteConstraints(1057, 180, -1, -1));
 
+        bubah.setForeground(new java.awt.Color(255, 255, 255));
         bubah.setText("Ubah");
         bubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,6 +465,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         labvlm.setText("jLabel20");
         jPanel1.add(labvlm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1057, 208, -1, -1));
 
+        bhapus.setForeground(new java.awt.Color(255, 255, 255));
         bhapus.setText("Hapus");
         bhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,6 +474,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         });
         jPanel1.add(bhapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 723, 100, -1));
 
+        breset.setForeground(new java.awt.Color(255, 255, 255));
         breset.setText("Reset");
         breset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,6 +484,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         jPanel1.add(breset, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 760, 100, -1));
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(868, 370, 176, -1));
 
+        bcari.setForeground(new java.awt.Color(255, 255, 255));
         bcari.setText("Cari");
         bcari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,6 +498,7 @@ public class permohonan extends javax.swing.JInternalFrame {
         });
         jPanel1.add(bcari, new org.netbeans.lib.awtextra.AbsoluteConstraints(1078, 367, 152, -1));
 
+        bcetak.setForeground(new java.awt.Color(255, 255, 255));
         bcetak.setText("Cetak");
         bcetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -493,10 +646,6 @@ public class permohonan extends javax.swing.JInternalFrame {
         datatable();
     }//GEN-LAST:event_bresetActionPerformed
 
-    private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
-       dispose();
-    }//GEN-LAST:event_bkeluarActionPerformed
-
     private void bcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcariActionPerformed
         datatable();
     }//GEN-LAST:event_bcariActionPerformed
@@ -566,7 +715,6 @@ public class permohonan extends javax.swing.JInternalFrame {
     private javax.swing.JButton bcariidtn;
     private javax.swing.JButton bcetak;
     private javax.swing.JButton bhapus;
-    private javax.swing.JButton bkeluar;
     private javax.swing.JComboBox<String> boxjenis;
     private javax.swing.JButton breset;
     private javax.swing.JButton bsimpan;

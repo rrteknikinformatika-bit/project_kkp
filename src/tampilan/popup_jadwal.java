@@ -24,6 +24,27 @@ public class popup_jadwal extends javax.swing.JDialog {
     public popup_jadwal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+            bcarijadwal.setContentAreaFilled(false);
+            bcarijadwal.setFocusPainted(false);
+            bcarijadwal.setBorderPainted(false);
+            bcarijadwal.setOpaque(false);
+            bcarijadwal.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
         datatable();
     }
     protected void datatable(){
@@ -73,6 +94,7 @@ public class popup_jadwal extends javax.swing.JDialog {
             }
         });
 
+        bcarijadwal.setForeground(new java.awt.Color(255, 255, 255));
         bcarijadwal.setText("Cari");
         bcarijadwal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

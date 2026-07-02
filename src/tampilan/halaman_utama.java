@@ -5,7 +5,19 @@
  */
 package tampilan;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
+import koneksi.koneksi; 
 /**
  *
  * @author User
@@ -17,7 +29,10 @@ public class halaman_utama extends javax.swing.JInternalFrame {
      */
     public halaman_utama() {
         initComponents();
-        
+        buatGrafik();
+        tampilkanGrafikDariDB();
+        tampilkanGrafikHakTanah();
+        tampilkanGrafikLokasi();
         
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
@@ -25,7 +40,137 @@ public class halaman_utama extends javax.swing.JInternalFrame {
     
         
     }
+    
+    private void buatGrafik() {
+    // 1. Data untuk grafik
+    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    dataset.setValue(10, "Jumlah", "Januari");
+    dataset.setValue(25, "Jumlah", "Februari");
+    dataset.setValue(15, "Jumlah", "Maret");
 
+    // 2. Membuat Chart
+    JFreeChart chart = ChartFactory.createBarChart(
+            "Statistik Permohonan", // Judul Chart
+            "Bulan",                // Label Sumbu X
+            "Jumlah Data",          // Label Sumbu Y
+            dataset,                // Data
+            PlotOrientation.VERTICAL, 
+            false, true, false);
+
+    // 3. Menampilkan ke dalam Panel yang sudah kita buat tadi
+    ChartPanel chartPanel = new ChartPanel(chart);
+    chartPanel.setPreferredSize(new java.awt.Dimension(350, 250));
+    panelGrafik.setLayout(new java.awt.BorderLayout());
+    panelGrafik.add(chartPanel, java.awt.BorderLayout.CENTER);
+    panelGrafik.validate();
+}
+    
+    private void tampilkanGrafikDariDB() {
+    DefaultPieDataset dataset = new DefaultPieDataset();
+    
+    try {
+        // Panggil koneksi
+        koneksi objKoneksi = new koneksi();
+        Connection con = objKoneksi.connect();
+        Statement st = con.createStatement();
+        
+        // Query database
+        ResultSet rs = st.executeQuery("SELECT jns, COUNT(*) as total FROM permohonan GROUP BY jns");
+        
+        while (rs.next()) {
+            dataset.setValue(rs.getString("jns"), rs.getInt("total"));
+        }
+        
+        // Buat Grafik
+        JFreeChart chart = ChartFactory.createPieChart("Jenis Permohonan", dataset, true, true, false);
+        chart.getTitle().setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 12));
+        chart.getLegend().setItemFont(new java.awt.Font("SansSerif", java.awt.Font.PLAIN, 10));
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(300, 200));        
+        panelGrafikPie.removeAll();
+        panelGrafikPie.setLayout(new java.awt.BorderLayout());
+        panelGrafikPie.add(chartPanel, java.awt.BorderLayout.CENTER);
+        panelGrafikPie.validate();
+        
+    } catch (Exception e) {
+        System.out.println("Gagal memuat grafik: " + e.getMessage());
+    }
+}
+    
+    private void tampilkanGrafikHakTanah() {
+    DefaultPieDataset dataset = new DefaultPieDataset();
+    
+    try {
+        koneksi objKoneksi = new koneksi();
+        Connection con = objKoneksi.connect();
+        Statement st = con.createStatement();
+        
+        // Query untuk menghitung jumlah per jenis hak tanah
+        ResultSet rs = st.executeQuery("SELECT haktanah, COUNT(*) as total FROM permohonan GROUP BY haktanah");
+        
+        while (rs.next()) {
+            dataset.setValue(rs.getString("haktanah"), rs.getInt("total"));
+        }
+        
+        JFreeChart chart = ChartFactory.createPieChart("Distribusi Hak Tanah", dataset, true, true, false);
+        
+        // Setting font agar seragam
+        chart.getTitle().setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 12));
+        chart.getLegend().setItemFont(new java.awt.Font("SansSerif", java.awt.Font.PLAIN, 10));
+        
+        ChartPanel chartPanel = new ChartPanel(chart);
+        // Menggunakan ukuran 350x250 agar sama dengan grafik lain
+        chartPanel.setPreferredSize(new java.awt.Dimension(350, 250)); 
+        
+        panelGrafikHak.removeAll();
+        panelGrafikHak.setLayout(new java.awt.BorderLayout());
+        panelGrafikHak.add(chartPanel, java.awt.BorderLayout.CENTER);
+        panelGrafikHak.validate();
+        
+    } catch (Exception e) {
+        System.out.println("Gagal memuat grafik hak tanah: " + e.getMessage());
+    }
+}
+    
+    private void tampilkanGrafikLokasi() {
+    // Karena ini Bar Chart, kita pakai DefaultCategoryDataset
+    org.jfree.data.category.DefaultCategoryDataset dataset = new org.jfree.data.category.DefaultCategoryDataset();
+    
+    try {
+        koneksi objKoneksi = new koneksi();
+        Connection con = objKoneksi.connect();
+        Statement st = con.createStatement();
+        
+        // Query ambil data per lokasi
+        ResultSet rs = st.executeQuery("SELECT lks, COUNT(*) as total FROM permohonan GROUP BY lks");
+        
+        while (rs.next()) {
+            // Parameter: (Nilai, Series, Kategori)
+            dataset.setValue(rs.getInt("total"), "Jumlah", rs.getString("lks"));
+        }
+        
+        // Buat Bar Chart
+        JFreeChart chart = ChartFactory.createBarChart(
+            "Permohonan per Lokasi", "Lokasi", "Total", dataset, 
+            org.jfree.chart.plot.PlotOrientation.VERTICAL, false, true, false
+        );
+        
+        // Styling agar konsisten
+        chart.getTitle().setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 12));
+        
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(350, 250)); // Samakan ukurannya
+        
+        panelGrafikLokasi.removeAll();
+        panelGrafikLokasi.setLayout(new java.awt.BorderLayout());
+        panelGrafikLokasi.add(chartPanel, java.awt.BorderLayout.CENTER);
+        panelGrafikLokasi.validate();
+        
+    } catch (Exception e) {
+        System.out.println("Gagal memuat grafik lokasi: " + e.getMessage());
+    }
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,6 +240,10 @@ public class halaman_utama extends javax.swing.JInternalFrame {
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
+        panelGrafik = new javax.swing.JPanel();
+        panelGrafikPie = new javax.swing.JPanel();
+        panelGrafikHak = new javax.swing.JPanel();
+        panelGrafikLokasi = new javax.swing.JPanel();
 
         jLabel26.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel26.setText("Pengelolaan Pemohon");
@@ -597,75 +746,137 @@ public class halaman_utama extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout panelGrafikLayout = new javax.swing.GroupLayout(panelGrafik);
+        panelGrafik.setLayout(panelGrafikLayout);
+        panelGrafikLayout.setHorizontalGroup(
+            panelGrafikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 248, Short.MAX_VALUE)
+        );
+        panelGrafikLayout.setVerticalGroup(
+            panelGrafikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelGrafikPieLayout = new javax.swing.GroupLayout(panelGrafikPie);
+        panelGrafikPie.setLayout(panelGrafikPieLayout);
+        panelGrafikPieLayout.setHorizontalGroup(
+            panelGrafikPieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        panelGrafikPieLayout.setVerticalGroup(
+            panelGrafikPieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelGrafikHakLayout = new javax.swing.GroupLayout(panelGrafikHak);
+        panelGrafikHak.setLayout(panelGrafikHakLayout);
+        panelGrafikHakLayout.setHorizontalGroup(
+            panelGrafikHakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 225, Short.MAX_VALUE)
+        );
+        panelGrafikHakLayout.setVerticalGroup(
+            panelGrafikHakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelGrafikLokasiLayout = new javax.swing.GroupLayout(panelGrafikLokasi);
+        panelGrafikLokasi.setLayout(panelGrafikLokasiLayout);
+        panelGrafikLokasiLayout.setHorizontalGroup(
+            panelGrafikLokasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelGrafikLokasiLayout.setVerticalGroup(
+            panelGrafikLokasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel29)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6))
-                            .addGap(250, 250, 250)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel11))
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(panelGrafik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(panelGrafikPie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelGrafikHak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelGrafikLokasi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel29)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(192, 192, 192)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel29)
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel5)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel6))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(96, 96, 96)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel10)
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel29)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel5)
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel6))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(panelGrafik, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(panelGrafikPie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(panelGrafikLokasi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelGrafikHak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
                 .addComponent(jLabel11)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -787,5 +998,9 @@ public class halaman_utama extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel panelGrafik;
+    private javax.swing.JPanel panelGrafikHak;
+    private javax.swing.JPanel panelGrafikLokasi;
+    private javax.swing.JPanel panelGrafikPie;
     // End of variables declaration//GEN-END:variables
 }

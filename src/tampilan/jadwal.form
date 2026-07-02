@@ -70,14 +70,9 @@
                                       <Component id="bhapus" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="bkeluar" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="bubah" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          <Component id="breset" min="-2" pref="160" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="bubah" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="breset" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="416" max="-2" attributes="0"/>
@@ -140,14 +135,11 @@
                               <Component id="breset" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bhapus" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="bkeluar" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="bhapus" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane2" min="-2" pref="255" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="426" max="32767" attributes="0"/>
+                  <EmptySpace pref="430" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -163,6 +155,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="bubah">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Ubah"/>
           </Properties>
           <Events>
@@ -171,6 +166,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="bhapus">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Hapus"/>
           </Properties>
           <Events>
@@ -179,8 +177,8 @@
         </Component>
         <Component class="javax.swing.JButton" name="breset">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="0" red="ff" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
@@ -244,6 +242,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="bsimpan">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Simpan"/>
           </Properties>
           <Events>
@@ -252,19 +253,14 @@
         </Component>
         <Component class="javax.swing.JButton" name="bcari">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cari"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bcariActionPerformed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="bcariKeyPressed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="bkeluar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Keluar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bkeluarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

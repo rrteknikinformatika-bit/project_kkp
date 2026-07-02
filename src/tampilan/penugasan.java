@@ -56,6 +56,205 @@ private DefaultTableModel tabmode;
      */
     public penugasan() {
         initComponents();
+        
+            bsimpan.setContentAreaFilled(false);
+            bsimpan.setFocusPainted(false);
+            bsimpan.setBorderPainted(false);
+            bsimpan.setOpaque(false);
+            bsimpan.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bubah.setContentAreaFilled(false);
+            bubah.setFocusPainted(false);
+            bubah.setBorderPainted(false);
+            bubah.setOpaque(false);
+            bubah.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            breset.setContentAreaFilled(false);
+            breset.setFocusPainted(false);
+            breset.setBorderPainted(false);
+            breset.setOpaque(false);
+            breset.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bhapus.setContentAreaFilled(false);
+            bhapus.setFocusPainted(false);
+            bhapus.setBorderPainted(false);
+            bhapus.setOpaque(false);
+            bhapus.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            bcari.setContentAreaFilled(false);
+            bcari.setFocusPainted(false);
+            bcari.setBorderPainted(false);
+            bcari.setOpaque(false);
+            bcari.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+        
+            bcetak.setContentAreaFilled(false);
+            bcetak.setFocusPainted(false);
+            bcetak.setBorderPainted(false);
+            bcetak.setOpaque(false);
+            bcetak.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            poppetugas.setContentAreaFilled(false);
+            poppetugas.setFocusPainted(false);
+            poppetugas.setBorderPainted(false);
+            poppetugas.setOpaque(false);
+            poppetugas.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            popjadwal.setContentAreaFilled(false);
+            popjadwal.setFocusPainted(false);
+            popjadwal.setBorderPainted(false);
+            popjadwal.setOpaque(false);
+            popjadwal.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+            
+            poppemohon.setContentAreaFilled(false);
+            poppemohon.setFocusPainted(false);
+            poppemohon.setBorderPainted(false);
+            poppemohon.setOpaque(false);
+            poppemohon.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+    @Override
+    public void paint(java.awt.Graphics g, javax.swing.JComponent c) {
+        java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+        // Mengaktifkan anti-aliasing supaya pinggiran bulatnya halus tidak patah-patah
+        g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        // Mengambil warna krem secara otomatis dari jPanel5 (panel kiri kamu)
+        g2.setColor(new java.awt.Color(0,51,102));
+        
+        // Menggambar bentuk kapsul oval penuh sesuai ukuran tombol asli
+        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), c.getHeight(), c.getHeight());
+        
+        g2.dispose();
+        super.paint(g, c);
+    }
+});
+        
         kosong();
         aktif();
         datatable();
@@ -155,7 +354,6 @@ private DefaultTableModel tabmode;
         jLabel18 = new javax.swing.JLabel();
         idpenugasan = new javax.swing.JTextField();
         labhtanah = new javax.swing.JLabel();
-        bkeluar = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         breset = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
@@ -248,18 +446,11 @@ private DefaultTableModel tabmode;
         labhtanah.setText("jLabel19");
         jPanel1.add(labhtanah, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 648, -1, -1));
 
-        bkeluar.setText("Keluar");
-        bkeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bkeluarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(bkeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 724, 110, -1));
-
         jLabel20.setText("Nama Petugas");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 320, -1, -1));
 
         breset.setBackground(new java.awt.Color(255, 255, 255));
+        breset.setForeground(new java.awt.Color(255, 255, 255));
         breset.setText("Reset");
         breset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,6 +462,7 @@ private DefaultTableModel tabmode;
         jLabel21.setText("NIP");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 80, -1));
 
+        bsimpan.setForeground(new java.awt.Color(255, 255, 255));
         bsimpan.setText("Simpan");
         bsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +474,7 @@ private DefaultTableModel tabmode;
         jLabel22.setText("No Kontak");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, -1, -1));
 
+        bubah.setForeground(new java.awt.Color(255, 255, 255));
         bubah.setText("Ubah");
         bubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,6 +487,7 @@ private DefaultTableModel tabmode;
         labpetu.setText("jLabel23");
         jPanel1.add(labpetu, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 320, -1, -1));
 
+        bhapus.setForeground(new java.awt.Color(255, 255, 255));
         bhapus.setText("Hapus");
         bhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,6 +508,7 @@ private DefaultTableModel tabmode;
         labkontak.setText("jLabel25");
         jPanel1.add(labkontak, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 390, -1, -1));
 
+        bcari.setForeground(new java.awt.Color(255, 255, 255));
         bcari.setText("Cari");
         bcari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,6 +559,7 @@ private DefaultTableModel tabmode;
         labtgl.setText("jLabel28");
         jPanel1.add(labtgl, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 180, -1, -1));
 
+        popjadwal.setForeground(new java.awt.Color(255, 255, 255));
         popjadwal.setText("Cari");
         popjadwal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,6 +568,7 @@ private DefaultTableModel tabmode;
         });
         jPanel1.add(popjadwal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1149, 137, 90, -1));
 
+        poppemohon.setForeground(new java.awt.Color(255, 255, 255));
         poppemohon.setText("Cari");
         poppemohon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,6 +585,7 @@ private DefaultTableModel tabmode;
         jLabel11.setText("Nama Pemohon");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 223, -1, -1));
 
+        poppetugas.setForeground(new java.awt.Color(255, 255, 255));
         poppetugas.setText("Cari");
         poppetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,13 +644,14 @@ private DefaultTableModel tabmode;
         jLabel4.setText("ID Permohonan");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
+        bcetak.setForeground(new java.awt.Color(255, 255, 255));
         bcetak.setText("Cetak");
         bcetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bcetakActionPerformed(evt);
             }
         });
-        jPanel1.add(bcetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 779, 110, -1));
+        jPanel1.add(bcetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 730, 110, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel12.setText("PERMOHONAN");
@@ -647,10 +846,6 @@ private DefaultTableModel tabmode;
         datatable();
     }//GEN-LAST:event_bresetActionPerformed
 
-    private void bkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bkeluarActionPerformed
-        dispose();
-    }//GEN-LAST:event_bkeluarActionPerformed
-
     private void idpenugasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idpenugasanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idpenugasanActionPerformed
@@ -699,7 +894,6 @@ private DefaultTableModel tabmode;
     private javax.swing.JButton bcari1;
     private javax.swing.JButton bcetak;
     private javax.swing.JButton bhapus;
-    private javax.swing.JButton bkeluar;
     private javax.swing.JButton breset;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;
