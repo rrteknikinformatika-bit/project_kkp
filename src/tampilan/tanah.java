@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
+import javax.swing.DefaultComboBoxModel;
 import koneksi.koneksi;
 /**
  *
@@ -17,12 +19,31 @@ public class tanah extends javax.swing.JInternalFrame {
     private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
     private String sql;
-    /**
-     * Creates new form tanah
-     */
+    private HashMap<String, String[]> dataKel = new HashMap<>();
+
+    private void isiDataWilayah() {
+    dataKel.put("Cakung", new String[]{"Cakung Barat", "Cakung Timur", "Jatinegara", "Penggilingan", "Pulo Gebang", "Rawa Terate", "Ujung Menteng"});
+    dataKel.put("Cipayung", new String[]{"Bambu Apus", "Ceger", "Cilangkap", "Cipayung", "Lubang Buaya", "Munjul", "Pondok Ranggon", "Setu"});
+    dataKel.put("Ciracas", new String[]{"Cibubur", "Ciracas", "Kelapa Dua Wetan", "Rambutan", "Susukan"});
+    dataKel.put("Duren Sawit", new String[]{"Duren Sawit", "Klender", "Malaka Jaya", "Malaka Sari", "Pondok Bambu", "Pondok Kelapa", "Pondok Kopi"});
+    dataKel.put("Jatinegara", new String[]{"Bali Mester", "Bidara Cina", "Cipinang Besar Selatan", "Cipinang Besar Utara", "Cipinang Cempedak", "Cipinang Muara", "Kampung Melayu", "Rawa Bunga"});
+    dataKel.put("Kramat Jati", new String[]{"Balekambang", "Batu Ampar", "Cawang", "Cililitan", "Dukuh", "Kramat Jati", "Tengah"});
+    dataKel.put("Makasar", new String[]{"Cipinang Melayu", "Halim Perdana Kusuma", "Kebon Pala", "Makasar", "Pinang Ranti"});
+    dataKel.put("Matraman", new String[]{"Kayu Manis", "Kebon Manggis", "Pal Meriam", "Pisangan Baru", "Utan Kayu Selatan", "Utan Kayu Utara"});
+    dataKel.put("Pasar Rebo", new String[]{"Baru", "Cijantung", "Gedong", "Kalisari", "Pekayon"});
+    dataKel.put("Pulogadung", new String[]{"Cipinang", "Jati", "Jatinegara Kaum", "Kayu Putih", "Pisangan Timur", "Pulo Gadung", "Rawamangun"});
+}
+
+    private void isiKelurahan(String kec) {
+    String[] daftar = dataKel.get(kec);
+    if (daftar != null) {
+        boxkel.setModel(new DefaultComboBoxModel<>(daftar));
+    }
+}
     public tanah() {
         initComponents();
-        
+        isiDataWilayah();                                   
+        isiKelurahan(boxkec.getSelectedItem().toString());
          bsimpan.setContentAreaFilled(false);
             bsimpan.setFocusPainted(false);
             bsimpan.setBorderPainted(false);
@@ -142,34 +163,37 @@ public class tanah extends javax.swing.JInternalFrame {
     }
  protected void kosong(){
         txtid.setText("");
-        txtlokasi.setText("");
-        txtluas.setText("");
-        boxstatus.setSelectedIndex(0);
-        boxhak.setSelectedItem(0);
-        txtcari.setText("");
+    txtluas.setText("");
+    boxstatus.setSelectedIndex(0);
+    boxhak.setSelectedIndex(0);
+    boxkec.setSelectedIndex(0);
+    boxkel.setSelectedIndex(0);
+    txtcari.setText("");
     }
  protected void datatable(){
-        Object[] Baris = {"ID_Tanah", "Lokasi","VOLUME", "Status_Tanah","HAK_TANAH"};
-        tabmode = new DefaultTableModel(null, Baris);
-        String cariitem = txtcari.getText();
-         try {
-            String sql = "SELECT * FROM tanah where idtnh like '%" + cariitem +
-                    "%' or idtnh like '%" + cariitem + "%' order by idtnh asc";
-            Statement stat = conn.createStatement();
-            ResultSet hasil = stat.executeQuery(sql);
-            while (hasil.next()) {
-                tabmode.addRow(new Object[]{
-                    hasil.getString(1),
-                    hasil.getString(2),
-                    hasil.getString(3),
-                    hasil.getString(4),
-                    hasil.getString(5)
-                });
-            }
-            tbltanah.setModel(tabmode);
-         }catch (Exception e){
-             JOptionPane.showMessageDialog(null,"data gagal di panggil" +e);
-         }
+        Object[] Baris = {"ID_Tanah", "Kecamatan", "Kelurahan", "VOLUME", "Status_Tanah", "HAK_TANAH"};
+    tabmode = new DefaultTableModel(null, Baris);
+    String cariitem = txtcari.getText();
+    try {
+        String sql = "SELECT * FROM tanah WHERE idtnh LIKE '%" + cariitem +
+                "%' OR kec LIKE '%" + cariitem +
+                "%' OR kel LIKE '%" + cariitem + "%' ORDER BY idtnh ASC";
+        Statement stat = conn.createStatement();
+        ResultSet hasil = stat.executeQuery(sql);
+        while (hasil.next()) {
+            tabmode.addRow(new Object[]{
+                hasil.getString("idtnh"),
+                hasil.getString("kec"),
+                hasil.getString("kel"),
+                hasil.getString("vlm"),
+                hasil.getString("stts"),
+                hasil.getString("haktanah")
+            });
+        }
+        tbltanah.setModel(tabmode);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "data gagal di panggil" + e);
+    }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -189,8 +213,6 @@ public class tanah extends javax.swing.JInternalFrame {
         tbltanah = new javax.swing.JTable();
         txtcari = new javax.swing.JTextField();
         bcari = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtlokasi = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         txtluas = new javax.swing.JTextField();
         boxstatus = new javax.swing.JComboBox<>();
@@ -204,6 +226,9 @@ public class tanah extends javax.swing.JInternalFrame {
         bbatal = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        boxkec = new javax.swing.JComboBox<>();
+        boxkel = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 102));
 
@@ -306,17 +331,12 @@ public class tanah extends javax.swing.JInternalFrame {
             }
         });
 
-        txtlokasi.setColumns(20);
-        txtlokasi.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtlokasi.setRows(5);
-        jScrollPane1.setViewportView(txtlokasi);
-
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel3.setText("LOKASI                       :");
+        jLabel3.setText("KECAMATAN            :");
 
         txtluas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
 
-        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tanah Negara", "Tanah Adat" }));
+        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Status", "Tanah Negara", "Tanah Adat" }));
         boxstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxstatusActionPerformed(evt);
@@ -332,7 +352,7 @@ public class tanah extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel7.setText("HAK TANAH               :");
 
-        boxhak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tanah", "Hak Milik", "Hak Guna bangunan", "Hak Guna usaha", "Hak Pakai", "Hak Pengelolaan", "Hak wakaf", "Hak Milik satuan rumah susun" }));
+        boxhak.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hak Tanah", "Hak Milik", "Hak Guna bangunan", "Hak Guna usaha", "Hak Pakai", "Hak Pengelolaan", "Hak wakaf", "Hak Milik satuan rumah susun" }));
         boxhak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxhakActionPerformed(evt);
@@ -393,57 +413,81 @@ public class tanah extends javax.swing.JInternalFrame {
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
+        boxkec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kecamatan", "Cakung", "Jatinegara", "Duren Sawit", "Makasar", "Pasar Rebo", "Ciracas", "Cipayung", "Kramat Jati", "Matraman", "Pulogadung" }));
+        boxkec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxkecActionPerformed(evt);
+            }
+        });
+
+        boxkel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kelurahan", "Cakung Barat", "Cakung Timur", "Jatinegara", "Penggilingan", "Pulo Gebang", "Rawa Terate", "Ujung Menteng", "Bambu Apus", "Ceger", "Cilangkap", "Cipayung", "Lubang Buaya", "Munjul", "Pondok Ranggon", "Setu", "Cibubur", "Ciracas", "Kelapa Dua Wetan", "Rambutan", "Susukan", "Duren Sawit", "Klender", "Malaka Jaya", "Malaka Sari", "Pondok Bambu", "Pondok Kelapa", "Pondok Kopi", "Bali Mester", "Bidara Cina", "Cipinang Besar Selatan", "Cipinang Besar Utara", "Cipinang Cempedak", "Cipinang Muara", "Kampung Melayu", "Rawa Bunga", "Balekambang", "Batu Ampar", "Cawang", "Cililitan", "Dukuh", "Kramat Jati", "Tengah", "Cipinang Melayu", "Halim Perdana Kusuma", "Kebon Pala", "Makasar", "Pinang Ranti", "Kayu Manis", "Kebon Manggis", "Pal Meriam", "Pisangan Baru", "Utan Kayu Selatan", "Utan Kayu Utara", "Baru", "Cijantung", "Gedong", "Kalisari", "Pekayon", "Cipinang", "Jati", "Jatinegara Kaum", "Kayu Putih", "Pisangan Timur", "Pulo Gadung", "Rawamangun" }));
+        boxkel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxkelActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel8.setText("KELURAHAN            :");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(48, 48, 48)
+                            .addComponent(boxhak, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(30, 30, 30)
+                            .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(35, 35, 35)
+                            .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(32, 32, 32)
+                            .addComponent(bbatal, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(2, 2, 2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(boxstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(50, 50, 50)
+                        .addComponent(txtluas, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(boxkel, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(53, 53, 53)
+                                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(boxkec, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(53, 53, 53)
-                                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(50, 50, 50)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtluas)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(boxstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(48, 48, 48)
-                                    .addComponent(boxhak, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(bsimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(bubah, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(bhapus, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(bbatal, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(2, 2, 2))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 555, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(108, 108, 108))))
+                        .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bcari, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,19 +502,23 @@ public class tanah extends javax.swing.JInternalFrame {
                                 .addGap(3, 3, 3)
                                 .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                            .addComponent(boxkec, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boxkel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtluas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
+                        .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(boxstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addGap(33, 33, 33)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(boxhak, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
@@ -509,25 +557,26 @@ public class tanah extends javax.swing.JInternalFrame {
 
     private void bsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bsimpanActionPerformed
          if (boxstatus.getSelectedIndex() == 0){
-            JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
-            return;}
-                 String sql = "insert into tanah values (?,?,?,?,?)";
-
-        try {
-            PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, txtid.getText());
-            stat.setString(2, txtlokasi.getText());
-            stat.setString(3, txtluas.getText());
-            stat.setString(4, boxstatus.getSelectedItem().toString());
-            stat.setString(5, boxhak.getSelectedItem().toString());
-            stat.executeUpdate();
-            JOptionPane.showMessageDialog(null, "data berhasil disimpan");
-            kosong();
-            aktif();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "data gagal disimpan " + e);
-        }
-        datatable(); // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
+        return;
+    }
+    String sql = "INSERT INTO tanah (idtnh, kec, kel, vlm, stts, haktanah) VALUES (?,?,?,?,?,?)";
+    try {
+        PreparedStatement stat = conn.prepareStatement(sql);
+        stat.setString(1, txtid.getText());
+        stat.setString(2, boxkec.getSelectedItem().toString());
+        stat.setString(3, boxkel.getSelectedItem().toString());
+        stat.setString(4, txtluas.getText());
+        stat.setString(5, boxstatus.getSelectedItem().toString());
+        stat.setString(6, boxhak.getSelectedItem().toString());
+        stat.executeUpdate();
+        JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+        kosong();
+        aktif();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "data gagal disimpan " + e);
+    }
+    datatable(); // TODO add your handling code here:
     }//GEN-LAST:event_bsimpanActionPerformed
 
     private void bubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bubahActionPerformed
@@ -536,15 +585,14 @@ public class tanah extends javax.swing.JInternalFrame {
         return;
     }
     try {
-        String sql = "update tanah set lks=?, vlm=?, stts=?, haktanah=? where idtnh=?";
+        String sql = "UPDATE tanah SET kec=?, kel=?, vlm=?, stts=?, haktanah=? WHERE idtnh=?";
         PreparedStatement stat = conn.prepareStatement(sql);
-        
-        stat.setString(1, txtlokasi.getText());
-        stat.setString(2, txtluas.getText());
-        stat.setString(3, boxstatus.getSelectedItem().toString());
-        stat.setString(4, boxhak.getSelectedItem().toString()); // haktanah
-        stat.setString(5, txtid.getText());                     // idtnh (kriteria WHERE)
-        
+        stat.setString(1, boxkec.getSelectedItem().toString());
+        stat.setString(2, boxkel.getSelectedItem().toString());
+        stat.setString(3, txtluas.getText());
+        stat.setString(4, boxstatus.getSelectedItem().toString());
+        stat.setString(5, boxhak.getSelectedItem().toString());
+        stat.setString(6, txtid.getText());
         stat.executeUpdate();
         JOptionPane.showMessageDialog(null, "data berhasil diubah");
         kosong();
@@ -584,17 +632,16 @@ public class tanah extends javax.swing.JInternalFrame {
 
     private void tbltanahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbltanahMouseClicked
         int bar = tbltanah.getSelectedRow();
-String a = tabmode.getValueAt(bar, 0).toString();
-String b = tabmode.getValueAt(bar, 1).toString();
-String c = tabmode.getValueAt(bar, 2).toString();
-String d = tabmode.getValueAt(bar, 3).toString();
-String e = tabmode.getValueAt(bar, 4).toString();
+    if (bar < 0) return;
 
-txtid.setText(a);
-txtlokasi.setText(b);
-txtluas.setText(c);
-boxstatus.setSelectedItem(d);
-boxhak.setSelectedItem(e);// TODO add your handling code here:
+    javax.swing.table.TableModel model = tbltanah.getModel();
+
+    txtid.setText(model.getValueAt(bar, 0).toString());
+    boxkec.setSelectedItem(model.getValueAt(bar, 1).toString());  // kecamatan dulu
+    boxkel.setSelectedItem(model.getValueAt(bar, 2).toString());  // baru kelurahan
+    txtluas.setText(model.getValueAt(bar, 3).toString());
+    boxstatus.setSelectedItem(model.getValueAt(bar, 4).toString());
+    boxhak.setSelectedItem(model.getValueAt(bar, 5).toString());// TODO add your handling code here:
     }//GEN-LAST:event_tbltanahMouseClicked
 
     private void bcariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bcariKeyPressed
@@ -614,6 +661,16 @@ boxhak.setSelectedItem(e);// TODO add your handling code here:
     private void boxhakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxhakActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boxhakActionPerformed
+
+    private void boxkecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxkecActionPerformed
+        if (boxkec.getSelectedItem() != null) {
+        isiKelurahan(boxkec.getSelectedItem().toString());
+    }
+    }//GEN-LAST:event_boxkecActionPerformed
+
+    private void boxkelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxkelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxkelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -656,6 +713,8 @@ boxhak.setSelectedItem(e);// TODO add your handling code here:
     private javax.swing.JButton bcari;
     private javax.swing.JButton bhapus;
     private javax.swing.JComboBox<String> boxhak;
+    private javax.swing.JComboBox<String> boxkec;
+    private javax.swing.JComboBox<String> boxkel;
     private javax.swing.JComboBox<String> boxstatus;
     private javax.swing.JButton bsimpan;
     private javax.swing.JButton bubah;
@@ -665,16 +724,15 @@ boxhak.setSelectedItem(e);// TODO add your handling code here:
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbltanah;
     private javax.swing.JTextField txtcari;
     private javax.swing.JTextField txtid;
-    private javax.swing.JTextArea txtlokasi;
     private javax.swing.JTextField txtluas;
     // End of variables declaration//GEN-END:variables
 }
