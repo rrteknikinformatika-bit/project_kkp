@@ -23,6 +23,11 @@ private Connection conn = new koneksi().connect();
     public jadwal() {
         initComponents();
         
+        javax.swing.JScrollPane scrollUtama = new javax.swing.JScrollPane(getContentPane());
+    scrollUtama.setBorder(null);
+    scrollUtama.getVerticalScrollBar().setUnitIncrement(16);
+    setContentPane(scrollUtama);
+        
             bsimpan.setContentAreaFilled(false);
             bsimpan.setFocusPainted(false);
             bsimpan.setBorderPainted(false);

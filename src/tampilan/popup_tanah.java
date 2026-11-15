@@ -24,7 +24,7 @@ public class popup_tanah extends javax.swing.JDialog {
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText(); // Sesuaikan nama komponen JTextField cari Anda
         try {
-            String sql = "SELECT * FROM tanah WHERE idtnh LIKE '%"+cariitem+"%' OR lks LIKE '%"+cariitem+"%'";
+            String sql = "SELECT * FROM tanah WHERE idtnh LIKE '%"+cariitem+"%' OR kec LIKE '%"+cariitem+"%'";
             Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sql);
             while (hasil.next()) {

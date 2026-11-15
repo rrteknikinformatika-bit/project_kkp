@@ -19,6 +19,11 @@ private DefaultTableModel tabmode;
     public admin() {
         initComponents();
         
+        javax.swing.JScrollPane scrollUtama = new javax.swing.JScrollPane(getContentPane());
+    scrollUtama.setBorder(null);
+    scrollUtama.getVerticalScrollBar().setUnitIncrement(16);
+    setContentPane(scrollUtama);
+        
         bhapus.setContentAreaFilled(false);
         bhapus.setFocusPainted(false);
         bhapus.setBorderPainted(false);

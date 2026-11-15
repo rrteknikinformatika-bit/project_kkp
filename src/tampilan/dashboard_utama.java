@@ -28,7 +28,7 @@ public class dashboard_utama extends javax.swing.JFrame {
     
     
     public dashboard_utama() {
-        initComponents();               
+        initComponents(); 
         
         this.setExtendedState(Frame.MAXIMIZED_BOTH);
        

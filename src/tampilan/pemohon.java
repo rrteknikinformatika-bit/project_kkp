@@ -21,6 +21,11 @@ public class pemohon extends javax.swing.JInternalFrame {
     public pemohon() {
         initComponents();
         
+        javax.swing.JScrollPane scrollUtama = new javax.swing.JScrollPane(getContentPane());
+    scrollUtama.setBorder(null);
+    scrollUtama.getVerticalScrollBar().setUnitIncrement(16);
+    setContentPane(scrollUtama);
+        
             bsimpan.setContentAreaFilled(false);
             bsimpan.setFocusPainted(false);
             bsimpan.setBorderPainted(false);
@@ -213,7 +218,6 @@ public class pemohon extends javax.swing.JInternalFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(null);
         setMinimumSize(null);
-        setPreferredSize(null);
 
         jPanel1.setBackground(new java.awt.Color(252, 249, 235));
 
