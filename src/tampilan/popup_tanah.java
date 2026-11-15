@@ -20,7 +20,7 @@ public class popup_tanah extends javax.swing.JDialog {
     public permohonan formPermohonan = null; 
 
     protected void datatable(){
-        Object[] Baris = {"ID Tanah", "Lokasi", "Volume", "Hak"};
+        Object[] Baris = {"ID Tanah", "Kecamatan","Kelurahan", "Volume", "Hak"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText(); // Sesuaikan nama komponen JTextField cari Anda
         try {
@@ -30,7 +30,8 @@ public class popup_tanah extends javax.swing.JDialog {
             while (hasil.next()) {
                 tabmode.addRow(new Object[]{
                     hasil.getString("idtnh"), // Sesuaikan nama kolom DB Anda
-                    hasil.getString("lks"),
+                    hasil.getString("kec"),
+                    hasil.getString("kel"),
                     hasil.getString("vlm"),
                     hasil.getString("haktanah")
                 });
@@ -163,15 +164,17 @@ public class popup_tanah extends javax.swing.JDialog {
        int baris = tblpopuptanah.getSelectedRow();
     
     String idtnh = tblpopuptanah.getValueAt(baris, 0).toString();
-    String lokasi = tblpopuptanah.getValueAt(baris, 1).toString();
-    String volume = tblpopuptanah.getValueAt(baris, 2).toString();
-    String hak = tblpopuptanah.getValueAt(baris, 3).toString();
+    String kecamatan = tblpopuptanah.getValueAt(baris, 1).toString();
+    String kelurahan = tblpopuptanah.getValueAt(baris, 2).toString();
+    String volume = tblpopuptanah.getValueAt(baris, 3).toString();
+    String hak = tblpopuptanah.getValueAt(baris, 4).toString();
     
     // Taktik baru: Deteksi otomatis apakah form utamanya adalah permohonan
     if (formPermohonan instanceof permohonan) {
         permohonan fp = (permohonan) formPermohonan;
         fp.labidtnh.setText(idtnh);
-        fp.lablks.setText(lokasi);
+        fp.labkec.setText(kecamatan);
+        fp.labkel.setText(kelurahan);
         fp.labvlm.setText(volume);
         fp.labhak.setText(hak);
     }

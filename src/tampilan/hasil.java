@@ -21,16 +21,17 @@ public class hasil extends javax.swing.JInternalFrame {
 private Connection conn = new koneksi().connect();
     private DefaultTableModel tabmode;
 
-    public String idPenugasanTerpilih, namaPemohonTerpilih, jenisLayananTerpilih,
-            volumeTerpilih, lokasiTerpilih,
+    public String idPenugasanTerpilih, namaPemohonTerpilih, jenisLayananTerpilih, 
+            kecamatanTerpilih, kelurahanTerpilih, volumeTerpilih,
             hakTanahTerpilih, namaPetugasTerpilih, nipTerpilih, tanggalUkurTerpilih;
     
     public void setPermohonanKeForm(){
         labidpngsn.setText(idPenugasanTerpilih);
         labnm.setText(namaPemohonTerpilih);
         labjl.setText(jenisLayananTerpilih);
+        labkec.setText(kecamatanTerpilih);
+        labkel.setText(kelurahanTerpilih);
         labvlm.setText(volumeTerpilih);
-        lablks.setText(lokasiTerpilih);
         labhak.setText(hakTanahTerpilih);
         labnmptgs.setText(namaPetugasTerpilih);
         labnip.setText(nipTerpilih);
@@ -210,8 +211,9 @@ private Connection conn = new koneksi().connect();
         labidpngsn.setText("");
         labnm.setText("");
         labjl.setText("");
+        labkec.setText("");
+        labkel.setText("");
         labvlm.setText("");
-        lablks.setText("");
         labhak.setText("");
         labnmptgs.setText("");
         labnip.setText("");
@@ -223,7 +225,7 @@ private Connection conn = new koneksi().connect();
     protected void datatable() {
     Object[] Baris = {
         "ID Hasil", "ID Penugasan", "Nama Pemohon", "Jenis Layanan",  
-        "Volume Tanah", "Lokasi Tanah", "Hak Tanah", "Nama Petugas", "NIP", "Tanggal Ukur", 
+        "Kecamatan", "Kelurahan", "Volume Tanah", "Hak Tanah", "Nama Petugas", "NIP", "Tanggal Ukur", 
         "Progres", "Hasil Ukur"
     };
     
@@ -240,9 +242,10 @@ private Connection conn = new koneksi().connect();
                 hasil.getString("idhasil"),     
                 hasil.getString("idpngsn"),        
                 hasil.getString("nmpmhn"),    
-                hasil.getString("jns"),      
-                hasil.getString("vlm"),
-                hasil.getString("lks"),      
+                hasil.getString("jns"),
+                hasil.getString("kec"),
+                hasil.getString("kel"),
+                hasil.getString("vlm"),      
                 hasil.getString("haktanah"),      
                 hasil.getString("nmptgs"),      
                 hasil.getString("nip"),         
@@ -283,7 +286,7 @@ private Connection conn = new koneksi().connect();
 
         jPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        lablks = new javax.swing.JLabel();
+        labkec = new javax.swing.JLabel();
         txthsl = new javax.swing.JTextField();
         print = new javax.swing.JButton();
         txtidhsl = new javax.swing.JTextField();
@@ -319,6 +322,8 @@ private Connection conn = new koneksi().connect();
         bcari = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel196 = new javax.swing.JLabel();
+        labkel = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 102));
 
@@ -338,8 +343,8 @@ private Connection conn = new koneksi().connect();
 
         jPanel10.setBackground(new java.awt.Color(252, 249, 235));
 
-        lablks.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lablks.setText("jLabel11");
+        labkec.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labkec.setText("jLabel11");
 
         txthsl.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
 
@@ -451,13 +456,13 @@ private Connection conn = new koneksi().connect();
         labjl.setText("jLabel7");
 
         jLabel193.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel193.setText("Volume");
+        jLabel193.setText("Kecamatan");
 
         labvlm.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         labvlm.setText("jLabel9");
 
         jLabel194.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel194.setText("Lokasi Tanah");
+        jLabel194.setText("Volume");
 
         jLabel195.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel195.setText("Tanggal Ukur");
@@ -535,6 +540,12 @@ private Connection conn = new koneksi().connect();
             .addGap(0, 8, Short.MAX_VALUE)
         );
 
+        jLabel196.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel196.setText("Kelurahan");
+
+        labkel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        labkel.setText("jLabel20");
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -566,10 +577,10 @@ private Connection conn = new koneksi().connect();
                                             .addComponent(jLabel191, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel192, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel193, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel190, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel190, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel196, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addGap(54, 54, 54)
                                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(labvlm)
                                             .addComponent(labjl)
                                             .addComponent(labnm)
                                             .addComponent(cbprgs, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -577,7 +588,9 @@ private Connection conn = new koneksi().connect();
                                                 .addComponent(labidpngsn)
                                                 .addGap(101, 101, 101)
                                                 .addComponent(poppenugasan, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtidhsl)))
+                                            .addComponent(txtidhsl)
+                                            .addComponent(labkec)
+                                            .addComponent(labkel)))
                                     .addComponent(jLabel189))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -592,16 +605,13 @@ private Connection conn = new koneksi().connect();
                                             .addComponent(jLabel187)
                                             .addComponent(jLabel188)
                                             .addComponent(jLabel195))
-                                        .addGap(54, 54, 54)
+                                        .addGap(60, 60, 60)
                                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lablks)
-                                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(labtggl)
-                                                    .addComponent(labnip)
-                                                    .addComponent(labnmptgs)
-                                                    .addComponent(labhak))))))))
+                                            .addComponent(labtggl)
+                                            .addComponent(labnip)
+                                            .addComponent(labnmptgs)
+                                            .addComponent(labhak)
+                                            .addComponent(labvlm))))))
                         .addGap(138, 138, 138)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
@@ -640,7 +650,11 @@ private Connection conn = new koneksi().connect();
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel193)
-                                    .addComponent(labvlm))
+                                    .addComponent(labkec))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel196)
+                                    .addComponent(labkel))
                                 .addGap(22, 22, 22)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cbprgs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -649,7 +663,7 @@ private Connection conn = new koneksi().connect();
                                 .addGap(2, 2, 2)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel194)
-                                    .addComponent(lablks))
+                                    .addComponent(labvlm))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel184)
@@ -686,7 +700,7 @@ private Connection conn = new koneksi().connect();
                             .addComponent(bcari))
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -733,8 +747,8 @@ private Connection conn = new koneksi().connect();
         //if (cbprgs.getSelectedIndex() == 0){
             //  JOptionPane.showMessageDialog(null, "Pilih jenis dulu!");
             //return;}
-        String sql = "INSERT INTO hasil (idhasil, idpngsn, nmpmhn, jns, vlm, lks, haktanah, nmptgs, nip, tggl, progres, hslukur)"
-        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO hasil (idhasil, idpngsn, nmpmhn, jns, kec, kel, vlm, haktanah, nmptgs, nip, tggl, progres, hslukur)"
+        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
@@ -744,14 +758,15 @@ private Connection conn = new koneksi().connect();
             stat.setString(2, labidpngsn.getText());       // tggl
             stat.setString(3, labnm.getText());        // idprmhnn
             stat.setString(4, labjl.getText());    // idjdwl
-            stat.setString(5, labvlm.getText());     // idptgs
-            stat.setString(6, lablks.getText());
-            stat.setString(7, labhak.getText());      // nmpmhn
-            stat.setString(8, labnmptgs.getText());      // notelp
-            stat.setString(9, labnip.getText());    // alm
-            stat.setString(10, labtggl.getText());    // lks
-            stat.setString(11, cbprgs.getSelectedItem().toString());   // vlm
-            stat.setString(12, txthsl.getText());   // haktanah
+            stat.setString(5, labkec.getText());
+            stat.setString(6, labkel.getText());
+            stat.setString(7, labvlm.getText());     // idptgs
+            stat.setString(8, labhak.getText());      // nmpmhn
+            stat.setString(9, labnmptgs.getText());      // notelp
+            stat.setString(10, labnip.getText());    // alm
+            stat.setString(11, labtggl.getText());    // lks
+            stat.setString(12, cbprgs.getSelectedItem().toString());   // vlm
+            stat.setString(13, txthsl.getText());   // haktanah
 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "data berhasil disimpan");
@@ -771,22 +786,23 @@ private Connection conn = new koneksi().connect();
             //return;
             //}
         try {
-            String sql = "update hasil set  idpngsn=?, nmpmhn=?, jns=?, vlm=?, lks=?, haktanah=?, nmptgs=?, nip=?, tggl=?, progres=?, hslukur=? where idhasil = ?";
+            String sql = "update hasil set  idpngsn=?, nmpmhn=?, jns=?, kec=?, kel=?, vlm=?, haktanah=?, nmptgs=?, nip=?, tggl=?, progres=?, hslukur=? where idhasil = ?";
             PreparedStatement stat = conn.prepareStatement(sql);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             //stat.setString(1, txtidhsl.getText());
             stat.setString(1, labidpngsn.getText());
             stat.setString(2, labnm.getText());
             stat.setString(3, labjl.getText());
-            stat.setString(4, labvlm.getText());
-            stat.setString(5, lablks.getText());
-            stat.setString(6, labhak.getText());
-            stat.setString(7, labnmptgs.getText());
-            stat.setString(8, labnip.getText());
-            stat.setString(9,labtggl.getText());
-            stat.setString(10, cbprgs.getSelectedItem().toString());
-            stat.setString(11,txthsl.getText());
-            stat.setString(12,txtidhsl.getText());
+            stat.setString(4, labkec.getText());
+            stat.setString(5, labkel.getText());
+            stat.setString(6, labvlm.getText());
+            stat.setString(7, labhak.getText());
+            stat.setString(8, labnmptgs.getText());
+            stat.setString(9, labnip.getText());
+            stat.setString(11,labtggl.getText());
+            stat.setString(12, cbprgs.getSelectedItem().toString());
+            stat.setString(13,txthsl.getText());
+            stat.setString(14,txtidhsl.getText());
             int result = stat.executeUpdate();
 
             if(result > 0){
@@ -833,15 +849,16 @@ private Connection conn = new koneksi().connect();
         labidpngsn.setText(model.getValueAt(bar, 1).toString());
         labnm.setText(model.getValueAt(bar, 2).toString());
         labjl.setText(model.getValueAt(bar, 3).toString());
-        labvlm.setText(model.getValueAt(bar, 4).toString());
-        lablks.setText(model.getValueAt(bar, 5).toString());
-        labhak.setText(model.getValueAt(bar, 6).toString());
-        labnmptgs.setText(model.getValueAt(bar, 7).toString());
-        labnip.setText(model.getValueAt(bar, 8).toString());
-        labtggl.setText(model.getValueAt(bar, 9).toString());
-        String progresValue = model.getValueAt(bar, 10).toString();
+        labkec.setText(model.getValueAt(bar, 4).toString());
+        labkel.setText(model.getValueAt(bar, 5).toString());
+        labvlm.setText(model.getValueAt(bar, 6).toString());
+        labhak.setText(model.getValueAt(bar, 7).toString());
+        labnmptgs.setText(model.getValueAt(bar, 8).toString());
+        labnip.setText(model.getValueAt(bar, 9).toString());
+        labtggl.setText(model.getValueAt(bar, 10).toString());
+        String progresValue = model.getValueAt(bar, 11).toString();
         cbprgs.setSelectedItem(progresValue);
-        txthsl.setText(model.getValueAt(bar,11).toString());
+        txthsl.setText(model.getValueAt(bar,12).toString());
     }//GEN-LAST:event_tblhasilMouseClicked
 
     private void txtcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcariActionPerformed
@@ -878,6 +895,7 @@ private Connection conn = new koneksi().connect();
     private javax.swing.JLabel jLabel193;
     private javax.swing.JLabel jLabel194;
     private javax.swing.JLabel jLabel195;
+    private javax.swing.JLabel jLabel196;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -886,7 +904,8 @@ private Connection conn = new koneksi().connect();
     public javax.swing.JLabel labhak;
     public javax.swing.JLabel labidpngsn;
     public javax.swing.JLabel labjl;
-    public javax.swing.JLabel lablks;
+    public javax.swing.JLabel labkec;
+    public javax.swing.JLabel labkel;
     public javax.swing.JLabel labnip;
     public javax.swing.JLabel labnm;
     public javax.swing.JLabel labnmptgs;

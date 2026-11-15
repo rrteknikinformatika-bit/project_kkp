@@ -48,7 +48,7 @@ public class popup_penugasan extends javax.swing.JDialog {
     }
 
     protected void datatable(){
-        Object[] Baris = {"ID Penugasan", "Nama Pemohon", "Jenis Layanan", "Volume Tanah", "Lokasi Tanah", "Hak Tanah", "Nama Petugas", "NIP", "Tanggal Ukur"};
+        Object[] Baris = {"ID Penugasan", "Nama Pemohon", "Jenis Layanan", "Kecamatan", "Kelurahan", "Volume Tanah", "Hak Tanah", "Nama Petugas", "NIP", "Tanggal Ukur"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText(); // Sesuaikan nama komponen textfield cari Anda
         try {
@@ -60,8 +60,9 @@ public class popup_penugasan extends javax.swing.JDialog {
                     hasil.getString("idpngsn"), // Sesuaikan nama kolom DB Anda
                     hasil.getString("nmpmhn"),
                     hasil.getString("jns"),
+                    hasil.getString("kec"),
+                    hasil.getString("kel"),
                     hasil.getString("vlm"),
-                    hasil.getString("lks"),
                     hasil.getString("haktanah"),
                     hasil.getString("nmptgs"),
                     hasil.getString("nip"),
@@ -159,12 +160,13 @@ public class popup_penugasan extends javax.swing.JDialog {
     String id = popuppenugasan.getValueAt(baris, 0).toString();
     String nama = popuppenugasan.getValueAt(baris, 1).toString();
     String jenislayanan = popuppenugasan.getValueAt(baris, 2).toString();
-    String volume = popuppenugasan.getValueAt(baris, 3).toString();
-    String lokasi = popuppenugasan.getValueAt(baris, 4).toString();
-    String haktanah = popuppenugasan.getValueAt(baris, 5).toString();
-    String namapetugas = popuppenugasan.getValueAt(baris, 6).toString();
-    String nip = popuppenugasan.getValueAt(baris, 7).toString();
-    String tanggalukur = popuppenugasan.getValueAt(baris, 8).toString();
+    String kecamatan = popuppenugasan.getValueAt(baris, 3).toString();
+    String kelurahan = popuppenugasan.getValueAt(baris, 4).toString();
+    String volume = popuppenugasan.getValueAt(baris, 5).toString();
+    String haktanah = popuppenugasan.getValueAt(baris, 6).toString();
+    String namapetugas = popuppenugasan.getValueAt(baris, 7).toString();
+    String nip = popuppenugasan.getValueAt(baris, 8).toString();
+    String tanggalukur = popuppenugasan.getValueAt(baris, 9).toString();
     
     // Taktik baru: Deteksi otomatis apakah form utamanya adalah permohonan
     if (formHasil instanceof hasil) {
@@ -172,8 +174,9 @@ public class popup_penugasan extends javax.swing.JDialog {
         fp.labidpngsn.setText(id);
         fp.labnm.setText(nama);
         fp.labjl.setText(jenislayanan);
+        fp.labkec.setText(kecamatan);
+        fp.labkel.setText(kelurahan);
         fp.labvlm.setText(volume);
-        fp.lablks.setText(lokasi);
         fp.labhak.setText(haktanah);
         fp.labnmptgs.setText(namapetugas);
         fp.labnip.setText(nip);

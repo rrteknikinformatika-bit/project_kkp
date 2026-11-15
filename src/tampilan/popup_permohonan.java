@@ -48,7 +48,7 @@ public class popup_permohonan extends javax.swing.JDialog {
     }
     
     protected void datatable(){
-         Object[] Baris = {"ID Permohonan", "Nama Pemohon","No. Telepon", "Alamat", "Jenis Layanan", "Volume Tanah", "Lokasi Tanah", "Hak Tanah"};
+         Object[] Baris = {"ID Permohonan", "Nama Pemohon","No. Telepon", "Alamat", "Jenis Layanan", "Kecamatan", "Kelurahan", "Volume Tanah", "Hak Tanah"};
         tabmode = new DefaultTableModel(null, Baris);
         String cariitem = txtcari.getText(); // Sesuaikan nama komponen textfield cari Anda
         try {
@@ -62,8 +62,9 @@ public class popup_permohonan extends javax.swing.JDialog {
                     hasil.getString("notelp"),
                     hasil.getString("alm"),
                     hasil.getString("jns"),
+                    hasil.getString("kec"),
+                    hasil.getString("kel"),
                     hasil.getString("vlm"),
-                    hasil.getString("lks"),
                     hasil.getString("haktanah")
                 });
             }
@@ -161,15 +162,16 @@ public class popup_permohonan extends javax.swing.JDialog {
     String nama = popuppermohonan.getValueAt(baris, 1).toString();
     String telp = popuppermohonan.getValueAt(baris, 2).toString();
     String alamat = popuppermohonan.getValueAt(baris, 3).toString();
-     String jenislayanan = popuppermohonan.getValueAt(baris, 4).toString();
-    String volume = popuppermohonan.getValueAt(baris, 5).toString();
-    String lokasi = popuppermohonan.getValueAt(baris, 6).toString();
-    String hak_tanah = popuppermohonan.getValueAt(baris, 7).toString();
+    String jenislayanan = popuppermohonan.getValueAt(baris, 4).toString();
+    String kecamatan = popuppermohonan.getValueAt(baris, 5).toString();
+    String kelurahan = popuppermohonan.getValueAt(baris, 6).toString();
+    String volume = popuppermohonan.getValueAt(baris, 7).toString();
+    String hak_tanah = popuppermohonan.getValueAt(baris, 8).toString();
     
     // Taktik baru: Deteksi otomatis apakah form utamanya adalah permohonan
     if (formPenugasan instanceof penugasan) {
         penugasan fp = (penugasan) formPenugasan;
-        fp.isiDataPermohonan(id, nama, telp, alamat, jenislayanan, volume, lokasi, hak_tanah);
+        fp.isiDataPermohonan(id, nama, telp, alamat, jenislayanan, kecamatan, kelurahan, volume, hak_tanah);
     }
     
     this.dispose();        // TODO add your handling code here:

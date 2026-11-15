@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
@@ -105,10 +105,10 @@
                                               <Component id="jLabel192" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel193" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel190" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                              <Component id="jLabel196" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="labvlm" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="labjl" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="labnm" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="cbprgs" min="-2" pref="160" max="-2" attributes="0"/>
@@ -118,6 +118,8 @@
                                                   <Component id="poppenugasan" min="-2" pref="101" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="txtidhsl" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="labkec" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labkel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Component id="jLabel189" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -137,18 +139,13 @@
                                               <Component id="jLabel188" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel195" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lablks" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="labtggl" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="labnip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="labnmptgs" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="labhak" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
+                                              <Component id="labtggl" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labnip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labnmptgs" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labhak" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="labvlm" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -202,7 +199,12 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel193" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labvlm" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labkec" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel196" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labkel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -214,7 +216,7 @@
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel194" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lablks" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labvlm" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -264,13 +266,13 @@
                           <Component id="jScrollPane" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="149" max="32767" attributes="0"/>
+                  <EmptySpace pref="132" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lablks">
+        <Component class="javax.swing.JLabel" name="labkec">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
@@ -537,7 +539,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Volume"/>
+            <Property name="text" type="java.lang.String" value="Kecamatan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labvlm">
@@ -556,7 +558,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Lokasi Tanah"/>
+            <Property name="text" type="java.lang.String" value="Volume"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel195">
@@ -688,6 +690,25 @@
             </DimensionLayout>
           </Layout>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel196">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Kelurahan"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="labkel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="jLabel20"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
