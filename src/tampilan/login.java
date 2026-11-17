@@ -15,6 +15,7 @@ import koneksi.koneksi;
  * @author anwar
  */
 public class login extends javax.swing.JFrame {
+public static String namaUserLogin = "Admin";
 private Connection conn = new koneksi().connect();
 PreparedStatement pet;
 ResultSet rs;
@@ -229,6 +230,7 @@ login.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
             if (rs.next()) {
                 String username = rs.getString("kd_admin");
                 String pw = rs.getString("password");
+                namaUserLogin = username;
                 JOptionPane.showMessageDialog(null, "Login Berhasil");
                 new dashboard_utama().setVisible(true);
                 this.dispose();
