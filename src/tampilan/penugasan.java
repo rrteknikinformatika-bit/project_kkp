@@ -329,13 +329,16 @@ private DefaultTableModel tabmode;
  
  public void cetak() {
         try{
-            String path="./src/report/reportPenugasan.jasper";
-            HashMap parameter = new HashMap();
-            parameter.put("idpngsn", idpenugasan.getText());
-            JasperPrint print = JasperFillManager.fillReport(path, parameter,conn);
-            JasperViewer.viewReport(print, false);
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(rootPane,"Dokumen tidak ada" +ex);
+            String reportPath = "/report/reportPenugasanKKP.jasper";;
+        java.io.InputStream is = getClass().getResourceAsStream(reportPath);
+        java.util.HashMap param = new java.util.HashMap();
+        
+        // Memanggil method connect() dari kelas koneksi
+        koneksi kon = new koneksi();
+        net.sf.jasperreports.engine.JasperPrint print = net.sf.jasperreports.engine.JasperFillManager.fillReport(is, param, kon.connect());
+        net.sf.jasperreports.view.JasperViewer.viewReport(print, false);
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(null, "Cetak Laporan Absen Gagal: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
     

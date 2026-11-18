@@ -214,15 +214,15 @@ public class permohonan extends javax.swing.JInternalFrame {
     }
     public void cetak() {
         try{
-            String path="./src/report/reportPermohonan.jasper";
-            HashMap parameter = new HashMap();
-            parameter.put("idprmhnn", txtidpermohonan.getText());
-            String mohon = txtidpermohonan.getText();
-            System.out.println("id permohonan"+ mohon);
-            JasperPrint print = JasperFillManager.fillReport(path, parameter,conn);
-            JasperViewer.viewReport(print, false);
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(rootPane,"Dokumen tidak ada" +ex);
+        String reportPath = "/report/reportPermohonanKKP.jasper";
+        java.io.InputStream is = getClass().getResourceAsStream(reportPath);
+        java.util.HashMap param = new java.util.HashMap();
+        
+        koneksi kon = new koneksi();
+        net.sf.jasperreports.engine.JasperPrint print = net.sf.jasperreports.engine.JasperFillManager.fillReport(is, param, kon.connect());
+        net.sf.jasperreports.view.JasperViewer.viewReport(print, false);
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(null, "Cetak Laporan Permohonan Gagal: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }
         protected void aktif(){

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportPenugasanKKP" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="70d0089f-3a9c-4ed9-ac39-3b79c30f5efa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idpngsn" class="java.lang.String"/>
+	<parameter name="LOGO_KANTOR" class="java.awt.Image" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new javax.swing.ImageIcon("C:/Hannu/KKP/logo/logo_kantor.png").getImage()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LOGO_KAMPUS" class="java.awt.Image" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new javax.swing.ImageIcon("C:/Hannu/KKP/logo/logo_kampus.png").getImage()]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     penugasan.nmpmhn AS penugasan_nmpmhn,
+     penugasan.jns AS penugasan_jns,
+     penugasan.kec AS penugasan_kec,
+     penugasan.kel AS penugasan_kel,
+     penugasan.vlm AS penugasan_vlm,
+     jadwal.tggl AS jadwal_tggl,
+     tugas.nmptgs AS tugas_nmptgs,
+     tugas.nip AS tugas_nip
+FROM
+     penugasan INNER JOIN jadwal ON penugasan.idjdwl = jadwal.idjdwl
+     INNER JOIN tugas ON penugasan.idptgs = tugas.idptgs
+WHERE
+     penugasan.idpngsn = $P{idpngsn}]]>
+	</queryString>
+	<field name="penugasan_nmpmhn" class="java.lang.String"/>
+	<field name="penugasan_jns" class="java.lang.String"/>
+	<field name="penugasan_kec" class="java.lang.String"/>
+	<field name="penugasan_kel" class="java.lang.String"/>
+	<field name="penugasan_vlm" class="java.lang.String"/>
+	<field name="jadwal_tggl" class="java.sql.Date"/>
+	<field name="tugas_nmptgs" class="java.lang.String"/>
+	<field name="tugas_nip" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="5" width="75" height="75" uuid="f0f8e9a4-3111-429c-9ec1-586efd3541d9"/>
+				<imageExpression><![CDATA[$P{LOGO_KANTOR}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="480" y="5" width="75" height="75" uuid="5fa1d28d-4bab-48d3-a711-ca04a1294b42"/>
+				<imageExpression><![CDATA[$P{LOGO_KAMPUS}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="80" y="8" width="395" height="57" uuid="9342a2fe-9914-48af-9b43-45fdaab26a20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[KEMENTERIAN AGRARIA DAN TATA RUANG/
+BADAN PERTANAHAN NASIONAL
+KANTOR PERTANAHAN KOTA ADMINISTRASI JAKARTA TIMUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="55" width="395" height="20" uuid="47b22902-5c72-4b83-8613-f4841e4960b0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Jalan Dr. Sumarno Pulogebang, Jakarta - Telp. (021) 4801927]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="599">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="1ac5b7c7-c883-4d5f-a406-7712a27bc8ce"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="16" width="555" height="20" uuid="b6984fd6-9362-4608-9ba4-8713b8762a45"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[SURAT TUGAS PENGUKURAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="555" height="16" uuid="eb18b760-ddcc-4ca2-9aba-431507f17226"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Dengan ini Kepala Kantor menugaskan kepada :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="74" width="20" height="16" uuid="02325aad-ba24-43d0-ae50-82401e281d82"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="74" width="300" height="16" uuid="f8da10b8-f115-4bc4-9ad1-eb8518153fd5"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[a. Petugas Ukur :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="20" y="94" width="30" height="22" backcolor="#D9D9D9" uuid="b88c666c-a6a4-443f-82cc-6c57d1ac9a0b"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="50" y="94" width="270" height="22" backcolor="#D9D9D9" uuid="9a7710ca-0f54-4bb5-b27b-322bdc194229"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="320" y="94" width="235" height="22" backcolor="#D9D9D9" uuid="9f32414c-ac00-447b-9805-82fcf7e74793"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[NIP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="116" width="30" height="24" uuid="632f89c2-9c43-442c-82d8-237cfb6bdc41"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="50" y="116" width="270" height="24" uuid="b93e0bc2-3b45-4cda-8620-07b267c2c41c"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tugas_nmptgs}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="320" y="116" width="235" height="24" uuid="42649774-b1b1-4978-9bf9-6ef8ef5885f4"/>
+				<box leftPadding="4">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tugas_nip}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="20" y="150" width="535" height="16" uuid="6634ca99-3754-4c2c-9dcb-a60e199d4efc"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[b. Dengan tugas untuk melaksanakan ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="178" width="20" height="16" uuid="dae0aa48-5742-4003-82d7-ee6fd38e2acd"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="20" y="178" width="300" height="16" uuid="c5f91d25-cc7d-4484-bcae-28bf16c375e9"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Lokasi dan Volume Kegiatan :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="200" y="150" width="355" height="16" uuid="5474f1c9-c364-4b66-8ebe-4e0bc22b8fea"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + ($F{penugasan_jns} ? $F{penugasan_jns} : "-")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="19" y="194" width="130" height="16" uuid="5e00208a-cf83-4ab3-96c2-647e3e509fb7"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[a. Kelurahan / Desa]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="149" y="194" width="406" height="16" uuid="9c6a1097-8c49-45a5-b1d8-906d13f60522"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + ($F{penugasan_kel} ? $F{penugasan_kel} : "-")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="19" y="212" width="130" height="16" uuid="c4ba533b-2384-47f7-b49e-6a741b778a91"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[b. Kecamatan]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="149" y="212" width="406" height="16" uuid="db4a2fc0-95ad-45bf-b227-c01b35fdd140"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + ($F{penugasan_kec} ? $F{penugasan_kec} : "-")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="19" y="230" width="130" height="16" uuid="c8d674d6-0628-4c49-a182-d35e99f6c7d9"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[c. Volume]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="149" y="230" width="406" height="16" uuid="5e6e351e-cbb7-493d-969a-57cab4289764"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + ($F{penugasan_vlm} ? $F{penugasan_vlm} : "-")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="262" width="20" height="16" uuid="d0b2d607-0c54-4530-9943-4ca64a3e66ed"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="20" y="262" width="300" height="16" uuid="73823563-8965-4ddf-b199-e19e5ccae71d"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Waktu :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="20" y="278" width="130" height="16" uuid="9f396632-737d-49a7-a8bc-3fa0b3db3312"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[a. Mulai Tanggal]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="150" y="278" width="405" height="16" uuid="0ede033d-9013-4044-aeb8-e28f69107f47"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id","ID")).format($F{jadwal_tggl})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="310" width="20" height="16" uuid="2ceb7c44-e3f9-4c69-9212-b7855ed2044f"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[4.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="20" y="310" width="500" height="16" uuid="80eed211-23f5-4c71-acdf-3803e496274d"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Hasil Pelaksanaan Tugas supaya dilaporkan.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="350" width="555" height="34" uuid="78ed7b02-d1ea-440f-9b57-f977c12fffa5"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Demikian Surat Tugas ini dibuat untuk dilaksanakan dengan penuh tanggung jawab dan dipergunakan sebagaimana mestinya.]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="290" y="406" width="265" height="16" uuid="a3b4080b-0852-4783-ad0d-adbce773fef5"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jakarta, " + new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id","ID")).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="290" y="424" width="265" height="52" uuid="2a81b9e4-0846-4511-8922-df710cad8076"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Atas Nama Kepala Kantor Pertanahan
+Kantor Pertanahan Kota Administrasi Jakarta Timur
+Kepala Seksi Survei dan Pemetaan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="290" y="536" width="265" height="16" uuid="ed939127-c80c-457d-a9ee-6b81db373122"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[DR. IR. NURUL HUDA, S.T., M.B.A., QRMP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="290" y="553" width="265" height="16" uuid="df55bc73-10f2-4830-af69-7e89ab430b40"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[NIP. 198306042011011004]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="424" width="270" height="16" uuid="7e4180c7-e890-4890-8192-b6355b08f92a"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Bahwa benar Petugas Ukur telah datang ke lokasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="518" width="270" height="16" uuid="71a7c2d8-0018-40a5-8ff7-be96d09baebc"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Mengetahui]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="536" width="270" height="16" uuid="7b6d35d4-fc36-4d5a-86da-cfc95b735714"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Pemohon : " + $F{penugasan_nmpmhn}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportPermohonanKKP" language="groovy" pageWidth="842" pageHeight="595" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenNoDataType="AllSectionsNoDetail" uuid="9988662f-ed64-4754-b914-fb65908b689f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="baris" mode="Opaque" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F2F2F2"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="LOGO_KANTOR" class="java.awt.Image" isForPrompting="false"><defaultValueExpression><![CDATA[new javax.swing.ImageIcon("C:/Hannu/KKP/logo/logo_kantor.png").getImage()]]></defaultValueExpression></parameter>
+	<parameter name="LOGO_KAMPUS" class="java.awt.Image" isForPrompting="false"><defaultValueExpression><![CDATA[new javax.swing.ImageIcon("C:/Hannu/KKP/logo/logo_kampus.png").getImage()]]></defaultValueExpression></parameter>
+	<queryString>
+		<![CDATA[SELECT
+     permohonan.idprmhnn AS idprmhnn,
+     permohonan.tggl AS tggl,
+     permohonan.jns AS jns,
+     COALESCE(NULLIF(permohonan.nmpmhn,''), pemohon.nmpmhn) AS nmpmhn,
+     COALESCE(NULLIF(permohonan.alm,''), pemohon.alm) AS alm,
+     COALESCE(NULLIF(permohonan.notelp,''), pemohon.notlp) AS notelp,
+     COALESCE(NULLIF(permohonan.kec,''), tanah.kec) AS kec,
+     COALESCE(NULLIF(permohonan.kel,''), tanah.kel) AS kel,
+     COALESCE(NULLIF(permohonan.vlm,''), tanah.vlm) AS vlm,
+     COALESCE(NULLIF(permohonan.haktanah,''), tanah.haktanah) AS haktanah
+FROM
+     permohonan LEFT JOIN pemohon ON permohonan.idpmhn = pemohon.idpmhn
+     LEFT JOIN tanah ON permohonan.idtnh = tanah.idtnh
+ORDER BY
+     permohonan.tggl, permohonan.idprmhnn]]>
+	</queryString>
+	<field name="idprmhnn" class="java.lang.String"/>
+	<field name="tggl" class="java.sql.Date"/>
+	<field name="jns" class="java.lang.String"/>
+	<field name="nmpmhn" class="java.lang.String"/>
+	<field name="alm" class="java.lang.String"/>
+	<field name="notelp" class="java.lang.String"/>
+	<field name="kec" class="java.lang.String"/>
+	<field name="kel" class="java.lang.String"/>
+	<field name="vlm" class="java.lang.String"/>
+	<field name="haktanah" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="160" splitType="Stretch">
+			<image><reportElement x="0" y="5" width="75" height="75" uuid="03f279f5-c302-4e3a-9200-a10672d563ca"/><imageExpression><![CDATA[$P{LOGO_KANTOR}]]></imageExpression></image>
+			<image><reportElement x="727" y="5" width="75" height="75" uuid="4454fc4a-c9f2-4a59-af1d-9947a3b9f0bd"/><imageExpression><![CDATA[$P{LOGO_KAMPUS}]]></imageExpression></image>
+			<staticText><reportElement x="80" y="8" width="642" height="47" uuid="feebaeac-1986-41da-bd10-3512e8c95979"/><textElement textAlignment="Center"><font size="12" isBold="false" isUnderline="false"/></textElement><text><![CDATA[KEMENTERIAN AGRARIA DAN TATA RUANG/
+BADAN PERTANAHAN NASIONAL
+KANTOR PERTANAHAN KOTA ADMINISTRASI JAKARTA TIMUR]]></text></staticText>
+			<staticText><reportElement x="80" y="55" width="642" height="20" uuid="e14ee987-038a-4722-a4e2-bfc3c53abb8e"/><textElement textAlignment="Center"><font size="11" isBold="false" isUnderline="false"/></textElement><text><![CDATA[Jalan Dr. Sumarno Pulogebang, Jakarta - Telp. (021) 4801927]]></text></staticText>
+			<line><reportElement x="0" y="84" width="802" height="1" uuid="2ee75637-7821-44bc-a75e-0db8f5d15f93"/><graphicElement><pen lineWidth="2.0"/></graphicElement></line>
+			<staticText><reportElement x="0" y="96" width="802" height="20" uuid="47de6453-c80b-48e0-85a7-500476b7595e"/><textElement textAlignment="Center"><font size="14" isBold="true" isUnderline="true"/></textElement><text><![CDATA[LAPORAN DATA PERMOHONAN]]></text></staticText>
+			<staticText><reportElement x="0" y="124" width="802" height="30" uuid="52e9f24e-7876-415e-bd4a-4d1770068f53"/><textElement textAlignment="Left"><font size="10" isBold="false" isUnderline="false"/></textElement><text><![CDATA[Berikut data permohonan pengukuran dan pemetaan yang tercatat pada Kantor Pertanahan Kota Administrasi Jakarta Timur.]]></text></staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="0" y="0" width="28" height="30" uuid="9fa5c07e-92f6-4822-8735-82fc587641e8"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[No]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="28" y="0" width="55" height="30" uuid="c1a4e4c8-5638-42dc-b522-61687e3241c7"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[ID]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="83" y="0" width="70" height="30" uuid="f51ecb48-3754-4b8c-9bee-bd2aaf4cb8fe"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Tanggal]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="153" y="0" width="100" height="30" uuid="79e78fd1-cfc9-4bff-948b-1af1eb1050da"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Jenis Layanan]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="253" y="0" width="90" height="30" uuid="b9ed521b-850d-4ab5-b9bc-f0836cb353b3"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Nama Pemohon]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="343" y="0" width="120" height="30" uuid="6c42fac3-9a9f-48da-afd9-475bdc16811f"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Alamat]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="463" y="0" width="70" height="30" uuid="57403a1e-59a9-495b-97ff-25094d48655e"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[No. Telepon]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="533" y="0" width="65" height="30" uuid="d8ce17e8-45f5-4c29-8923-d5e575865616"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Kecamatan]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="598" y="0" width="65" height="30" uuid="0d9a1a63-b5db-4550-a986-6e92d255e614"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Kelurahan / Desa]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="663" y="0" width="45" height="30" uuid="8a129005-3a5e-493e-8be0-8bb54725db2f"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Volume]]></text></staticText>
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="708" y="0" width="94" height="30" uuid="c7872a35-bc10-4a95-a01d-02d84e3c7b9c"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Hak Tanah]]></text></staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="0" y="0" width="28" height="22" uuid="6e01df24-f1b8-4212-8ec9-fb74ab688712"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[String.valueOf($V{REPORT_COUNT})]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="28" y="0" width="55" height="22" uuid="07002b0d-281e-4ec2-9aa2-d934585588ba"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{idprmhnn} ? $F{idprmhnn} : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="83" y="0" width="70" height="22" uuid="87d4c145-3ea8-4d3d-99f8-f12c161c3dbc"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{tggl} ? new java.text.SimpleDateFormat("dd MMM yyyy", new java.util.Locale("id","ID")).format($F{tggl}) : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="153" y="0" width="100" height="22" uuid="b3bfa087-be69-4300-9d2e-ea95cbb3dd0f"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{jns} ? $F{jns} : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="253" y="0" width="90" height="22" uuid="8bcc71a3-6bba-44fc-ae90-15bf47b4f642"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{nmpmhn} ? $F{nmpmhn} : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="343" y="0" width="120" height="22" uuid="e5b84ca4-fe8d-432f-a37c-cff3e3d9ba2c"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{alm} ? $F{alm} : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="463" y="0" width="70" height="22" uuid="5df25417-85e7-45ac-8399-3ba5e54ed073"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{notelp} ? $F{notelp} : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="533" y="0" width="65" height="22" uuid="b124baa1-98ec-432c-8954-1822747294cb"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{kec} ? $F{kec} : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="598" y="0" width="65" height="22" uuid="15eed8e7-5283-402e-8a40-8847ed6cdf59"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{kel} ? $F{kel} : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="663" y="0" width="45" height="22" uuid="366b1571-f594-403a-a73f-bcbb7dc14374"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{vlm} ? $F{vlm} : "-")]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement style="baris" stretchType="RelativeToBandHeight" x="708" y="0" width="94" height="22" uuid="0c20b620-5d0e-484a-91a7-45cd0d1b7584"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="10"/></textElement><textFieldExpression><![CDATA[($F{haktanah} ? $F{haktanah} : "-")]]></textFieldExpression></textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement x="0" y="4" width="672" height="16" uuid="72ba5581-4919-41c9-932d-dbe01150f814"/><textElement textAlignment="Left"><font size="9"/></textElement><textFieldExpression><![CDATA["Dicetak : " + new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id","ID")).format(new java.util.Date())]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement x="672" y="4" width="90" height="16" uuid="f67fad16-de1a-4204-899f-fe9473101677"/><textElement textAlignment="Right"><font size="9"/></textElement><textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER} + " dari "]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Report"><reportElement x="762" y="4" width="40" height="16" uuid="03bd8624-0d87-4340-9cd6-47d9005565f9"/><textElement textAlignment="Left"><font size="9"/></textElement><textFieldExpression><![CDATA[String.valueOf($V{PAGE_NUMBER})]]></textFieldExpression></textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="200" splitType="Prevent">
+			<staticText><reportElement mode="Opaque" backcolor="#D9D9D9" x="0" y="20" width="190" height="20" uuid="b9cee025-4251-4e9a-b720-29f0686834b9"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="11" isBold="true" isUnderline="false"/></textElement><text><![CDATA[Rekapitulasi]]></text></staticText>
+			<staticText><reportElement x="0" y="40" width="130" height="20" uuid="7b7316b4-7442-43e1-97b9-60746222c754"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="11" isBold="false" isUnderline="false"/></textElement><text><![CDATA[Total Permohonan]]></text></staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement x="130" y="40" width="60" height="20" uuid="d848c7f9-a07c-4ef4-8cb0-edd809d3aa4c"/><box leftPadding="3" rightPadding="3"><topPen lineWidth="0.5"/><leftPen lineWidth="0.5"/><bottomPen lineWidth="0.5"/><rightPen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="11"/></textElement><textFieldExpression><![CDATA[String.valueOf($V{REPORT_COUNT})]]></textFieldExpression></textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true"><reportElement x="537" y="20" width="265" height="16" uuid="cd2ad554-07c5-4856-8404-346bfc00b2e9"/><textElement textAlignment="Center"><font size="10"/></textElement><textFieldExpression><![CDATA["Jakarta, " + new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id","ID")).format(new java.util.Date())]]></textFieldExpression></textField>
+			<staticText><reportElement x="537" y="38" width="265" height="52" uuid="eb21050d-2649-4f0b-91a3-31433b44b6a0"/><textElement textAlignment="Center"><font size="10" isBold="false" isUnderline="false"/></textElement><text><![CDATA[Atas Nama Kepala Kantor Pertanahan
+Kantor Pertanahan Kota Administrasi Jakarta Timur
+Kepala Seksi Survei dan Pemetaan]]></text></staticText>
+			<staticText><reportElement x="537" y="150" width="265" height="16" uuid="29e0ebcd-0506-4f0f-b1da-9c36af71bc70"/><textElement textAlignment="Center"><font size="10" isBold="false" isUnderline="false"/></textElement><text><![CDATA[DR. IR. NURUL HUDA, S.T., M.B.A., QRMP]]></text></staticText>
+			<staticText><reportElement x="537" y="167" width="265" height="16" uuid="a70980b7-fac3-4201-95f5-1291c245a804"/><textElement textAlignment="Center"><font size="10" isBold="false" isUnderline="false"/></textElement><text><![CDATA[NIP. 198306042011011004]]></text></staticText>
+		</band>
+	</summary>
+</jasperReport>
